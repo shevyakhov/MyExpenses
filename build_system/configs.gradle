@@ -1,0 +1,15 @@
+ext.Configs =
+	[
+		APPLICATION_ID		:	"com.chelz.myexpenses",
+
+		BUILD_TOOL_VERSION	:	"30.0.3",
+
+		COMPILE_SDK			:	33,
+		MIN_SDK				:	26,
+		TARGET_SDK			:	33,
+
+		JVM_TARGET			:	"1.8",
+
+		CODE				:	1,
+		NAME				:	"1.0"
+	]

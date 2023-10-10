@@ -1,0 +1,30 @@
+apply from: "$rootDir/build_system/configs.gradle"
+
+android {
+	compileSdk Configs.COMPILE_SDK
+	buildToolsVersion Configs.BUILD_TOOL_VERSION
+
+	defaultConfig {
+		minSdk Configs.MIN_SDK
+		targetSdk Configs.TARGET_SDK
+		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+	/*	buildConfigField "String", "BASE_URL", "\"http://107684.web.hosting-russia.ru:8000/api/\""*/
+	}
+
+	buildTypes {
+		release {
+			minifyEnabled false
+		}
+	}
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
+	}
+	kotlinOptions {
+		jvmTarget = Configs.JVM_TARGET
+	}
+	buildFeatures {
+		viewBinding true
+	}
+}
