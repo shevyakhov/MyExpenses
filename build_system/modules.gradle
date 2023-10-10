@@ -1,0 +1,13 @@
+ext.Modules = [
+	APP             : ":app",
+	FEATURE         : [
+		MAIN  		: ":features-main",
+		SPLASH 		: ":features-splash",
+	],
+	LIBRARIES       : [
+		NAVIGATION  : ":libraries-navigation",
+	],
+	SHARED_MODULES  : [
+
+	]
+]

@@ -11,4 +11,13 @@ dependencies {
 	implementation Dependencies.CONSTRAINT_LAYOUT
 	implementation Dependencies.KOIN_CORE
 	implementation Dependencies.KOIN_ANDROID
+	implementation Dependencies.CICERONE
+	implementation Dependencies.RETROFIT
+	implementation Dependencies.OKHTTP_INTERCEPTOR
+	implementation Dependencies.GSON
+	implementation Dependencies.GSON_CONVERTER
+
+	implementation project(":libraries:navigation")
+	implementation project(":features:splash")
+	implementation project(":features:main")
 }

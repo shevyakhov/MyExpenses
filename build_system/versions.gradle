@@ -18,4 +18,5 @@ ext.Versions =
 		GLIDE                       : "4.11.0",
 		COROUTINE                   : "1.6.2",
 		NAVIGATION                  : "2.5.3",
+		LOTTIE						: "5.2.0",
 	]

@@ -14,3 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "My Expenses"
 include ':app'
+include ':libraries:navigation'
+include ':features:main'
+include ':features:splash'
