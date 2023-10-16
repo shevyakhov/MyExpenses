@@ -7,14 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import com.chelz.feature.splash.databinding.FragmentSplashBinding
+import com.chelz.features.splash.databinding.FragmentSplashBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class SplashFragment : Fragment() {
 	companion object {
 
-		private const val ANIMATION_START_DELAY = 500L
 		private const val FIRST_START_FLAG = "FIRST_START_FLAG"
 
 		fun newInstance(firstStartFlag: Boolean): SplashFragment =

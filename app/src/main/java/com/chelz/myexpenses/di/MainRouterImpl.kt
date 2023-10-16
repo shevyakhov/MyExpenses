@@ -2,6 +2,7 @@ package com.chelz.myexpenses.di
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
+import com.chelz.features.home.HomeDestination
 import com.chelz.libraries.navigation.FragmentDestination
 import com.chelz.libraries.navigation.MainRouter
 import com.github.terrakok.cicerone.Router
@@ -12,7 +13,7 @@ class MainRouterImpl(
 	private val router: Router,
 ) : MainRouter {
 
-	override val currentScreen = MutableStateFlow<FragmentDestination>()
+	override val currentScreen = MutableStateFlow<FragmentDestination>(HomeDestination)
 
 	private val backStack = mutableListOf<FragmentDestination>()
 

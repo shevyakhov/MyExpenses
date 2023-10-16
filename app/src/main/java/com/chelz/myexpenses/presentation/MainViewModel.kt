@@ -10,9 +10,9 @@ class MainViewModel(
 
 	private var mainRootOpened = false
 
-	fun openMainRoot() {
+	fun openMainRoot(firstStart: Boolean) {
 		if (!mainRootOpened) {
-			router.newRoot(SplashDestination())
+			router.newRoot(SplashDestination(firstStart))
 		}
 		mainRootOpened = true
 	}

@@ -20,4 +20,9 @@ dependencies {
 	implementation project(":libraries:navigation")
 	implementation project(":features:splash")
 	implementation project(":features:main")
+
+	implementation project(":features:home")
+	implementation project(":features:planning")
+	implementation project(":features:profile")
+	implementation project(":features:statistics")
 }

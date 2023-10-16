@@ -21,5 +21,6 @@ dependencies {
 	implementation Dependencies.CICERONE
 
 	implementation project(":libraries:navigation")
+	implementation project(":features:home")
 
 }

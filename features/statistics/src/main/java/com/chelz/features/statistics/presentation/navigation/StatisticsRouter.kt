@@ -1,0 +1,3 @@
+package com.chelz.features.statistics.presentation.navigation
+
+interface StatisticsRouter
