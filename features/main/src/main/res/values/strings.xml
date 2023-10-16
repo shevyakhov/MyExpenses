@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="main_home">Главная</string>
+	<string name="main_stats">Статистика</string>
+	<string name="main_planning">Планирование</string>
+	<string name="main_profile">Профиль</string>
+</resources>
