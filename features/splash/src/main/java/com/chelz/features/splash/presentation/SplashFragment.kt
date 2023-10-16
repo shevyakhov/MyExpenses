@@ -25,7 +25,7 @@ class SplashFragment : Fragment() {
 
 	private val viewModel: SplashViewModel by viewModel {
 		parametersOf(
-			false
+			requireContext().getSharedPreferences("USER", Context.MODE_PRIVATE).getBoolean("FIRST_START", true)
 		)
 	}
 	private var _binding: FragmentSplashBinding? = null
