@@ -52,7 +52,7 @@ class MainFragment : Fragment() {
 		}.launchIn(lifecycleScope)
 
 
-		binding.bottomNavigation.setOnNavigationItemSelectedListener {
+		binding.bottomNavigation.setOnItemSelectedListener {
 			if (binding.bottomNavigation.selectedItemId != it.itemId)
 				when (it.itemId) {
 					R.id.home     -> viewModel.navigateToFoodList()

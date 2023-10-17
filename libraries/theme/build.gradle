@@ -1,0 +1,8 @@
+apply plugin: Plugins.ANDROID_LIBRARY
+apply plugin: Plugins.KOTLIN_ANDROID
+
+apply from: "$rootDir/build_system/module_types/android_library.gradle"
+
+dependencies {
+	implementation Dependencies.MATERIAL
+}

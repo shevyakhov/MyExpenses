@@ -9,6 +9,7 @@ ext.Modules = [
 	],
 	LIBRARIES     : [
 		NAVIGATION: ":libraries-navigation",
+		THEME     : ":libraries-theme",
 	],
 	SHARED_MODULES: [
 

@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/features/statistics" />
             <option value="$PROJECT_DIR$/libraries" />
             <option value="$PROJECT_DIR$/libraries/navigation" />
+            <option value="$PROJECT_DIR$/libraries/theme" />
           </set>
         </option>
       </GradleProjectSettings>

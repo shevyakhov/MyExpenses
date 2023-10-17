@@ -22,5 +22,5 @@ dependencies {
 	implementation Dependencies.LOTTIE
 
 	implementation project(":libraries:navigation")
-
+	implementation project(":libraries:theme")
 }

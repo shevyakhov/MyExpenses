@@ -18,6 +18,8 @@ dependencies {
 	implementation Dependencies.GSON_CONVERTER
 
 	implementation project(":libraries:navigation")
+	implementation project(":libraries:theme")
+
 	implementation project(":features:splash")
 	implementation project(":features:main")
 
