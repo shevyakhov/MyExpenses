@@ -1,0 +1,6 @@
+ext.ModuleType = [
+	Application    : BuildSrc.androidApplication,
+	Library        : BuildSrc.androidLibrary,
+	UnitTestLibrary: BuildSrc.unitTestLibrary,
+	KotlinLibrary  : BuildSrc.kotlinLibrary,
+]

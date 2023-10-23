@@ -1,4 +1,8 @@
-apply from: "$rootDir/build_system/configs.gradle"
+apply plugin: Plugins.ANDROID_APPLICATION
+apply plugin: Plugins.KOTLIN_ANDROID
+
+apply from: BuildSrc.configs
+apply from: BuildSrc.ext
 
 android {
 	packagingOptions {
@@ -33,4 +37,7 @@ android {
 	buildFeatures {
 		viewBinding true
 	}
+}
+dependencies {
+	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
 }

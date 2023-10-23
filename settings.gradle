@@ -13,12 +13,11 @@ dependencyResolutionManagement {
 	}
 }
 rootProject.name = "My Expenses"
-include ':app'
-include ':libraries:navigation'
-include ':features:main'
-include ':features:splash'
-include ':features:home'
-include ':features:profile'
-include ':features:planning'
-include ':features:statistics'
-include ':libraries:theme'
+
+apply from: 'build_system/ext.gradle'
+apply from: 'build_system/modules.gradle'
+
+unpackMapValues(Modules) {
+	include(it)
+	project(it).projectDir = file(nameToPath(it))
+}

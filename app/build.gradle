@@ -1,6 +1,4 @@
-apply plugin: Plugins.ANDROID_APPLICATION
-apply plugin: Plugins.KOTLIN_ANDROID
-apply from: "$rootDir/build_system/module_types/android_application.gradle"
+apply from: ModuleType.Application
 
 dependencies {
 	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
@@ -17,14 +15,7 @@ dependencies {
 	implementation Dependencies.GSON
 	implementation Dependencies.GSON_CONVERTER
 
-	implementation project(":libraries:navigation")
-	implementation project(":libraries:theme")
 
-	implementation project(":features:splash")
-	implementation project(":features:main")
-
-	implementation project(":features:home")
-	implementation project(":features:planning")
-	implementation project(":features:profile")
-	implementation project(":features:statistics")
+	unpackMapValues(Modules.FEATURES) { implementation project(it) }
+	unpackMapValues(Modules.LIBRARIES) { implementation project(it) }
 }

@@ -1,0 +1,16 @@
+def folder = "$rootDir/build_system"
+
+ext.BuildSrc = [
+	moduleType        : "$folder/moduleType.gradle",
+
+	androidApplication: "$folder/module_types/android_application.gradle",
+	androidLibrary    : "$folder/module_types/android_library.gradle",
+	kotlinLibrary     : "$folder/module_types/kotlin_library.gradle",
+
+	configs           : "$folder/configs.gradle",
+	modules           : "$folder/modules.gradle",
+	dependencies      : "$folder/dependencies.gradle",
+	plugins           : "$folder/plugins.gradle",
+
+	ext               : "$folder/ext.gradle",
+]

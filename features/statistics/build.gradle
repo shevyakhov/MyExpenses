@@ -1,8 +1,4 @@
-apply plugin: Plugins.ANDROID_LIBRARY
-apply plugin: Plugins.KOTLIN_ANDROID
-
-apply from: "$rootDir/build_system/module_types/android_library.gradle"
-apply plugin: 'org.jetbrains.kotlin.android'
+apply from: ModuleType.Library
 
 dependencies {
 	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
@@ -19,8 +15,7 @@ dependencies {
 	implementation Dependencies.GSON_CONVERTER
 	implementation Dependencies.GLIDE
 	implementation Dependencies.CICERONE
-	implementation Dependencies.LOTTIE
 
-	implementation project(":libraries:navigation")
-	implementation project(":libraries:theme")
+	implementation project(Modules.LIBRARIES.NAVIGATION)
+	implementation project(Modules.LIBRARIES.THEME)
 }

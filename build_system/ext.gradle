@@ -1,0 +1,11 @@
+ext.unpackMapValues = { map, lambda ->
+	map.each {
+		if (it.value instanceof String) {
+			lambda(it.value)
+		} else if (it.value instanceof Map) {
+			unpackMapValues(it.value, lambda)
+		}
+	}
+}
+
+ext.nameToPath = { name -> name.drop(1).replaceAll(":", "/") }

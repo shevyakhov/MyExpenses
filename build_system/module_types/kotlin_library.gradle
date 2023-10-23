@@ -1,6 +1,25 @@
-apply from: "$rootDir/build_system/configs.gradle"
+apply plugin: Plugins.KOTLIN
+
+apply from: BuildSrc.configs
+apply from: BuildSrc.ext
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_1_8
-	targetCompatibility = JavaVersion.VERSION_1_8
+	sourceCompatibility = Configs.JVM_TARGET
+	targetCompatibility = Configs.JVM_TARGET
+}
+
+compileKotlin {
+	kotlinOptions {
+		jvmTarget = Configs.JVM_TARGET.toString()
+	}
+}
+
+compileTestKotlin {
+	kotlinOptions {
+		jvmTarget = Configs.JVM_TARGET.toString()
+	}
+}
+
+dependencies {
+	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
 }

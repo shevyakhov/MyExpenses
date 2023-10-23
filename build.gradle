@@ -1,7 +1,15 @@
 buildscript {
-	apply from: 'build_system/dependencies.gradle'
+	apply from: 'build_system/initBuildSrc.gradle'
+	apply from: BuildSrc.dependencies
+	apply from: BuildSrc.modules
+	apply from: BuildSrc.plugins
+	apply from: BuildSrc.moduleType
+
+	/*apply from: 'build_system/dependencies.gradle'
 	apply from: 'build_system/versions.gradle'
 	apply from: 'build_system/plugins.gradle'
+	apply from: 'build_system/modules.gradle'
+	apply from: 'build_system/moduleType.gradle'*/
 
 	repositories {
 		google()

@@ -1,4 +1,8 @@
-apply from: "$rootDir/build_system/configs.gradle"
+apply plugin: Plugins.ANDROID_LIBRARY
+apply plugin: Plugins.KOTLIN_ANDROID
+
+apply from: BuildSrc.configs
+apply from: BuildSrc.ext
 
 android {
 	compileSdk Configs.COMPILE_SDK
@@ -9,7 +13,7 @@ android {
 		targetSdk Configs.TARGET_SDK
 		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-	/*	buildConfigField "String", "BASE_URL", "\"http://107684.web.hosting-russia.ru:8000/api/\""*/
+		/*	buildConfigField "String", "BASE_URL", "\"http://107684.web.hosting-russia.ru:8000/api/\""*/
 	}
 
 	buildTypes {
@@ -27,4 +31,7 @@ android {
 	buildFeatures {
 		viewBinding true
 	}
+}
+dependencies {
+	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
 }
