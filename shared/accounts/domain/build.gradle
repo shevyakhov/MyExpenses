@@ -1,0 +1,6 @@
+apply from: ModuleType.KotlinLibrary
+
+dependencies {
+	implementation Dependencies.COROUTINE_CORE
+	implementation Dependencies.KOIN_CORE
+}

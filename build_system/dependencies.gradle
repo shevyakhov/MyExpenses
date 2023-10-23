@@ -14,6 +14,7 @@ ext.Dependencies =
 
 		ROOM_RUNTIME           : "androidx.room:room-runtime:${Versions.ROOM}",
 		ROOM_COMPILER          : "androidx.room:room-compiler:${Versions.ROOM}",
+		ROOM_COMMON            : "androidx.room:room-common:${Versions.ROOM}",
 		ROOM_KTX               : "androidx.room:room-ktx:${Versions.ROOM}",
 
 		KOIN_ANDROID           : "io.insert-koin:koin-android:${Versions.KOIN}",

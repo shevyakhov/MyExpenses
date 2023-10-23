@@ -21,3 +21,5 @@ unpackMapValues(Modules) {
 	include(it)
 	project(it).projectDir = file(nameToPath(it))
 }
+include ':shared:accounts:domain'
+include ':shared:accounts:data'

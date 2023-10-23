@@ -1,3 +1,5 @@
 package com.chelz.features.home.navigation
 
-interface HomeRouter
+interface HomeRouter {
+
+}

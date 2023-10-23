@@ -1,0 +1,18 @@
+apply from: ModuleType.Library
+apply plugin: Plugins.KOTLIN_KAPT
+
+dependencies {
+
+	implementation Dependencies.CORE
+
+	implementation Dependencies.COROUTINE_CORE
+
+	implementation Dependencies.KOIN_ANDROID
+
+	implementation Dependencies.RETROFIT
+
+	implementation Dependencies.ROOM_RUNTIME
+	implementation Dependencies.ROOM_COMMON
+	kapt Dependencies.ROOM_COMPILER
+	implementation Dependencies.ROOM_KTX
+}

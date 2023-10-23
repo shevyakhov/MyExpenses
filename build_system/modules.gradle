@@ -13,6 +13,7 @@ ext.Modules = [
 		THEME     : ":libraries:theme",
 	],
 	SHARED_MODULES: [
-
+		ACCOUNTS_DOMAIN: ":shared:accounts:domain",
+		ACCOUNTS_DATA  : ":shared:accounts:data",
 	]
 ]
