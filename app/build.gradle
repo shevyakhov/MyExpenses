@@ -18,4 +18,5 @@ dependencies {
 
 	unpackMapValues(Modules.FEATURES) { implementation project(it) }
 	unpackMapValues(Modules.LIBRARIES) { implementation project(it) }
+	unpackMapValues(Modules.SHARED_MODULES) { implementation project(it) }
 }

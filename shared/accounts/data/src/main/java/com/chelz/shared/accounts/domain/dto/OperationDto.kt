@@ -2,11 +2,14 @@ package com.chelz.shared.accounts.domain.dto
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 @Entity(
-	tableName = "Operations", foreignKeys = [ForeignKey(
+	tableName = "Operations"
+)
+
+/*
+* , foreignKeys = [ForeignKey(
 		entity = CategoryDto::class,
 		parentColumns = ["category"],
 		childColumns = ["categoryId"],
@@ -18,9 +21,9 @@ import androidx.room.PrimaryKey
 		onDelete = ForeignKey.CASCADE
 	)
 	]
-)
+	* */
 data class OperationDto(
-	@PrimaryKey(autoGenerate = true) val id: Int,
+	@PrimaryKey(autoGenerate = true) val id: Long,
 	@ColumnInfo(name = "name") val name: String,
 	@ColumnInfo(name = "quantity") val quantity: Int,
 	@ColumnInfo(name = "category") val category: Int,

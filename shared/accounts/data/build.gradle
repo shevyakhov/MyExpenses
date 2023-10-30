@@ -15,4 +15,6 @@ dependencies {
 	implementation Dependencies.ROOM_COMMON
 	kapt Dependencies.ROOM_COMPILER
 	implementation Dependencies.ROOM_KTX
+
+	implementation project(Modules.SHARED_MODULES.ACCOUNTS_DOMAIN)
 }

@@ -9,6 +9,7 @@ import com.chelz.features.splash.di.SplashModule
 import com.chelz.features.statistics.di.StatisticsModule
 import com.chelz.myexpenses.di.AppModule
 import com.chelz.myexpenses.di.RouterModule
+import com.chelz.shared.accounts.domain.di.AccountsDataModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -27,6 +28,8 @@ class App : Application() {
 			modules(StatisticsModule)
 			modules(PlanningModule)
 			modules(ProfileModule)
+
+			modules(AccountsDataModule)
 		}
 	}
 }

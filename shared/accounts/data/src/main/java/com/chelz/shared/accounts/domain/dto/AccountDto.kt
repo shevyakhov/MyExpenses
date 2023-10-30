@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Accounts")
 data class AccountDto(
-	@PrimaryKey(autoGenerate = true) val accountId: Int,
+	@PrimaryKey(autoGenerate = true) val accountId: Long,
 	@ColumnInfo(name = "name") val name: String,
 	@ColumnInfo(name = "number") val number: String = "",
 	@ColumnInfo(name = "color") val color: String = "#FF0000",
