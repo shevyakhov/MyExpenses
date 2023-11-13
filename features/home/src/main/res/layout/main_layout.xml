@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<com.google.android.material.appbar.AppBarLayout
+			android:id="@+id/topAppBarLayout"
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/height_65"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+				<TextView
+					android:id="@+id/screenName"
+					style="@style/TextAppearance.AppCompat.Display1"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_marginStart="@dimen/spacing_15"
+					android:gravity="center"
+					android:text="@string/home_fragment_your_accounts"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<ImageView
+					android:layout_width="@dimen/height_40"
+					android:layout_height="@dimen/height_40"
+					android:layout_marginEnd="@dimen/spacing_15"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+		</com.google.android.material.appbar.AppBarLayout>
+
+
+		<androidx.viewpager2.widget.ViewPager2
+			android:id="@+id/accountViewPager"
+			android:layout_width="match_parent"
+			android:layout_height="120dp"
+			android:layout_marginVertical="@dimen/spacing_20"
+			android:clipToPadding="false"
+			app:layout_constraintTop_toBottomOf="@id/topAppBarLayout" />
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/rvOperations"
+			app:reverseLayout="true"
+			app:stackFromEnd="true"
+			android:layout_width="match_parent"
+			android:layout_height="500dp"
+			android:layout_margin="@dimen/spacing_15"
+			tools:listitem="@layout/operation_item"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/accountViewPager" />
+
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

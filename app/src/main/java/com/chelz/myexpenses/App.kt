@@ -10,6 +10,7 @@ import com.chelz.features.statistics.di.StatisticsModule
 import com.chelz.myexpenses.di.AppModule
 import com.chelz.myexpenses.di.RouterModule
 import com.chelz.shared.accounts.domain.di.AccountsDataModule
+import com.chelz.shared.accounts.domain.di.AccountsDomainModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -30,6 +31,7 @@ class App : Application() {
 			modules(ProfileModule)
 
 			modules(AccountsDataModule)
+			modules(AccountsDomainModule)
 		}
 	}
 }

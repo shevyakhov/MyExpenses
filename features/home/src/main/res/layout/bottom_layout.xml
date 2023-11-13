@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/bottom_layout"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/bottom_calc">
+
+
+	<LinearLayout
+		android:id="@+id/line_layout"
+		android:layout_width="match_parent"
+		android:layout_height="30dp"
+		android:gravity="center_horizontal"
+		android:orientation="vertical"
+		app:layout_constraintBottom_toTopOf="@id/categories_layout"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent">
+
+		<LinearLayout
+			android:layout_width="100dp"
+			android:layout_height="3dp"
+			android:layout_marginBottom="@dimen/spacing_10"
+			android:layout_marginTop="@dimen/spacing_5"
+			android:background="?attr/colorSurface"
+			app:layout_constraintTop_toTopOf="parent" />
+	</LinearLayout>
+
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/categories_layout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="?attr/colorTertiary"
+		app:layout_constraintBottom_toTopOf="@id/sum_layout"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent">
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/rv_categories"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			tools:listitem="@layout/category_item"
+			android:layout_margin="@dimen/spacing_5"
+			android:layout_weight="2"
+			android:background="?attr/colorTertiary"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/add_category_button"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<ImageView
+			android:id="@+id/add_category_button"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_margin="@dimen/spacing_10"
+			android:src="@drawable/add_ic"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+	<LinearLayout
+		android:id="@+id/sum_layout"
+		android:layout_width="match_parent"
+		android:layout_height="60dp"
+		android:gravity="center_vertical"
+		android:background="?attr/colorOnSurface"
+		android:orientation="vertical"
+		app:layout_constraintBottom_toTopOf="@id/keyboard_layout">
+
+		<TextView
+			android:id="@+id/sum"
+			style="@style/KeyBoardMainText"
+			android:layout_width="match_parent"
+			android:paddingHorizontal="@dimen/height_20"
+			android:layout_height="match_parent"
+			android:gravity="end"
+			android:inputType="numberDecimal"
+			android:maxEms="15"
+			android:maxLines="1" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/keyboard_layout"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:background="?attr/colorSurface"
+		android:gravity="center"
+		android:orientation="horizontal"
+		app:layout_constraintBottom_toBottomOf="parent">
+
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_height="250dp"
+			android:layout_weight="1"
+			android:orientation="vertical"
+			android:padding="1dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/sum_layout">
+
+			<TextView
+				android:id="@+id/erase"
+				style="@style/KeyboardSingleTextTop"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginBottom="1dp"
+				android:layout_weight="2"
+				android:text="@string/erase" />
+
+			<TextView
+				android:id="@+id/seven"
+				style="@style/KeyboardSingleText"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginBottom="1dp"
+				android:layout_weight="2"
+				android:text="@string/seven" />
+
+			<TextView
+				android:id="@+id/four"
+				style="@style/KeyboardSingleText"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginBottom="1dp"
+				android:layout_weight="2"
+				android:text="@string/four" />
+
+			<TextView
+				android:id="@+id/one"
+				style="@style/KeyboardSingleText"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginBottom="1dp"
+				android:layout_weight="2"
+				android:text="@string/one" />
+
+			<ImageView
+				android:id="@+id/qr"
+				style="@style/KeyboardSingleText"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginBottom="1dp"
+				android:layout_weight="2"
+				android:scaleType="center"
+				android:src="@drawable/qr_ic" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_height="250dp"
+			android:layout_weight="1"
+			android:orientation="vertical"
+			android:padding="1dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/sum_layout">
+
+			<ImageView
+				android:id="@+id/delete"
+				style="@style/KeyboardSingleTextTop"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginBottom="1dp"
+				android:layout_weight="2"
+				android:scaleType="center"
+				android:src="@drawable/delete_ic" />
+
+			<TextView
+				android:id="@+id/eight"
+				style="@style/KeyboardSingleText"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginBottom="1dp"
+				android:layout_weight="2"
+				android:text="@string/eight" />
+
+			<TextView
+				android:id="@+id/five"
+				style="@style/KeyboardSingleText"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginBottom="1dp"
+				android:layout_weight="2"
+				android:text="@string/five" />
+
+			<TextView
+				android:id="@+id/two"
+				style="@style/KeyboardSingleText"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+
+				android:layout_marginBottom="1dp"
+				android:layout_weight="2"
+				android:text="@string/two" />
+
+			<TextView
+				android:id="@+id/zero"
+				style="@style/KeyboardSingleText"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginBottom="1dp"
+				android:layout_weight="2"
+				android:text="@string/zero" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_height="250dp"
+			android:layout_weight="1"
+			android:orientation="vertical"
+			android:padding="1dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/sum_layout">
+
+			<TextView
+				android:id="@+id/typeText"
+				style="@style/KeyBoardText"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginBottom="1dp"
+				android:layout_weight="2"
+				android:text="@string/expense" />
+
+			<TextView
+				android:id="@+id/nine"
+				style="@style/KeyboardSingleText"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+
+				android:layout_marginBottom="1dp"
+				android:layout_weight="2"
+				android:text="@string/nine" />
+
+			<TextView
+				android:id="@+id/six"
+				style="@style/KeyboardSingleText"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+
+				android:layout_marginBottom="1dp"
+				android:layout_weight="2"
+				android:text="@string/six" />
+
+			<TextView
+				android:id="@+id/three"
+				style="@style/KeyboardSingleText"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+
+				android:layout_marginBottom="1dp"
+				android:layout_weight="2"
+				android:text="@string/three" />
+
+			<TextView
+				android:id="@+id/dot"
+				style="@style/KeyboardSingleText"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginBottom="1dp"
+				android:layout_weight="2"
+				android:text="@string/dot" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_height="250dp"
+			android:layout_weight="1"
+			android:orientation="vertical"
+			android:padding="1dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/sum_layout">
+
+			<ImageView
+				android:id="@+id/reverse"
+				style="@style/KeyboardSingleTextTop"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginBottom="1dp"
+				android:layout_weight="1"
+				android:scaleType="center"
+				android:src="@drawable/reverse_ic" />
+
+			<ImageView
+				android:id="@+id/enter"
+				style="@style/KeyboardSingleText"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginBottom="1dp"
+				android:layout_weight="4"
+				android:background="?attr/colorError"
+				android:scaleType="center"
+				android:src="@drawable/enter_ic" />
+
+
+		</LinearLayout>
+	</LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

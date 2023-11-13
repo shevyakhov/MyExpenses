@@ -10,4 +10,5 @@ data class AccountDto(
 	@ColumnInfo(name = "name") val name: String,
 	@ColumnInfo(name = "number") val number: String = "",
 	@ColumnInfo(name = "color") val color: String = "#FF0000",
+	@ColumnInfo(name = "money") val money: Double,
 )
