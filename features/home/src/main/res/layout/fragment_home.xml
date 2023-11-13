@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:sothree="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="match_parent"
+	android:gravity="bottom"
+	sothree:umanoDragView="@id/line_layout"
+	sothree:layout_constraintBottom_toBottomOf="parent"
+	sothree:umanoScrollableView="@id/main_layout"
+	sothree:umanoFadeColor="@android:color/transparent"
+	sothree:umanoPanelHeight="@dimen/spacing_15"
+	sothree:umanoShadowHeight="4dp">
 
-	<androidx.constraintlayout.widget.ConstraintLayout
+	<include
+		android:id="@+id/main_layout"
+		layout="@layout/main_layout"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
+		android:layout_height="match_parent" />
 
+	<include
+		android:id="@+id/sliding_layout"
+		layout="@layout/bottom_layout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" />
 
-	</androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
+

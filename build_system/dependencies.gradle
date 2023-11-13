@@ -48,4 +48,7 @@ ext.Dependencies =
 		COROUTINE_TEST         : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINE}",
 
 		LOTTIE                 : "com.airbnb.android:lottie:${Versions.LOTTIE}",
+
+		SLIDING                : "com.sothree.slidinguppanel:library:${Versions.SLIDING}",
+		JODA_TIME              : "net.danlew:android.joda:${Versions.JODA_TIME}"
 	]

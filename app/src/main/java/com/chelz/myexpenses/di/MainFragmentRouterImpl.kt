@@ -27,15 +27,15 @@ class MainFragmentRouterImpl(private val router: MainRouter) : MainFragmentRoute
 	}
 
 	override fun navigateToRecipes() {
-		//router.open(StatisticsDestination)
+		router.open(StatisticsDestination)
 	}
 
 	override fun navigateToBuyList() {
-		//router.open(PlanningDestination)
+		router.open(PlanningDestination)
 	}
 
 	override fun navigateToProfile() {
-		//router.open(ProfileDestination)
+		router.open(ProfileDestination)
 	}
 
 	override fun goBack() {

@@ -22,4 +22,10 @@ class HomeFragment : Fragment() {
 		return binding.root
 	}
 
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+		viewModel.init()
+		binding.mainLayout.bind(viewModel, viewLifecycleOwner)
+		binding.slidingLayout.bind(viewModel, viewLifecycleOwner)
+	}
 }

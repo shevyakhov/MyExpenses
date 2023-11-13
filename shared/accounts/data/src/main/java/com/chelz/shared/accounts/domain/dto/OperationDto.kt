@@ -24,9 +24,9 @@ import androidx.room.PrimaryKey
 	* */
 data class OperationDto(
 	@PrimaryKey(autoGenerate = true) val id: Long,
-	@ColumnInfo(name = "name") val name: String,
-	@ColumnInfo(name = "quantity") val quantity: Int,
-	@ColumnInfo(name = "category") val category: Int,
+	@ColumnInfo(name = "name") val name: String? = null,
+	@ColumnInfo(name = "quantity") val quantity: Double,
+	@ColumnInfo(name = "category") val category: Long?,
 	@ColumnInfo(name = "date") val date: Long,
 	@ColumnInfo(name = "account") val account: Long,
 )
