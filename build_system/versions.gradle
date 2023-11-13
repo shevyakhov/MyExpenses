@@ -24,4 +24,6 @@ ext.Versions =
 		RETROFIT            : "2.9.0",
 		OKHTTP              : "4.10.0",
 		GLIDE               : "4.14.2",
+		SLIDING             : "3.4.0",
+		JODA_TIME           : "2.12.5",
 	]
