@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chelz.features.home.domain.Numbers
+import com.chelz.features.home.domain.usecase.GetTodaySpendScenario
 import com.chelz.features.home.navigation.HomeRouter
 import com.chelz.features.home.presentation.recycler.operations.OperationItem
 import com.chelz.shared.accounts.domain.entity.Account
@@ -30,6 +31,7 @@ class HomeViewModel(
 	private val updateAccountUseCase: UpdateAccountUseCase,
 	private val getAccountByIdUseCase: GetAccountByIdUseCase,
 	private val getCategoryByIdUseCase: GetCategoryByIdUseCase,
+	private val getTodaySpendScenario: GetTodaySpendScenario,
 	private val router: HomeRouter,
 ) : ViewModel() {
 
@@ -39,6 +41,11 @@ class HomeViewModel(
 
 	val currentAccount = MutableStateFlow<Account?>(null)
 	val currentCategory = MutableStateFlow<Category?>(null)
+
+	val stringFlow = MutableStateFlow("")
+	val isEarningFlow = MutableStateFlow(false)
+
+	val todaySpend = MutableStateFlow(0.0)
 
 	private val handler = CoroutineExceptionHandler { _, throwable ->
 		Log.e("HOMEVM", throwable.message.toString())
@@ -56,15 +63,12 @@ class HomeViewModel(
 
 	private suspend fun updateOperation() {
 		operationFlow.value = getAllOperationsUseCase().sortedByDescending { it.date }
+		todaySpend.value = getTodaySpendScenario.invoke()
 	}
 
 	private suspend fun updateCategory() {
 		categoriesFlow.value = getAllCategoriesUseCase()
 	}
-
-	val stringFlow = MutableStateFlow("")
-
-	val isEarningFlow = MutableStateFlow(false)
 
 	fun addZero() {
 		if (stringFlow.value.isNotEmpty()) {

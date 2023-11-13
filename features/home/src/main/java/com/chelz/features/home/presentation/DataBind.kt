@@ -46,7 +46,10 @@ internal fun MainLayoutBinding.bind(viewModel: HomeViewModel, viewLifecycleOwner
 				rvOperations.smoothSnapToPosition(0)
 			}
 		}
+	}.launchIn(scope)
 
+	viewModel.todaySpend.onEach {
+		statsQuantity.text = it.toString()
 	}.launchIn(scope)
 
 	val itemDecoration = HorizontalMarginItemDecoration(root.context, R.dimen.viewpager_current_item_horizontal_margin)
