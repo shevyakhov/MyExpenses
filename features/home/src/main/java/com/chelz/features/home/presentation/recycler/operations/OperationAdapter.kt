@@ -24,7 +24,7 @@ class OperationAdapter : RecyclerView.Adapter<OperationAdapter.OperationHolder>(
 		fun bind(item: OperationItem) {
 			with(binding) {
 				categoryLetter.text = (item.category?.name?.first() ?: "?").toString()
-				category.text = item.name
+				category.text = item.category?.name ?: "?"
 				accountName.text = item.account
 				money.text = buildString {
 					append(item.quantity.toString())

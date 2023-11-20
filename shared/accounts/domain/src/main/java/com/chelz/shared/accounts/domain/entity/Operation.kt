@@ -5,6 +5,6 @@ class Operation(
 	val name: String,
 	val quantity: Double,
 	val category: Long?,
-	val date: Long,
+	val date: String,
 	val account: Long,
 )

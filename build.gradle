@@ -5,13 +5,10 @@ buildscript {
 	apply from: BuildSrc.plugins
 	apply from: BuildSrc.moduleType
 
-	/*apply from: 'build_system/dependencies.gradle'
-	apply from: 'build_system/versions.gradle'
-	apply from: 'build_system/plugins.gradle'
-	apply from: 'build_system/modules.gradle'
-	apply from: 'build_system/moduleType.gradle'*/
+
 
 	repositories {
+		maven { url 'https://jitpack.io' }
 		google()
 		mavenCentral()
 	}

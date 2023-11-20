@@ -50,5 +50,7 @@ ext.Dependencies =
 		LOTTIE                 : "com.airbnb.android:lottie:${Versions.LOTTIE}",
 
 		SLIDING                : "com.sothree.slidinguppanel:library:${Versions.SLIDING}",
-		JODA_TIME              : "net.danlew:android.joda:${Versions.JODA_TIME}"
+		JODA_TIME              : "net.danlew:android.joda:${Versions.JODA_TIME}",
+
+		CHART                  : "com.github.PhilJay:MPAndroidChart:v${Versions.CHART}",
 	]

@@ -41,7 +41,7 @@ internal fun MainLayoutBinding.bind(viewModel: HomeViewModel, viewLifecycleOwner
 	viewModel.operationFlow.onEach {
 		CoroutineScope(Dispatchers.IO).launch {
 			val res = viewModel.toOperationItem(it)
-			withContext(Dispatchers.Main.immediate) {
+			withContext(Dispatchers.Main) {
 				operationAdapter.setNewData(res)
 				rvOperations.smoothSnapToPosition(0)
 			}
