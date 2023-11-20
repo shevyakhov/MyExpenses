@@ -27,6 +27,6 @@ data class OperationDto(
 	@ColumnInfo(name = "name") val name: String? = null,
 	@ColumnInfo(name = "quantity") val quantity: Double,
 	@ColumnInfo(name = "category") val category: Long?,
-	@ColumnInfo(name = "date") val date: Long,
+	@ColumnInfo(name = "date") val date: String,
 	@ColumnInfo(name = "account") val account: Long,
 )

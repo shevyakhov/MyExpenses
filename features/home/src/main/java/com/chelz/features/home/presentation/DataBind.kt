@@ -33,7 +33,9 @@ internal fun MainLayoutBinding.bind(viewModel: HomeViewModel, viewLifecycleOwner
 	val scope = viewLifecycleOwner.lifecycleScope
 	val accountAdapter = AccountViewPagerAdapter()
 	val operationAdapter = OperationAdapter()
-
+	screenName.setOnClickListener {
+		viewModel.navigateToAddAccount()
+	}
 	rvOperations.layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
 	rvOperations.adapter = operationAdapter
 
@@ -41,7 +43,7 @@ internal fun MainLayoutBinding.bind(viewModel: HomeViewModel, viewLifecycleOwner
 	viewModel.operationFlow.onEach {
 		CoroutineScope(Dispatchers.IO).launch {
 			val res = viewModel.toOperationItem(it)
-			withContext(Dispatchers.Main.immediate) {
+			withContext(Dispatchers.Main) {
 				operationAdapter.setNewData(res)
 				rvOperations.smoothSnapToPosition(0)
 			}

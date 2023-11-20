@@ -64,6 +64,7 @@ class HomeViewModel(
 	private suspend fun updateOperation() {
 		operationFlow.value = getAllOperationsUseCase().sortedByDescending { it.date }
 		todaySpend.value = getTodaySpendScenario.invoke()
+		getAllOperationsUseCase.invoke().groupBy { it.date.drop(5).dropLast(3) }
 	}
 
 	private suspend fun updateCategory() {
@@ -170,7 +171,7 @@ class HomeViewModel(
 					quantity = quantity,
 					account = id,
 					category = categoryId,
-					date = LocalDateTime.now().toDateTime().millis
+					date = LocalDateTime.now().toDateTime().toString("yyyy-MM-dd")
 				)
 
 				insertOperationUseCase(operation)
@@ -193,6 +194,7 @@ class HomeViewModel(
 
 	fun onReverseClick() {
 		isEarningFlow.value = !isEarningFlow.value
+		currentCategory.value = null
 	}
 
 	fun onItemClick(category: Category?) {
@@ -207,4 +209,7 @@ class HomeViewModel(
 		}
 	}.await()
 
+	fun navigateToAddAccount() {
+		router.navigateToAddAccount()
+	}
 }

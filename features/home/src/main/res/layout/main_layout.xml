@@ -51,6 +51,12 @@
 			android:clipToPadding="false"
 			app:layout_constraintTop_toBottomOf="@id/topAppBarLayout" />
 
+		<com.github.mikephil.charting.charts.LineChart
+			app:layout_constraintTop_toBottomOf="@id/todayStats"
+			android:id="@+id/chart"
+			android:layout_width="match_parent"
+			android:layout_height="200dp" />
+
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:id="@+id/todayStats"
 
@@ -73,10 +79,10 @@
 				app:layout_constraintTop_toTopOf="parent">
 
 				<ImageView
-					android:background="?attr/colorError"
 					android:id="@+id/statsIcon"
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
+					android:background="?attr/colorError"
 					android:gravity="center"
 					android:padding="@dimen/spacing_10"
 					android:src="@drawable/money_ic"
@@ -115,7 +121,7 @@
 			android:layout_height="wrap_content"
 			android:paddingHorizontal="@dimen/spacing_10"
 			android:text="@string/recentOperations"
-			app:layout_constraintTop_toBottomOf="@id/todayStats" />
+			app:layout_constraintTop_toBottomOf="@id/chart" />
 
 		<androidx.recyclerview.widget.RecyclerView
 			android:id="@+id/rvOperations"
