@@ -209,4 +209,7 @@ class HomeViewModel(
 		}
 	}.await()
 
+	fun navigateToAddAccount() {
+		router.navigateToAddAccount()
+	}
 }

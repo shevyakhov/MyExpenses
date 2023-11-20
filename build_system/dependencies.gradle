@@ -34,23 +34,24 @@ ext.Dependencies =
 			LIFECYCLE_VIEWMODEL_KTX: "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}",
 		],
 
-		GRADLE                 : "com.android.tools.build:gradle:${Versions.GRADLE}",
-		CONSTRAINT_LAYOUT      : "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT_LAYOUT}",
+		GRADLE           : "com.android.tools.build:gradle:${Versions.GRADLE}",
+		CONSTRAINT_LAYOUT: "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT_LAYOUT}",
 
-		CORE_TESTING           : "androidx.arch.core:core-testing:${Versions.CORE_TESTING}",
+		CORE_TESTING     : "androidx.arch.core:core-testing:${Versions.CORE_TESTING}",
 
-		CICERONE               : "com.github.terrakok:cicerone:${Versions.CICERONE}",
-		FRAGMENT               : "androidx.fragment:fragment-ktx:${Versions.FRAGMENT}",
-		GLIDE                  : "com.github.bumptech.glide:glide:${Versions.GLIDE}",
+		CICERONE         : "com.github.terrakok:cicerone:${Versions.CICERONE}",
+		FRAGMENT         : "androidx.fragment:fragment-ktx:${Versions.FRAGMENT}",
+		GLIDE            : "com.github.bumptech.glide:glide:${Versions.GLIDE}",
 
-		COROUTINE_CORE         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.COROUTINE}",
-		COROUTINE_ANDROID      : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINE}",
-		COROUTINE_TEST         : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINE}",
+		COROUTINE_CORE   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.COROUTINE}",
+		COROUTINE_ANDROID: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINE}",
+		COROUTINE_TEST   : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINE}",
 
-		LOTTIE                 : "com.airbnb.android:lottie:${Versions.LOTTIE}",
+		LOTTIE           : "com.airbnb.android:lottie:${Versions.LOTTIE}",
 
-		SLIDING                : "com.sothree.slidinguppanel:library:${Versions.SLIDING}",
-		JODA_TIME              : "net.danlew:android.joda:${Versions.JODA_TIME}",
+		SLIDING          : "com.sothree.slidinguppanel:library:${Versions.SLIDING}",
+		JODA_TIME        : "net.danlew:android.joda:${Versions.JODA_TIME}",
 
-		CHART                  : "com.github.PhilJay:MPAndroidChart:v${Versions.CHART}",
+		CHART            : "com.github.PhilJay:MPAndroidChart:v${Versions.CHART}",
+		COLOR_PICKER     : "com.github.skydoves:colorpickerview:${Versions.COLOR_PICKER}",
 	]
