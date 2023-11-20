@@ -19,4 +19,5 @@
 	<string name="balance">Баланс</string>
 	<string name="recentOperations">Недавние операции</string>
 	<string name="todaySpend">Траты за сегодня</string>
+	<string name="addCategory" translatable="false">Добавить категорию</string>
 </resources>

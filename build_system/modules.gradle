@@ -1,13 +1,14 @@
 ext.Modules = [
 	APP           : ":app",
 	FEATURES      : [
-		MAIN       : ":features:main",
-		SPLASH     : ":features:splash",
-		HOME       : ":features:home",
-		PLANNING   : ":features:planning",
-		STATISTICS : ":features:statistics",
-		PROFILE    : ":features:profile",
-		ACCOUNT_ADD: ":features:accountadd",
+		MAIN        : ":features:main",
+		SPLASH      : ":features:splash",
+		HOME        : ":features:home",
+		PLANNING    : ":features:planning",
+		STATISTICS  : ":features:statistics",
+		PROFILE     : ":features:profile",
+		ACCOUNT_ADD : ":features:accountadd",
+		CATEGORY_ADD: ":features:categoryadd",
 	],
 	LIBRARIES     : [
 		NAVIGATION: ":libraries:navigation",

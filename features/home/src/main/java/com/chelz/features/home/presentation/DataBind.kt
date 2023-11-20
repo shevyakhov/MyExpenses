@@ -140,6 +140,7 @@ internal fun BottomLayoutBinding.bind(viewModel: HomeViewModel, viewLifecycleOwn
 	delete.setOnClickListener { viewModel.delete() }
 	erase.setOnClickListener { viewModel.erase() }
 
+	addCategoryButton.setOnClickListener { viewModel.navigateToAddCategory() }
 }
 
 internal fun RecyclerView.smoothSnapToPosition(position: Int, snapMode: Int = LinearSmoothScroller.SNAP_TO_START) {
