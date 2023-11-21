@@ -11,6 +11,7 @@ import com.chelz.features.splash.di.SplashModule
 import com.chelz.features.statistics.di.StatisticsModule
 import com.chelz.myexpenses.di.AppModule
 import com.chelz.myexpenses.di.RouterModule
+import com.chelz.network.NetworkModule
 import com.chelz.shared.accounts.domain.di.AccountsDataModule
 import com.chelz.shared.accounts.domain.di.AccountsDomainModule
 import org.koin.android.ext.koin.androidContext
@@ -24,6 +25,7 @@ class App : Application() {
 			androidContext(this@App)
 			modules(AppModule)
 			modules(RouterModule)
+			modules(NetworkModule)
 
 			modules(MainFragmentModule)
 			modules(SplashModule)
