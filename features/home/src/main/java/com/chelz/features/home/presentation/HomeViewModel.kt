@@ -189,7 +189,7 @@ class HomeViewModel(
 	}
 
 	fun onQrClick() {
-
+		router.navigateToQrScanner()
 	}
 
 	fun onReverseClick() {

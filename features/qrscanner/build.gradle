@@ -1,0 +1,28 @@
+apply from: ModuleType.Library
+
+dependencies {
+	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
+	implementation Dependencies.CORE
+	implementation Dependencies.APPCOMPAT
+	implementation Dependencies.MATERIAL
+	implementation Dependencies.FRAGMENT
+	implementation Dependencies.CONSTRAINT_LAYOUT
+	implementation Dependencies.KOIN_CORE
+	implementation Dependencies.KOIN_ANDROID
+	implementation Dependencies.RETROFIT
+	implementation Dependencies.OKHTTP_INTERCEPTOR
+	implementation Dependencies.GSON
+	implementation Dependencies.GSON_CONVERTER
+	implementation Dependencies.GLIDE
+	implementation Dependencies.CICERONE
+	implementation Dependencies.JODA_TIME
+
+	implementation Dependencies.BARCODE_SCANNER
+	implementation Dependencies.CAMERAX_CAMERA
+	implementation Dependencies.CAMERAX_LIFECYCLE
+	implementation Dependencies.CAMERAX_VIEW
+
+	implementation project(Modules.LIBRARIES.NAVIGATION)
+	implementation project(Modules.LIBRARIES.THEME)
+	implementation project(Modules.SHARED_MODULES.ACCOUNTS_DOMAIN)
+}

@@ -7,6 +7,7 @@ import com.chelz.features.home.di.HomeModule
 import com.chelz.features.main.di.MainFragmentModule
 import com.chelz.features.planning.di.PlanningModule
 import com.chelz.features.profile.di.ProfileModule
+import com.chelz.features.qrscanner.di.QrScannerModule
 import com.chelz.features.splash.di.SplashModule
 import com.chelz.features.statistics.di.StatisticsModule
 import com.chelz.myexpenses.di.AppModule
@@ -38,6 +39,7 @@ class App : Application() {
 
 			modules(AccountsDataModule)
 			modules(AccountsDomainModule)
+			modules(QrScannerModule)
 		}
 	}
 }

@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/features/main" />
             <option value="$PROJECT_DIR$/features/planning" />
             <option value="$PROJECT_DIR$/features/profile" />
+            <option value="$PROJECT_DIR$/features/qrscanner" />
             <option value="$PROJECT_DIR$/features/splash" />
             <option value="$PROJECT_DIR$/features/statistics" />
             <option value="$PROJECT_DIR$/libraries" />
