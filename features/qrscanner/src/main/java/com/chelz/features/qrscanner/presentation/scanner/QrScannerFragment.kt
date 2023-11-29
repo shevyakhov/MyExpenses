@@ -1,4 +1,4 @@
-package com.chelz.features.qrscanner.presentation
+package com.chelz.features.qrscanner.presentation.scanner
 
 import android.Manifest
 import android.content.ContentValues.TAG
@@ -16,18 +16,20 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.chelz.features.qrscanner.databinding.FragmentQrScannerBinding
 import com.chelz.features.qrscanner.domain.QrCodeAnalyzer
 import com.chelz.features.qrscanner.domain.ScanningResultListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class QrScannerFragment : Fragment() {
 
 	companion object {
 
-		private const val cameraPermissionRequestCode = 1
 		private val REQUIRED_PERMISSIONS = arrayOf(
 			Manifest.permission.CAMERA,
 		)
@@ -63,6 +65,10 @@ class QrScannerFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		activityResultLauncher.launch(REQUIRED_PERMISSIONS)
+		val scope = viewLifecycleOwner.lifecycleScope
+		viewModel.htmlFlow.onEach {
+			stopCamera()
+		}.launchIn(scope)
 	}
 
 	private fun startCamera() {
@@ -108,7 +114,9 @@ class QrScannerFragment : Fragment() {
 	}
 
 	private fun stopCamera() {
-
+		val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
+		val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+		cameraProvider.unbindAll()
 	}
 
 
