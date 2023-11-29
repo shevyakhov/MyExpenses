@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="@dimen/spacing_20"
+		tools:background="@android:color/white">
+
+		<com.google.android.material.appbar.AppBarLayout
+			android:id="@+id/top_bar"
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/height_65"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+				<TextView
+					android:id="@+id/screenName"
+					style="@style/TextAppearance.AppCompat.Headline"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_marginStart="@dimen/spacing_15"
+					android:gravity="center"
+					android:text="@string/qr_check"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+		</com.google.android.material.appbar.AppBarLayout>
+
+		<WebView
+			android:id="@+id/webView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:layout_constraintBottom_toTopOf="@id/accountViewPager"
+			app:layout_constraintTop_toBottomOf="@id/top_bar"
+			tools:ignore="WebViewLayout" />
+
+		<androidx.viewpager2.widget.ViewPager2
+			android:id="@+id/accountViewPager"
+			android:layout_width="match_parent"
+			android:layout_height="120dp"
+			android:layout_marginVertical="@dimen/spacing_20"
+			android:clipToPadding="false"
+			app:layout_constraintBottom_toTopOf="@id/recyclerView"
+			app:layout_constraintTop_toBottomOf="@id/webView" />
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/recyclerView"
+			android:layout_width="match_parent"
+			android:layout_height="300dp"
+			android:layout_marginVertical="@dimen/height_50"
+			app:layout_constraintBottom_toTopOf="@id/save_button"
+			app:layout_constraintTop_toBottomOf="@id/accountViewPager"
+			tools:listitem="@layout/qr_list_item" />
+
+		<Button
+			android:id="@+id/save_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="@dimen/height_40"
+			android:text="@string/save"
+			app:layout_constraintBottom_toBottomOf="parent" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
