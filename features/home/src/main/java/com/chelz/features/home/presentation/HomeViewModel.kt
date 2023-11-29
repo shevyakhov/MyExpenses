@@ -35,6 +35,7 @@ class HomeViewModel(
 	private val router: HomeRouter,
 ) : ViewModel() {
 
+	val operationItemFlow = MutableStateFlow<List<OperationItem>>(listOf())
 	val accountsFlow = MutableStateFlow<List<Account>>(listOf())
 	val operationFlow = MutableStateFlow<List<Operation>>(listOf())
 	val categoriesFlow = MutableStateFlow<List<Category>>(listOf())
@@ -64,7 +65,7 @@ class HomeViewModel(
 	private suspend fun updateOperation() {
 		operationFlow.value = getAllOperationsUseCase().sortedByDescending { it.date }
 		todaySpend.value = getTodaySpendScenario.invoke()
-		getAllOperationsUseCase.invoke().groupBy { it.date.drop(5).dropLast(3) }
+		operationItemFlow.value = toOperationItem(operationFlow.value)
 	}
 
 	private suspend fun updateCategory() {
@@ -206,7 +207,7 @@ class HomeViewModel(
 			val account = getAccountByIdUseCase(it.account)
 			val category = it.category?.let { id -> getCategoryByIdUseCase(id) }
 			OperationItem(it.id, it.name, it.quantity, category, it.date, account.name)
-		}
+		}.sortedByDescending { it.id }
 	}.await()
 
 	fun navigateToAddAccount() {

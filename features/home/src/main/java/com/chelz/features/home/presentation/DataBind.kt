@@ -21,12 +21,8 @@ import com.chelz.features.home.presentation.recycler.categories.toCategory
 import com.chelz.features.home.presentation.recycler.categories.toCategoryItem
 import com.chelz.features.home.presentation.recycler.operations.OperationAdapter
 import com.chelz.libraries.theme.getThemeColor
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.lang.StrictMath.abs
 
 internal fun MainLayoutBinding.bind(viewModel: HomeViewModel, viewLifecycleOwner: LifecycleOwner) {
@@ -40,14 +36,9 @@ internal fun MainLayoutBinding.bind(viewModel: HomeViewModel, viewLifecycleOwner
 	rvOperations.adapter = operationAdapter
 
 
-	viewModel.operationFlow.onEach {
-		CoroutineScope(Dispatchers.IO).launch {
-			val res = viewModel.toOperationItem(it)
-			withContext(Dispatchers.Main) {
-				operationAdapter.setNewData(res)
-				rvOperations.smoothSnapToPosition(0)
-			}
-		}
+	viewModel.operationItemFlow.onEach {
+		operationAdapter.setNewData(it)
+		rvOperations.smoothSnapToPosition(0)
 	}.launchIn(scope)
 
 	viewModel.todaySpend.onEach {
