@@ -2,11 +2,13 @@ package com.chelz.features.qrscanner.presentation.result
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
@@ -48,12 +50,7 @@ class QrResultFragment : Fragment() {
 		val html: HtmlEntity? = arguments?.serializable(HTML)
 
 		viewModel.initCategoriesSize(items?.toQrItem() ?: emptyList())
-		viewModel.categoriesFlow.onEach {
-
-		}
-		val qrAdapter = QrListAdapter(categories = emptyList()) { index ->
-
-		}
+		val qrAdapter = QrListAdapter(categories = emptyList())
 		qrAdapter.updateData(items)
 
 		viewModel.categoriesFlow.onEach {
@@ -67,8 +64,16 @@ class QrResultFragment : Fragment() {
 		binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 		binding.recyclerView.adapter = qrAdapter
 
+		Log.e("HTML", html?.html.toString())
 		binding.webView.loadDataWithBaseURL(null, html?.html.toString(), "text/html", "utf-8", null)
 
+		binding.saveButton.setOnClickListener {
+			viewModel.saveOperations(qrAdapter.currentList)
+		}
+		bindAccounts(scope)
+	}
+
+	private fun bindAccounts(scope: LifecycleCoroutineScope) {
 		val accountAdapter = AccountViewPagerAdapter()
 		val itemDecoration = HorizontalMarginItemDecoration(binding.root.context, R.dimen.viewpager_current_item_horizontal_margin)
 
@@ -96,7 +101,6 @@ class QrResultFragment : Fragment() {
 		viewModel.accountsFlow.onEach {
 			accountAdapter.initList(it.toSliderItem())
 		}.launchIn(scope)
-
 	}
 
 	companion object {

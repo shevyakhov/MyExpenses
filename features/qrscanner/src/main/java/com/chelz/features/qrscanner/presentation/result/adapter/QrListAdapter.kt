@@ -20,12 +20,10 @@ import android.R as AndroidR
 
 class QrListAdapter(
 	private var categories: List<Category>,
-	private val itemClick: (position: Int) -> Unit,
 ) : ListAdapter<QrItem, QrListAdapter.Holder>(FoodListDiffCallback) {
 
 	inner class Holder(
 		private val binding: QrListItemBinding,
-		private val itemClick: (position: Int) -> Unit,
 	) : RecyclerView.ViewHolder(binding.root) {
 
 		fun bind(item: QrItem) {
@@ -47,20 +45,13 @@ class QrListAdapter(
 						item.category = categories[position]
 						currentList[adapterPosition].category = categories[position]
 						bindCategory(item)
-						itemClick.invoke(adapterPosition)
 					}
 
 					override fun onNothingSelected(parent: AdapterView<*>?) {
 						currentList[adapterPosition].category = null
 						item.category = null
-						itemClick.invoke(adapterPosition)
 					}
 				}
-
-			}
-
-			binding.root.setOnClickListener {
-				itemClick.invoke(adapterPosition)
 			}
 		}
 
@@ -104,7 +95,7 @@ class QrListAdapter(
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
 		val view = LayoutInflater.from(parent.context)
 		val binding = QrListItemBinding.inflate(view, parent, false)
-		return Holder(binding, itemClick)
+		return Holder(binding)
 	}
 
 	override fun onBindViewHolder(holder: Holder, position: Int) {

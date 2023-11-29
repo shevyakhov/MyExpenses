@@ -51,10 +51,10 @@ internal val QrResultModule = module {
 	viewModel {
 		QrResultViewModel(
 			router = get(),
-			getQrResultUseCase = get(),
-			getTokenUseCase = get(),
 			getAllAccountsUseCase = get(),
-			getAllCategoriesUseCase = get()
+			getAllCategoriesUseCase = get(),
+			insertOperationUseCase = get(),
+			updateAccountUseCase = get()
 		)
 	}
 }
