@@ -8,4 +8,5 @@ ext.Plugins =
 		KOTLIN_KAPT        : "kotlin-kapt",
 		KOTLIN             : "kotlin",
 		JAVA_LIBRARY       : "java-library",
+		GOOGLE_SERVICES    : "com.google.gms.google-services",
 	]

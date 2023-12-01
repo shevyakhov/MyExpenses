@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "100172834055",
+    "firebase_url": "https://myexpences-3d47f-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "myexpences-3d47f",
+    "storage_bucket": "myexpences-3d47f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100172834055:android:3dc00980f1d499447ed1a2",
+        "android_client_info": {
+          "package_name": "com.chelz.myexpenses"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMkYOX9uR4RIlNpHt9udMpc6Pg1KzbAjo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

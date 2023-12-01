@@ -1,4 +1,5 @@
 apply from: ModuleType.Application
+apply plugin: Plugins.GOOGLE_SERVICES
 
 dependencies {
 	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
@@ -14,6 +15,7 @@ dependencies {
 	implementation Dependencies.OKHTTP_INTERCEPTOR
 	implementation Dependencies.GSON
 	implementation Dependencies.GSON_CONVERTER
+	implementation platform(Dependencies.FIREBASE_BOM)
 
 
 	unpackMapValues(Modules.FEATURES) { implementation project(it) }
