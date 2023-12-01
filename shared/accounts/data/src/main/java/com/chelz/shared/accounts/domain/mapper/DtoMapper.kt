@@ -9,7 +9,7 @@ import com.chelz.shared.accounts.domain.entity.Operation
 
 internal fun Operation.toDto() = OperationDto(id, name, quantity, category, date, account)
 
-internal fun OperationDto.toEntity() = Operation(id, name ?: "", quantity, category, date, account)
+internal fun OperationDto.toEntity() = Operation(id, name, quantity, category, date, account)
 
 internal fun Account.toDto() = AccountDto(accountId, name, number, color, money)
 

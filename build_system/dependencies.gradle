@@ -50,5 +50,12 @@ ext.Dependencies =
 		LOTTIE                 : "com.airbnb.android:lottie:${Versions.LOTTIE}",
 
 		SLIDING                : "com.sothree.slidinguppanel:library:${Versions.SLIDING}",
-		JODA_TIME              : "net.danlew:android.joda:${Versions.JODA_TIME}"
+		JODA_TIME              : "net.danlew:android.joda:${Versions.JODA_TIME}",
+
+		CHART                  : "com.github.PhilJay:MPAndroidChart:v${Versions.CHART}",
+		COLOR_PICKER           : "com.github.skydoves:colorpickerview:${Versions.COLOR_PICKER}",
+		BARCODE_SCANNER        : "com.google.mlkit:barcode-scanning:${Versions.BARCODE_SCANNER}",
+		CAMERAX_CAMERA         : "androidx.camera:camera-camera2:${Versions.CAMERAX_CAMERA}",
+		CAMERAX_LIFECYCLE      : "androidx.camera:camera-lifecycle:${Versions.CAMERAX_LIFECYCLE}",
+		CAMERAX_VIEW           : "androidx.camera:camera-view:${Versions.CAMERAX_VIEW}",
 	]

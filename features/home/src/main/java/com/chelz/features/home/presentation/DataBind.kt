@@ -21,32 +21,28 @@ import com.chelz.features.home.presentation.recycler.categories.toCategory
 import com.chelz.features.home.presentation.recycler.categories.toCategoryItem
 import com.chelz.features.home.presentation.recycler.operations.OperationAdapter
 import com.chelz.libraries.theme.getThemeColor
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.lang.StrictMath.abs
 
 internal fun MainLayoutBinding.bind(viewModel: HomeViewModel, viewLifecycleOwner: LifecycleOwner) {
 	val scope = viewLifecycleOwner.lifecycleScope
 	val accountAdapter = AccountViewPagerAdapter()
 	val operationAdapter = OperationAdapter()
-
+	screenName.setOnClickListener {
+		viewModel.navigateToAddAccount()
+	}
 	rvOperations.layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
 	rvOperations.adapter = operationAdapter
 
 
-	viewModel.operationFlow.onEach {
-		CoroutineScope(Dispatchers.IO).launch {
-			val res = viewModel.toOperationItem(it)
-			withContext(Dispatchers.Main.immediate) {
-				operationAdapter.setNewData(res)
-				rvOperations.smoothSnapToPosition(0)
-			}
-		}
+	viewModel.operationItemFlow.onEach {
+		operationAdapter.setNewData(it)
+		rvOperations.smoothSnapToPosition(0)
+	}.launchIn(scope)
 
+	viewModel.todaySpend.onEach {
+		statsQuantity.text = it.toString()
 	}.launchIn(scope)
 
 	val itemDecoration = HorizontalMarginItemDecoration(root.context, R.dimen.viewpager_current_item_horizontal_margin)
@@ -135,6 +131,7 @@ internal fun BottomLayoutBinding.bind(viewModel: HomeViewModel, viewLifecycleOwn
 	delete.setOnClickListener { viewModel.delete() }
 	erase.setOnClickListener { viewModel.erase() }
 
+	addCategoryButton.setOnClickListener { viewModel.navigateToAddCategory() }
 }
 
 internal fun RecyclerView.smoothSnapToPosition(position: Int, snapMode: Int = LinearSmoothScroller.SNAP_TO_START) {

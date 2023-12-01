@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="add_account">Добавить счет</string>
+	<string name="balance">Баланс</string>
+	<string name="account_dots">● ● ● ●</string>
+	<string name="colorTitle">Выбранный цвет</string>
+	<string name="choose_color">Выбрать цвет</string>
+	<string name="check_color">Проверить цвет</string>
+	<string name="last_digits">Последние 4 цифры карты</string>
+	<string name="cardName">Название счета</string>
+	<string name="isAccountShared">Совместный счет</string>
+	<string name="save">Сохранить</string>
+	<string name="empty_value">Поле не должно быть пустым</string>
+</resources>

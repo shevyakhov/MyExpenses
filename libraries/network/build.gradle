@@ -1,0 +1,12 @@
+apply from: ModuleType.Library
+apply plugin: Plugins.KOTLIN_KAPT
+
+dependencies {
+	implementation Dependencies.COROUTINE_CORE
+	implementation Dependencies.COROUTINE_ANDROID
+	implementation Dependencies.OKHTTP_INTERCEPTOR
+	implementation Dependencies.RETROFIT
+	implementation Dependencies.KOIN_ANDROID
+	implementation Dependencies.GSON
+	implementation Dependencies.GSON_CONVERTER
+}

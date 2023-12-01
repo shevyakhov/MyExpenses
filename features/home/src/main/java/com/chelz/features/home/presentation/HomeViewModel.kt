@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chelz.features.home.domain.Numbers
+import com.chelz.features.home.domain.usecase.GetTodaySpendScenario
 import com.chelz.features.home.navigation.HomeRouter
 import com.chelz.features.home.presentation.recycler.operations.OperationItem
 import com.chelz.shared.accounts.domain.entity.Account
@@ -30,15 +31,22 @@ class HomeViewModel(
 	private val updateAccountUseCase: UpdateAccountUseCase,
 	private val getAccountByIdUseCase: GetAccountByIdUseCase,
 	private val getCategoryByIdUseCase: GetCategoryByIdUseCase,
+	private val getTodaySpendScenario: GetTodaySpendScenario,
 	private val router: HomeRouter,
 ) : ViewModel() {
 
+	val operationItemFlow = MutableStateFlow<List<OperationItem>>(listOf())
 	val accountsFlow = MutableStateFlow<List<Account>>(listOf())
 	val operationFlow = MutableStateFlow<List<Operation>>(listOf())
 	val categoriesFlow = MutableStateFlow<List<Category>>(listOf())
 
 	val currentAccount = MutableStateFlow<Account?>(null)
 	val currentCategory = MutableStateFlow<Category?>(null)
+
+	val stringFlow = MutableStateFlow("")
+	val isEarningFlow = MutableStateFlow(false)
+
+	val todaySpend = MutableStateFlow(0.0)
 
 	private val handler = CoroutineExceptionHandler { _, throwable ->
 		Log.e("HOMEVM", throwable.message.toString())
@@ -56,15 +64,13 @@ class HomeViewModel(
 
 	private suspend fun updateOperation() {
 		operationFlow.value = getAllOperationsUseCase().sortedByDescending { it.date }
+		todaySpend.value = getTodaySpendScenario.invoke()
+		operationItemFlow.value = toOperationItem(operationFlow.value)
 	}
 
 	private suspend fun updateCategory() {
 		categoriesFlow.value = getAllCategoriesUseCase()
 	}
-
-	val stringFlow = MutableStateFlow("")
-
-	val isEarningFlow = MutableStateFlow(false)
 
 	fun addZero() {
 		if (stringFlow.value.isNotEmpty()) {
@@ -166,7 +172,7 @@ class HomeViewModel(
 					quantity = quantity,
 					account = id,
 					category = categoryId,
-					date = LocalDateTime.now().toDateTime().millis
+					date = LocalDateTime.now().toDateTime().toString("yyyy-MM-dd")
 				)
 
 				insertOperationUseCase(operation)
@@ -184,11 +190,12 @@ class HomeViewModel(
 	}
 
 	fun onQrClick() {
-
+		router.navigateToQrScanner()
 	}
 
 	fun onReverseClick() {
 		isEarningFlow.value = !isEarningFlow.value
+		currentCategory.value = null
 	}
 
 	fun onItemClick(category: Category?) {
@@ -200,7 +207,14 @@ class HomeViewModel(
 			val account = getAccountByIdUseCase(it.account)
 			val category = it.category?.let { id -> getCategoryByIdUseCase(id) }
 			OperationItem(it.id, it.name, it.quantity, category, it.date, account.name)
-		}
+		}.sortedByDescending { it.id }
 	}.await()
 
+	fun navigateToAddAccount() {
+		router.navigateToAddAccount()
+	}
+
+	fun navigateToAddCategory() {
+		router.navigateToAddCategory()
+	}
 }

@@ -17,6 +17,7 @@ dependencies {
 	implementation Dependencies.CICERONE
 	implementation Dependencies.SLIDING
 	implementation Dependencies.JODA_TIME
+	implementation Dependencies.CHART
 
 	implementation project(Modules.LIBRARIES.NAVIGATION)
 	implementation project(Modules.LIBRARIES.THEME)
