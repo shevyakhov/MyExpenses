@@ -1,8 +1,10 @@
 package com.chelz.shared.accounts.domain.repository
 
 import com.chelz.shared.accounts.domain.entity.Account
+import com.chelz.shared.accounts.domain.entity.AccountWithUsers
 import com.chelz.shared.accounts.domain.entity.Category
 import com.chelz.shared.accounts.domain.entity.Operation
+import com.chelz.shared.accounts.domain.entity.User
 
 interface AccountRepository {
 
@@ -11,6 +13,8 @@ interface AccountRepository {
 	suspend fun insertAccount(account: Account): Long
 	suspend fun updateAccount(account: Account)
 	suspend fun deleteAccount(account: Account)
+
+	suspend fun getAccountWithUsers(): List<AccountWithUsers>
 
 	suspend fun getAllOperations(): List<Operation>
 	suspend fun getOperationById(id: Long): Operation
@@ -25,4 +29,10 @@ interface AccountRepository {
 	suspend fun insertCategory(category: Category): Long
 	suspend fun updateCategory(category: Category)
 	suspend fun deleteCategory(category: Category)
+
+	suspend fun getAllUsers(): List<User>
+	suspend fun getUserById(id: Long): User?
+	suspend fun addUser(user: User)
+	suspend fun updateUser(user: User)
+	suspend fun deleteUser(user: User)
 }
