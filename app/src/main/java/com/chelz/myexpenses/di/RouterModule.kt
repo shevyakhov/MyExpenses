@@ -4,6 +4,7 @@ import com.chelz.features.accountadd.presentation.navigation.AddAccountRouter
 import com.chelz.features.categoryadd.presentation.navigation.AddCategoryRouter
 import com.chelz.features.home.navigation.HomeRouter
 import com.chelz.features.main.presentation.navigation.MainFragmentRouter
+import com.chelz.features.onboarding.presentation.navigation.OnBoardingRouter
 import com.chelz.features.planning.presentation.navigation.PlanningRouter
 import com.chelz.features.profile.presentation.navigation.ProfileRouter
 import com.chelz.features.qrscanner.presentation.result.navigation.QrResultRouter
@@ -14,6 +15,7 @@ import org.koin.dsl.module
 
 val RouterModule = module {
 	factory<SplashRouter> { SplashRouterImpl(get()) }
+	factory<OnBoardingRouter> { OnBoardingRouterImpl(get()) }
 	factory<HomeRouter> { HomeRouterImpl(get()) }
 	factory<MainFragmentRouter> { MainFragmentRouterImpl(get()) }
 	factory<StatisticsRouter> { StatisticsRouterImpl(/*get()*/) }
