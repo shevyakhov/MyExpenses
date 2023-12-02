@@ -1,4 +1,4 @@
-apply from: ModuleType.Application
+apply from: ModuleType.Library
 apply plugin: Plugins.GOOGLE_SERVICES
 
 dependencies {
@@ -10,16 +10,19 @@ dependencies {
 	implementation Dependencies.CONSTRAINT_LAYOUT
 	implementation Dependencies.KOIN_CORE
 	implementation Dependencies.KOIN_ANDROID
-	implementation Dependencies.CICERONE
 	implementation Dependencies.RETROFIT
 	implementation Dependencies.OKHTTP_INTERCEPTOR
 	implementation Dependencies.GSON
 	implementation Dependencies.GSON_CONVERTER
-	implementation Dependencies.FIREBASE_AUTH
+	implementation Dependencies.GLIDE
+	implementation Dependencies.CICERONE
+	implementation Dependencies.JODA_TIME
 	implementation platform(Dependencies.FIREBASE_BOM)
+	implementation Dependencies.FIREBASE_AUTH
 
+	implementation project(Modules.LIBRARIES.NAVIGATION)
+	implementation project(Modules.LIBRARIES.THEME)
+	implementation project(Modules.LIBRARIES.NETWORK)
 
-	unpackMapValues(Modules.FEATURES) { implementation project(it) }
-	unpackMapValues(Modules.LIBRARIES) { implementation project(it) }
-	unpackMapValues(Modules.SHARED_MODULES) { implementation project(it) }
+	implementation project(Modules.SHARED_MODULES.ACCOUNTS_DOMAIN)
 }

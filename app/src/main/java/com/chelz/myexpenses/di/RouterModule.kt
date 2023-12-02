@@ -9,6 +9,7 @@ import com.chelz.features.planning.presentation.navigation.PlanningRouter
 import com.chelz.features.profile.presentation.navigation.ProfileRouter
 import com.chelz.features.qrscanner.presentation.result.navigation.QrResultRouter
 import com.chelz.features.qrscanner.presentation.scanner.navigation.QrScannerRouter
+import com.chelz.features.registration.presentation.navigation.RegistrationRouter
 import com.chelz.features.splash.presentation.navigation.SplashRouter
 import com.chelz.features.statistics.presentation.navigation.StatisticsRouter
 import org.koin.dsl.module
@@ -16,6 +17,7 @@ import org.koin.dsl.module
 val RouterModule = module {
 	factory<SplashRouter> { SplashRouterImpl(get()) }
 	factory<OnBoardingRouter> { OnBoardingRouterImpl(get()) }
+	factory<RegistrationRouter> { RegistrationRouterImpl(get()) }
 	factory<HomeRouter> { HomeRouterImpl(get()) }
 	factory<MainFragmentRouter> { MainFragmentRouterImpl(get()) }
 	factory<StatisticsRouter> { StatisticsRouterImpl(/*get()*/) }

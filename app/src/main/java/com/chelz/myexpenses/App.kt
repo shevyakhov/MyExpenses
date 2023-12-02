@@ -5,9 +5,11 @@ import com.chelz.features.accountadd.di.AddAccountModule
 import com.chelz.features.categoryadd.di.AddCategoryFragmentModule
 import com.chelz.features.home.di.HomeModule
 import com.chelz.features.main.di.MainFragmentModule
+import com.chelz.features.onboarding.di.OnBoardingModule
 import com.chelz.features.planning.di.PlanningModule
 import com.chelz.features.profile.di.ProfileModule
 import com.chelz.features.qrscanner.di.QrModule
+import com.chelz.features.registration.di.RegistrationModule
 import com.chelz.features.splash.di.SplashModule
 import com.chelz.features.statistics.di.StatisticsModule
 import com.chelz.myexpenses.BuildConfig.QR_KEY
@@ -40,6 +42,9 @@ class App : Application() {
 
 			modules(MainFragmentModule)
 			modules(SplashModule)
+			modules(OnBoardingModule)
+			modules(RegistrationModule)
+
 			modules(HomeModule)
 			modules(StatisticsModule)
 			modules(PlanningModule)
