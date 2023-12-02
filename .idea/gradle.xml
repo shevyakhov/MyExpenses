@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/features/accountadd" />
             <option value="$PROJECT_DIR$/features/categoryadd" />
             <option value="$PROJECT_DIR$/features/home" />
+            <option value="$PROJECT_DIR$/features/login" />
             <option value="$PROJECT_DIR$/features/main" />
             <option value="$PROJECT_DIR$/features/onboarding" />
             <option value="$PROJECT_DIR$/features/planning" />

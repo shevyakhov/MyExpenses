@@ -12,6 +12,7 @@ ext.Modules = [
 		QR_SCANNER  : ":features:qrscanner",
 		ONBOARDING  : ":features:onboarding",
 		REGISTRATION: ":features:registration",
+		LOGIN       : ":features:login",
 	],
 	LIBRARIES     : [
 		NAVIGATION: ":libraries:navigation",

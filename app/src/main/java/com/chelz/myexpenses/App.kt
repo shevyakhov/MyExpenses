@@ -12,6 +12,7 @@ import com.chelz.features.qrscanner.di.QrModule
 import com.chelz.features.registration.di.RegistrationModule
 import com.chelz.features.splash.di.SplashModule
 import com.chelz.features.statistics.di.StatisticsModule
+import com.chelz.login.di.LoginModule
 import com.chelz.myexpenses.BuildConfig.QR_KEY
 import com.chelz.myexpenses.BuildConfig.QR_URL
 import com.chelz.myexpenses.di.AppModule
@@ -44,6 +45,7 @@ class App : Application() {
 			modules(SplashModule)
 			modules(OnBoardingModule)
 			modules(RegistrationModule)
+			modules(LoginModule)
 
 			modules(HomeModule)
 			modules(StatisticsModule)
