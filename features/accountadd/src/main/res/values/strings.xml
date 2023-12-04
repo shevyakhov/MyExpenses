@@ -11,4 +11,8 @@
 	<string name="isAccountShared">Совместный счет</string>
 	<string name="save">Сохранить</string>
 	<string name="empty_value">Поле не должно быть пустым</string>
+	<string name="users">Приглашенные пользователи</string>
+	<string name="plus_sign">+</string>
+	<string name="add">Добавить</string>
+	<string name="cancel">Отмена</string>
 </resources>

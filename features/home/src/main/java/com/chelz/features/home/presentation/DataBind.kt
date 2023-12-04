@@ -13,7 +13,6 @@ import com.chelz.features.home.databinding.MainLayoutBinding
 import com.chelz.features.home.presentation.recycler.accounts.AccountViewPagerAdapter
 import com.chelz.features.home.presentation.recycler.accounts.HorizontalMarginItemDecoration
 import com.chelz.features.home.presentation.recycler.accounts.toAccount
-import com.chelz.features.home.presentation.recycler.accounts.toSliderItem
 import com.chelz.features.home.presentation.recycler.categories.CategoryAdapter
 import com.chelz.features.home.presentation.recycler.categories.CategoryClickListener
 import com.chelz.features.home.presentation.recycler.categories.CategoryItem
@@ -66,8 +65,8 @@ internal fun MainLayoutBinding.bind(viewModel: HomeViewModel, viewLifecycleOwner
 		}
 	})
 
-	viewModel.accountsFlow.onEach {
-		accountAdapter.initList(it.toSliderItem())
+	viewModel.sharedAccountsFlow.onEach {
+		accountAdapter.initList(it)
 	}.launchIn(scope)
 }
 

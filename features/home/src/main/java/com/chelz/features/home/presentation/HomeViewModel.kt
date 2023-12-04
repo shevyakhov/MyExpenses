@@ -4,12 +4,18 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chelz.features.home.domain.Numbers
+import com.chelz.features.home.domain.SharedAccount
+import com.chelz.features.home.domain.toAccountItem
 import com.chelz.features.home.domain.usecase.GetTodaySpendScenario
 import com.chelz.features.home.navigation.HomeRouter
+import com.chelz.features.home.presentation.recycler.accounts.AccountItem
+import com.chelz.features.home.presentation.recycler.accounts.toAccountItem
 import com.chelz.features.home.presentation.recycler.operations.OperationItem
 import com.chelz.shared.accounts.domain.entity.Account
 import com.chelz.shared.accounts.domain.entity.Category
 import com.chelz.shared.accounts.domain.entity.Operation
+import com.chelz.shared.accounts.domain.firebase.SharedAccountConstants
+import com.chelz.shared.accounts.domain.firebase.SharedAccountConstants.SHARED_ACCOUNTS_TABLE
 import com.chelz.shared.accounts.domain.usecase.account.GetAccountByIdUseCase
 import com.chelz.shared.accounts.domain.usecase.account.GetAllAccountsUseCase
 import com.chelz.shared.accounts.domain.usecase.account.UpdateAccountUseCase
@@ -17,11 +23,17 @@ import com.chelz.shared.accounts.domain.usecase.categories.GetAllCategoriesUseCa
 import com.chelz.shared.accounts.domain.usecase.categories.GetCategoryByIdUseCase
 import com.chelz.shared.accounts.domain.usecase.operation.GetAllOperationsUseCase
 import com.chelz.shared.accounts.domain.usecase.operation.InsertOperationUseCase
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
+import com.google.firebase.firestore.firestore
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import org.joda.time.LocalDateTime
+import java.util.LinkedList
 
 class HomeViewModel(
 	private val getAllAccountsUseCase: GetAllAccountsUseCase,
@@ -35,14 +47,17 @@ class HomeViewModel(
 	private val router: HomeRouter,
 ) : ViewModel() {
 
+	private val auth by lazy { Firebase.auth }
+	private val store by lazy { Firebase.firestore }
 	val operationItemFlow = MutableStateFlow<List<OperationItem>>(listOf())
-	val accountsFlow = MutableStateFlow<List<Account>>(listOf())
-	val operationFlow = MutableStateFlow<List<Operation>>(listOf())
+	private val accountsFlow = MutableStateFlow<List<Account>>(listOf())
+	val sharedAccountsFlow = MutableStateFlow<List<AccountItem>>(listOf())
+	private val operationFlow = MutableStateFlow<List<Operation>>(listOf())
 	val categoriesFlow = MutableStateFlow<List<Category>>(listOf())
 
 	val currentAccount = MutableStateFlow<Account?>(null)
-	val currentCategory = MutableStateFlow<Category?>(null)
-
+	private val currentCategory = MutableStateFlow<Category?>(null)
+	private val sharedAccountsCollection = store.collection(SHARED_ACCOUNTS_TABLE)
 	val stringFlow = MutableStateFlow("")
 	val isEarningFlow = MutableStateFlow(false)
 
@@ -58,8 +73,53 @@ class HomeViewModel(
 		updateCategory()
 	}
 
-	private suspend fun updateAccounts() {
+	private suspend fun updateAccounts() = viewModelScope.launch {
 		accountsFlow.value = getAllAccountsUseCase()
+
+		val userEmail = auth.currentUser?.email
+		val local = accountsFlow.value.toAccountItem()
+		val host: List<AccountItem> = getHostAccounts(userEmail).await()
+		val shared: List<AccountItem> = getSharedAccounts(userEmail).await()
+		val fullList = LinkedList<AccountItem>()
+		fullList.addAll(local)
+		fullList.addAll(host)
+		fullList.addAll(shared)
+		sharedAccountsFlow.emit(fullList)
+	}
+
+	private suspend fun getHostAccounts(userEmail: String?): Deferred<List<AccountItem>> = viewModelScope.async {
+		val query = sharedAccountsCollection.whereEqualTo(
+			SharedAccountConstants.ACCOUNT.HOST_EMAIL, userEmail.toString(),
+		).get().await()
+
+		query.documents.map {
+			SharedAccount(
+				accountId = it.id,
+				name = it[SharedAccountConstants.ACCOUNT.NAME].toString(),
+				number = it[SharedAccountConstants.ACCOUNT.NUMBER].toString(),
+				color = it[SharedAccountConstants.ACCOUNT.COLOR].toString(),
+				money = it[SharedAccountConstants.ACCOUNT.MONEY].toString().toDouble(),
+				hostEmail = it[SharedAccountConstants.ACCOUNT.HOST_EMAIL].toString(),
+			)
+		}.toAccountItem()
+	}
+
+	private suspend fun getSharedAccounts(userEmail: String?): Deferred<List<AccountItem>> = viewModelScope.async {
+		val query = sharedAccountsCollection.whereArrayContains(
+			SharedAccountConstants.ACCOUNT.USERS, userEmail.toString(),
+		).get().await()
+
+		query.documents.map {
+			SharedAccount(
+				accountId = it.id,
+				name = it[SharedAccountConstants.ACCOUNT.NAME].toString(),
+				number = it[SharedAccountConstants.ACCOUNT.NUMBER].toString(),
+				color = it[SharedAccountConstants.ACCOUNT.COLOR].toString(),
+				money = it[SharedAccountConstants.ACCOUNT.MONEY].toString().toDouble(),
+				hostEmail = it[SharedAccountConstants.ACCOUNT.HOST_EMAIL].toString(),
+			)
+		}.toAccountItem()
+
 	}
 
 	private suspend fun updateOperation() {
@@ -162,30 +222,34 @@ class HomeViewModel(
 
 	fun onEnter() = viewModelScope.launch(handler) {
 		if (stringFlow.value.isNotEmpty()) {
-			val quantity = stringFlow.value.toDouble() * if (isEarningFlow.value) 1 else -1
-			val accountId = currentAccount.value?.accountId?.let { id ->
-				val categoryId = currentCategory.value?.categoryId
-				val categoryName = currentCategory.value?.name.toString()
-				val operation = Operation(
-					id = 0L,
-					name = categoryName,
-					quantity = quantity,
-					account = id,
-					category = categoryId,
-					date = LocalDateTime.now().toDateTime().toString("yyyy-MM-dd")
-				)
+			insertLocalOperation()
+		}
+	}
 
-				insertOperationUseCase(operation)
-				val account = currentAccount.value
-				val newAccount = account?.copy()?.apply {
-					this.money = this.money + quantity
-				}
-				updateAccountUseCase(newAccount ?: return@launch)
-				updateAccounts()
-				updateOperation()
-				currentAccount.value = newAccount
-				stringFlow.value = ""
+	private suspend fun insertLocalOperation() {
+		val quantity = stringFlow.value.toDouble() * if (isEarningFlow.value) 1 else -1
+		val accountId = currentAccount.value?.accountId?.let { id ->
+			val categoryId = currentCategory.value?.categoryId
+			val categoryName = currentCategory.value?.name.toString()
+			val operation = Operation(
+				id = 0L,
+				name = categoryName,
+				quantity = quantity,
+				account = id,
+				category = categoryId,
+				date = LocalDateTime.now().toDateTime().toString("yyyy-MM-dd")
+			)
+
+			insertOperationUseCase(operation)
+			val account = currentAccount.value
+			val newAccount = account?.copy()?.apply {
+				this.money = this.money + quantity
 			}
+			updateAccountUseCase(newAccount ?: return)
+			updateAccounts()
+			updateOperation()
+			currentAccount.value = newAccount
+			stringFlow.value = ""
 		}
 	}
 
