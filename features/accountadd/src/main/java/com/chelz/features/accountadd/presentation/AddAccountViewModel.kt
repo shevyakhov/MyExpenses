@@ -60,20 +60,20 @@ class AddAccountViewModel(
 				_error.emit("Вы не можете пригласить себя")
 				return@launch
 			}
-		}
-		val accountData = hashMapOf(
-			SharedAccountConstants.ACCOUNT.NAME to nameFlow.value,
-			SharedAccountConstants.ACCOUNT.HOST_EMAIL to auth.currentUser?.email,
-			SharedAccountConstants.ACCOUNT.NUMBER to cardNumberFlow.value,
-			SharedAccountConstants.ACCOUNT.COLOR to chosenColorFlow.value.toString(),
-			SharedAccountConstants.ACCOUNT.MONEY to balanceFlow.value,
-			SharedAccountConstants.ACCOUNT.USERS to usersEmails.value,
-		)
-		sharedAccountsCollection.add(accountData).addOnSuccessListener {
-			navigateBack()
-		}.addOnFailureListener {
-			viewModelScope.launch {
-				_error.emit(it.localizedMessage)
+			val accountData = hashMapOf(
+				SharedAccountConstants.ACCOUNT.NAME to nameFlow.value,
+				SharedAccountConstants.ACCOUNT.HOST_EMAIL to auth.currentUser?.email,
+				SharedAccountConstants.ACCOUNT.NUMBER to cardNumberFlow.value,
+				SharedAccountConstants.ACCOUNT.COLOR to chosenColorFlow.value.toString(),
+				SharedAccountConstants.ACCOUNT.MONEY to balanceFlow.value,
+				SharedAccountConstants.ACCOUNT.USERS to usersEmails.value,
+			)
+			sharedAccountsCollection.add(accountData).addOnSuccessListener {
+				navigateBack()
+			}.addOnFailureListener {
+				viewModelScope.launch {
+					_error.emit(it.localizedMessage)
+				}
 			}
 		}
 	}

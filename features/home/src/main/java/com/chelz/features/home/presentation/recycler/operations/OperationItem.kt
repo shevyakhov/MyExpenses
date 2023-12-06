@@ -2,11 +2,11 @@ package com.chelz.features.home.presentation.recycler.operations
 
 import com.chelz.shared.accounts.domain.entity.Category
 
-data class OperationItem(
+open class OperationItem(
 	val id: Long,
-	val name: String?,
-	val quantity: Double,
-	val category: Category?,
-	val date: String,
-	val account: String,
+	open val name: String?,
+	open val quantity: Double,
+	open val category: Category?,
+	open val date: String,
+	open val account: String,
 )

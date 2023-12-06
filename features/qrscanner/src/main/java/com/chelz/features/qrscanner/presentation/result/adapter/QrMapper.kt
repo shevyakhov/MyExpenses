@@ -17,7 +17,7 @@ internal fun QrItem.toDto(account: Account): Operation {
 		name = name ?: category?.name ?: "?",
 		quantity = price,
 		category = category?.categoryId.let { id -> if (id == -1L) null else id },
-		date = LocalDateTime.now().toString("dd.MM.YYYY"),
+		date = LocalDateTime.now().toString("dd-MM-yyyy HH:mm:ss.SSS"),
 		account = account.accountId
 	)
 }

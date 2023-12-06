@@ -1,8 +1,8 @@
 package com.chelz.shared.accounts.domain.entity
 
-data class Category(
+open class Category(
 	val categoryId: Long,
-	var name: String,
-	var isEarning: Boolean = false,
-	var color: String = "#FF0000",
+	open var name: String,
+	open var isEarning: Boolean = false,
+	open var color: String = "#FF0000",
 )

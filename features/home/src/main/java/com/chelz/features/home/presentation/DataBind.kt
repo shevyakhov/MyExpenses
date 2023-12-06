@@ -12,7 +12,6 @@ import com.chelz.features.home.databinding.BottomLayoutBinding
 import com.chelz.features.home.databinding.MainLayoutBinding
 import com.chelz.features.home.presentation.recycler.accounts.AccountViewPagerAdapter
 import com.chelz.features.home.presentation.recycler.accounts.HorizontalMarginItemDecoration
-import com.chelz.features.home.presentation.recycler.accounts.toAccount
 import com.chelz.features.home.presentation.recycler.categories.CategoryAdapter
 import com.chelz.features.home.presentation.recycler.categories.CategoryClickListener
 import com.chelz.features.home.presentation.recycler.categories.CategoryItem
@@ -35,7 +34,7 @@ internal fun MainLayoutBinding.bind(viewModel: HomeViewModel, viewLifecycleOwner
 	rvOperations.adapter = operationAdapter
 
 
-	viewModel.operationItemFlow.onEach {
+	viewModel.sharedOperationFlow.onEach {
 		operationAdapter.setNewData(it)
 		rvOperations.smoothSnapToPosition(0)
 	}.launchIn(scope)
@@ -61,11 +60,11 @@ internal fun MainLayoutBinding.bind(viewModel: HomeViewModel, viewLifecycleOwner
 	accountViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
 		override fun onPageSelected(position: Int) {
 			super.onPageSelected(position)
-			viewModel.currentAccount.value = accountAdapter.getItemAt(position).toAccount()
+			viewModel.currentAccount.value = accountAdapter.getItemAt(position)
 		}
 	})
 
-	viewModel.sharedAccountsFlow.onEach {
+	viewModel.fullAccountsFlow.onEach {
 		accountAdapter.initList(it)
 	}.launchIn(scope)
 }

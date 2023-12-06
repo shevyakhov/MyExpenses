@@ -3,6 +3,7 @@ package com.chelz.shared.accounts.domain.firebase
 object SharedAccountConstants {
 
 	val SHARED_ACCOUNTS_TABLE = "shared_accounts"
+	val DOC_ID = "Document ID"
 
 	object ACCOUNT {
 
@@ -12,5 +13,6 @@ object SharedAccountConstants {
 		val COLOR = "COLOR"
 		val MONEY = "MONEY"
 		val USERS = "USERS"
+		val OPERATIONS = "OPERATIONS"
 	}
 }

@@ -1,6 +1,6 @@
 package com.chelz.myexpenses.di
 
-import com.chelz.features.home.HomeDestination
+import com.chelz.features.main.MainFragmentDestination
 import com.chelz.libraries.navigation.GlobalRouter
 import com.chelz.login.presentation.navigation.LoginRouter
 
@@ -11,6 +11,6 @@ class LoginRouterImpl(private val router: GlobalRouter) : LoginRouter {
 	}
 
 	override fun navigateToHomeScreen() {
-		router.newRoot(HomeDestination)
+		router.newRoot(MainFragmentDestination)
 	}
 }
