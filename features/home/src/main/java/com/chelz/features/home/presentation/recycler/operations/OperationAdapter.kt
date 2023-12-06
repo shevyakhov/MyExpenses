@@ -9,6 +9,7 @@ import androidx.core.graphics.red
 import androidx.recyclerview.widget.RecyclerView
 import com.chelz.features.home.databinding.OperationItemBinding
 import com.chelz.libraries.theme.getThemeColor
+import com.chelz.shared.accounts.domain.entity.OperationItem
 
 class OperationAdapter : RecyclerView.Adapter<OperationAdapter.OperationHolder>() {
 

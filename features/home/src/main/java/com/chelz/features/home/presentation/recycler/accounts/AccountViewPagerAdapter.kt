@@ -10,6 +10,7 @@ import androidx.core.graphics.red
 import androidx.recyclerview.widget.RecyclerView
 import com.chelz.features.home.R
 import com.chelz.features.home.databinding.AccountItemBinding
+import com.chelz.shared.accounts.domain.entity.AccountItem
 
 class AccountViewPagerAdapter : RecyclerView.Adapter<AccountViewPagerAdapter.SliderHolder>() {
 

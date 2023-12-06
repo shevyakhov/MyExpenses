@@ -1,14 +1,7 @@
 package com.chelz.features.home.presentation.recycler.accounts
 
 import com.chelz.shared.accounts.domain.entity.Account
-
-open class AccountItem(
-	open val id: Long,
-	open val name: String,
-	open val number: String,
-	open val color: String,
-	open val money: Double,
-)
+import com.chelz.shared.accounts.domain.entity.AccountItem
 
 internal fun AccountItem.toAccount() =
 	Account(id, name, number, color, money)

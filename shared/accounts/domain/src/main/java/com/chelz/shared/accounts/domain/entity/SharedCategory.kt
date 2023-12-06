@@ -1,6 +1,4 @@
-package com.chelz.features.home.domain
-
-import com.chelz.shared.accounts.domain.entity.Category
+package com.chelz.shared.accounts.domain.entity
 
 class SharedCategory(
 	override var name: String,

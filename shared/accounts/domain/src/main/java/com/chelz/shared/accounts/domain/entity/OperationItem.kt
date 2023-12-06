@@ -1,6 +1,4 @@
-package com.chelz.features.home.presentation.recycler.operations
-
-import com.chelz.shared.accounts.domain.entity.Category
+package com.chelz.shared.accounts.domain.entity
 
 open class OperationItem(
 	val id: Long,

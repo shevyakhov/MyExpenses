@@ -1,6 +1,6 @@
 package com.chelz.features.home.domain.usecase
 
-import com.chelz.features.home.presentation.recycler.operations.OperationItem
+import com.chelz.shared.accounts.domain.entity.OperationItem
 import org.joda.time.DateTime
 import org.joda.time.LocalDateTime
 import org.joda.time.format.DateTimeFormat

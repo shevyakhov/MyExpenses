@@ -1,6 +1,4 @@
-package com.chelz.features.home.domain
-
-import com.chelz.features.home.presentation.recycler.accounts.AccountItem
+package com.chelz.shared.accounts.domain.entity
 
 class SharedAccount(
 	val accountId: String = "",
@@ -22,7 +20,7 @@ class SharedAccountItem(
 	var operations: List<SharedOperation> = emptyList(),
 ) : AccountItem(id, name, number, color, money)
 
-internal fun List<SharedAccount>.toAccountItem(): List<AccountItem> =
+fun List<SharedAccount>.toAccountItem(): List<AccountItem> =
 	map {
 		SharedAccountItem(
 			sharedId = it.accountId,

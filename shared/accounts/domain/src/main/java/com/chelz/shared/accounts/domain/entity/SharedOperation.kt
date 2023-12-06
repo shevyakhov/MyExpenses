@@ -1,6 +1,4 @@
-package com.chelz.features.home.domain
-
-import com.chelz.features.home.presentation.recycler.operations.OperationItem
+package com.chelz.shared.accounts.domain.entity
 
 class SharedOperation(
 	val name: String?,
@@ -20,5 +18,5 @@ class SharedOperationItem(
 	id = -1L, name = name, quantity = quantity, category = category, date = date, account = account
 )
 
-internal fun List<SharedOperation>.toOperationItem(): List<SharedOperationItem> =
+fun List<SharedOperation>.toOperationItem(): List<SharedOperationItem> =
 	map { SharedOperationItem(it.name, it.quantity, it.category, it.date, it.account) }
