@@ -16,7 +16,7 @@ class SharedAccountItem(
 	override val name: String,
 	override val number: String,
 	override val color: String,
-	override val money: Double,
+	override var money: Double,
 	var operations: List<SharedOperation> = emptyList(),
 ) : AccountItem(id, name, number, color, money)
 

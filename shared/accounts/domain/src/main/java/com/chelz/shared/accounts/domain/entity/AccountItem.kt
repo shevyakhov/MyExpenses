@@ -5,5 +5,5 @@ open class AccountItem(
 	open val name: String,
 	open val number: String,
 	open val color: String,
-	open val money: Double,
+	open var money: Double,
 )

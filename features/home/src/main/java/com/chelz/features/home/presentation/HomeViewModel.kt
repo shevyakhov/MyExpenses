@@ -79,7 +79,7 @@ class HomeViewModel(
 		updateOperation().await()
 		updateCategory()
 
-		val sharedAccounts = fullAccountsFlow.value.filterIsInstance<SharedAccountItem>().map { it.operations.toOperationItem() }.flatten()
+		fullAccountsFlow.value.filterIsInstance<SharedAccountItem>().map { it.operations.toOperationItem() }.flatten()
 		sharedAccountsCollection.whereArrayContains(
 			SharedAccountConstants.ACCOUNT.USERS, auth.currentUser?.email.toString(),
 		).addSnapshotListener { _, error ->
@@ -254,13 +254,17 @@ class HomeViewModel(
 		val category = SharedCategory(
 			currentCategory.value?.name ?: "?",
 			currentCategory.value?.isEarning ?: false,
-			currentCategory.value?.color ?: "#FF00FF",
+			currentCategory.value?.color ?: "#FFFCDE",
 		)
 		val categoryName = currentCategory.value?.name.toString()
 		val operation = SharedOperation(
 			name = categoryName,
 			quantity = quantity,
-			account = auth.currentUser?.email.toString(),
+			account = buildString {
+				append(account.name)
+				append(" ")
+				append(auth.currentUser?.email.toString())
+			},
 			category = category,
 			date = LocalDateTime.now().toDateTime().toString("dd-MM-yyyy HH:mm:ss.SSS")
 		)

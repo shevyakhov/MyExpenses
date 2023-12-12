@@ -60,7 +60,7 @@ class QrListAdapter(
 				categoryLetter.text = (item.category?.name?.first() ?: "?").toString()
 				category.text = item.name ?: item.category?.name ?: "?"
 
-				val itemColor = Color.parseColor(item.category?.color ?: "#FFFBBB")
+				val itemColor = Color.parseColor(item.category?.color ?: "#FFFCDE")
 				background.setCardBackgroundColor(itemColor)
 
 				val r = 255 - itemColor.red
@@ -71,7 +71,7 @@ class QrListAdapter(
 			} else {
 				categoryLetter.text = "?"
 				category.text = item.name ?: "?"
-				val itemColor = Color.parseColor("#FFFBBB")
+				val itemColor = Color.parseColor("#FFFCDE")
 				background.setCardBackgroundColor(itemColor)
 				val r = 255 - itemColor.red
 				val g = 255 - itemColor.green
