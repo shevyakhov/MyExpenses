@@ -9,6 +9,7 @@ import androidx.core.graphics.red
 import androidx.recyclerview.widget.RecyclerView
 import com.chelz.features.home.databinding.OperationItemBinding
 import com.chelz.libraries.theme.getThemeColor
+import com.chelz.shared.accounts.domain.entity.OperationItem
 
 class OperationAdapter : RecyclerView.Adapter<OperationAdapter.OperationHolder>() {
 
@@ -24,7 +25,7 @@ class OperationAdapter : RecyclerView.Adapter<OperationAdapter.OperationHolder>(
 		fun bind(item: OperationItem) {
 			with(binding) {
 				categoryLetter.text = (item.category?.name?.first() ?: "?").toString()
-				category.text = item.category?.name ?: "?"
+				category.text = item.name ?: item.category?.name ?: "?"
 				accountName.text = item.account
 				money.text = buildString {
 					append(item.quantity.toString())

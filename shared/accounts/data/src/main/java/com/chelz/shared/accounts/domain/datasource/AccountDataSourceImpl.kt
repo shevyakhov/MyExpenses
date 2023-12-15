@@ -2,6 +2,7 @@ package com.chelz.shared.accounts.domain.datasource
 
 import com.chelz.shared.accounts.domain.dao.AccountDao
 import com.chelz.shared.accounts.domain.dto.AccountDto
+import com.chelz.shared.accounts.domain.dto.AccountWithUsersDto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -25,5 +26,9 @@ class AccountDataSourceImpl(private val accountDao: AccountDao) : AccountDataSou
 
 	override suspend fun deleteAccount(accountDto: AccountDto) = withContext(Dispatchers.IO) {
 		accountDao.deleteAccount(accountDto)
+	}
+
+	override suspend fun getAccountsWithUsers(): List<AccountWithUsersDto> = withContext(Dispatchers.IO) {
+		accountDao.getAccountsWithUsers()
 	}
 }

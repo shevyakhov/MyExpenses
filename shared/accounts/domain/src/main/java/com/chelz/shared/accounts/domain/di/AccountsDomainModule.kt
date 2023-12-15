@@ -2,6 +2,7 @@ package com.chelz.shared.accounts.domain.di
 
 import com.chelz.shared.accounts.domain.usecase.account.DeleteAccountUseCase
 import com.chelz.shared.accounts.domain.usecase.account.GetAccountByIdUseCase
+import com.chelz.shared.accounts.domain.usecase.account.GetAccountsWithUsersUseCase
 import com.chelz.shared.accounts.domain.usecase.account.GetAllAccountsUseCase
 import com.chelz.shared.accounts.domain.usecase.account.InsertAccountUseCase
 import com.chelz.shared.accounts.domain.usecase.account.UpdateAccountUseCase
@@ -17,6 +18,11 @@ import com.chelz.shared.accounts.domain.usecase.operation.GetOperationsByCategor
 import com.chelz.shared.accounts.domain.usecase.operation.GetOperationsByDateUseCase
 import com.chelz.shared.accounts.domain.usecase.operation.InsertOperationUseCase
 import com.chelz.shared.accounts.domain.usecase.operation.UpdateOperationUseCase
+import com.chelz.shared.accounts.domain.usecase.user.AddUserUseCase
+import com.chelz.shared.accounts.domain.usecase.user.DeleteUserUseCase
+import com.chelz.shared.accounts.domain.usecase.user.GetAllUsersUseCase
+import com.chelz.shared.accounts.domain.usecase.user.GetUserByIdUseCase
+import com.chelz.shared.accounts.domain.usecase.user.UpdateUserUseCase
 import org.koin.dsl.module
 
 val AccountsDomainModule = module {
@@ -27,6 +33,7 @@ val AccountsDomainModule = module {
 	factory { UpdateCategoryUseCase(get()) }
 	factory { DeleteAccountUseCase(get()) }
 	factory { GetAccountByIdUseCase(get()) }
+	factory { GetAccountsWithUsersUseCase(get()) }
 	factory { GetAllAccountsUseCase(get()) }
 	factory { InsertAccountUseCase(get()) }
 	factory { UpdateAccountUseCase(get()) }
@@ -37,4 +44,9 @@ val AccountsDomainModule = module {
 	factory { GetOperationsByDateUseCase(get()) }
 	factory { InsertOperationUseCase(get()) }
 	factory { UpdateOperationUseCase(get()) }
+	factory { GetAllUsersUseCase(get()) }
+	factory { GetUserByIdUseCase(get()) }
+	factory { AddUserUseCase(get()) }
+	factory { UpdateUserUseCase(get()) }
+	factory { DeleteUserUseCase(get()) }
 }

@@ -3,6 +3,8 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	package="com.chelz.myexpenses">
 
+	<uses-feature android:name="android.hardware.camera.any" />
+	<uses-permission android:name="android.permission.CAMERA" />
 	<application
 		android:name=".App"
 		android:allowBackup="true"

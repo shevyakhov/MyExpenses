@@ -1,4 +1,5 @@
 apply from: ModuleType.Library
+apply plugin: Plugins.GOOGLE_SERVICES
 
 dependencies {
 	implementation Dependencies.CORE
@@ -12,6 +13,9 @@ dependencies {
 	implementation Dependencies.CICERONE
 	implementation Dependencies.JODA_TIME
 	implementation Dependencies.COLOR_PICKER
+	implementation platform(Dependencies.FIREBASE_BOM)
+	implementation Dependencies.FIREBASE_FIRESTORE
+	implementation Dependencies.FIREBASE_AUTH
 
 	implementation project(Modules.LIBRARIES.NAVIGATION)
 	implementation project(Modules.LIBRARIES.THEME)

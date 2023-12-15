@@ -1,13 +1,14 @@
 package com.chelz.features.home.domain.usecase
 
-import com.chelz.shared.accounts.domain.entity.Operation
-import org.joda.time.DateTime
+import com.chelz.shared.accounts.domain.entity.OperationItem
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
-class GetTodaySpendUseCase(private val operations: List<Operation>) {
+class GetTodaySpendUseCase(private val operations: List<OperationItem>) {
 
 	operator fun invoke(): Double {
-		val today = DateTime.now().toDateTime().toString("yyyy-MM-dd")
-		val filtered = operations.filter { it.date == today }
-		return filtered.sumOf { it.quantity }
+		val df = DecimalFormat("#.##")
+		df.roundingMode = RoundingMode.CEILING
+		return df.format(operations.sumOf { it.quantity }).toDouble()
 	}
 }

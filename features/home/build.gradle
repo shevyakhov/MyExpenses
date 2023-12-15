@@ -1,5 +1,5 @@
 apply from: ModuleType.Library
-
+apply plugin: Plugins.GOOGLE_SERVICES
 dependencies {
 	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
 	implementation Dependencies.CORE
@@ -18,6 +18,9 @@ dependencies {
 	implementation Dependencies.SLIDING
 	implementation Dependencies.JODA_TIME
 	implementation Dependencies.CHART
+	implementation platform(Dependencies.FIREBASE_BOM)
+	implementation Dependencies.FIREBASE_FIRESTORE
+	implementation Dependencies.FIREBASE_AUTH
 
 	implementation project(Modules.LIBRARIES.NAVIGATION)
 	implementation project(Modules.LIBRARIES.THEME)

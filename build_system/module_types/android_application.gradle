@@ -19,7 +19,11 @@ android {
 		targetSdk Configs.TARGET_SDK
 		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-	/*	buildConfigField "String", "BASE_URL", "\"http://107684.web.hosting-russia.ru:8000/api/\""*/
+		Properties properties = new Properties()
+		properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+		buildConfigField "String", "QR_KEY", "\"${properties.getProperty("QR_KEY")}\""
+		buildConfigField "String", "QR_URL", "\"${properties.getProperty("QR_URL")}\""
 	}
 
 	buildTypes {

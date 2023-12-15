@@ -9,6 +9,10 @@ ext.Modules = [
 		PROFILE     : ":features:profile",
 		ACCOUNT_ADD : ":features:accountadd",
 		CATEGORY_ADD: ":features:categoryadd",
+		QR_SCANNER  : ":features:qrscanner",
+		ONBOARDING  : ":features:onboarding",
+		REGISTRATION: ":features:registration",
+		LOGIN       : ":features:login",
 	],
 	LIBRARIES     : [
 		NAVIGATION: ":libraries:navigation",
