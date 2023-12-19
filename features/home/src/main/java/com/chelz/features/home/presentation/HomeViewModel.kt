@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chelz.features.home.domain.Numbers
 import com.chelz.features.home.domain.usecase.GetTodaySpendScenario
+import com.chelz.features.home.domain.usecase.GetWeeklySpendUseCase
 import com.chelz.features.home.navigation.HomeRouter
 import com.chelz.features.home.presentation.recycler.accounts.toAccount
 import com.chelz.features.home.presentation.recycler.accounts.toAccountItem
@@ -51,6 +52,7 @@ class HomeViewModel(
 	private val getAccountByIdUseCase: GetAccountByIdUseCase,
 	private val getCategoryByIdUseCase: GetCategoryByIdUseCase,
 	private val getTodaySpendScenario: GetTodaySpendScenario,
+	private val getWeeklySpendUseCase: GetWeeklySpendUseCase,
 	private val router: HomeRouter,
 ) : ViewModel() {
 
@@ -69,6 +71,7 @@ class HomeViewModel(
 	val isEarningFlow = MutableStateFlow(false)
 
 	val todaySpend = MutableStateFlow(0.0)
+	val weekSpend = MutableStateFlow<Map<Int, List<OperationItem>>>(mapOf())
 
 	private val handler = CoroutineExceptionHandler { _, throwable ->
 		Log.e("HOMEVM", throwable.message.toString())
@@ -116,6 +119,7 @@ class HomeViewModel(
 			it.date
 		}
 		todaySpend.value = getTodaySpendScenario.invoke(sharedOperationFlow.value) // remote
+		weekSpend.value = getWeeklySpendUseCase.invoke(sharedOperationFlow.value)
 	}
 
 	private suspend fun updateAccounts() = viewModelScope.async {
@@ -226,7 +230,7 @@ class HomeViewModel(
 		val quantity = stringFlow.value.toDouble() * if (isEarningFlow.value) 1 else -1
 		currentAccount.value?.toAccount()?.accountId?.let { id ->
 			val categoryId = currentCategory.value?.categoryId
-			val categoryName = currentCategory.value?.name.toString()
+			val categoryName = currentCategory.value?.name
 			val operation = Operation(
 				id = 0L,
 				name = categoryName,
