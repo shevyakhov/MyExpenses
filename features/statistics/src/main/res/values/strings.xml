@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="statistics_fragment_name">Ваша статистика</string>
+	<string name="day">1д</string>
+	<string name="week">7д</string>
+	<string name="fourteen">14д</string>
+	<string name="month">30д</string>
+	<string name="other">Другое</string>
+	<string name="categories">Категории</string>
+	<string name="account_dots">● ● ● ●</string>
+	<string name="balance">Баланс</string>
+	<string name="your_accounts">Ваши счета</string>
+	<string name="linechart">Линейный</string>
+	<string name="barChart">Гистограмма</string>
+	<string name="pieChart">Круговая</string>
+	<string name="boxplot">Размах</string>
+	<string name="earnings">Доходы</string>
+	<string name="spend">Расходы</string>
+</resources>

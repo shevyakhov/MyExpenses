@@ -10,6 +10,7 @@ import androidx.core.graphics.red
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.chelz.features.home.databinding.CategoryItemBinding
+import com.chelz.shared.accounts.domain.entity.CategoryItem
 
 class CategoryAdapter(private val onClickListener: CategoryClickListener) :
 	RecyclerView.Adapter<CategoryAdapter.CategoryHolder>() {
