@@ -8,8 +8,6 @@ import com.chelz.features.home.domain.Numbers
 import com.chelz.features.home.domain.usecase.GetTodaySpendScenario
 import com.chelz.features.home.domain.usecase.GetWeeklySpendUseCase
 import com.chelz.features.home.navigation.HomeRouter
-import com.chelz.features.home.presentation.recycler.accounts.toAccount
-import com.chelz.features.home.presentation.recycler.accounts.toAccountItem
 import com.chelz.shared.accounts.domain.entity.Account
 import com.chelz.shared.accounts.domain.entity.AccountItem
 import com.chelz.shared.accounts.domain.entity.Category
@@ -19,6 +17,7 @@ import com.chelz.shared.accounts.domain.entity.SharedAccount
 import com.chelz.shared.accounts.domain.entity.SharedAccountItem
 import com.chelz.shared.accounts.domain.entity.SharedCategory
 import com.chelz.shared.accounts.domain.entity.SharedOperation
+import com.chelz.shared.accounts.domain.entity.toAccount
 import com.chelz.shared.accounts.domain.entity.toAccountItem
 import com.chelz.shared.accounts.domain.entity.toOperationItem
 import com.chelz.shared.accounts.domain.firebase.SharedAccountConstants
@@ -41,6 +40,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import org.joda.time.LocalDateTime
+import org.joda.time.format.DateTimeFormat
 import java.util.LinkedList
 
 class HomeViewModel(
@@ -116,7 +116,7 @@ class HomeViewModel(
 		localOperations.addAll(sharedAccounts)
 
 		sharedOperationFlow.value = localOperations.sortedByDescending {
-			it.date
+			LocalDateTime.parse(it.date, DateTimeFormat.forPattern("dd-MM-yyyy HH:mm:ss.SSS"))
 		}
 		todaySpend.value = getTodaySpendScenario.invoke(sharedOperationFlow.value) // remote
 		weekSpend.value = getWeeklySpendUseCase.invoke(sharedOperationFlow.value)

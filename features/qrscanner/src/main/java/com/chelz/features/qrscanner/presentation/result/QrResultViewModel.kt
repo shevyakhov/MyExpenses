@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chelz.features.qrscanner.presentation.result.adapter.QrItem
-import com.chelz.features.qrscanner.presentation.result.adapter.toAccount
 import com.chelz.features.qrscanner.presentation.result.adapter.toDto
 import com.chelz.features.qrscanner.presentation.result.navigation.QrResultRouter
 import com.chelz.shared.accounts.domain.entity.Account
@@ -15,6 +14,7 @@ import com.chelz.shared.accounts.domain.entity.SharedAccount
 import com.chelz.shared.accounts.domain.entity.SharedAccountItem
 import com.chelz.shared.accounts.domain.entity.SharedCategory
 import com.chelz.shared.accounts.domain.entity.SharedOperation
+import com.chelz.shared.accounts.domain.entity.toAccount
 import com.chelz.shared.accounts.domain.entity.toAccountItem
 import com.chelz.shared.accounts.domain.entity.toOperationItem
 import com.chelz.shared.accounts.domain.firebase.SharedAccountConstants

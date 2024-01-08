@@ -15,11 +15,12 @@ import com.chelz.features.home.presentation.recycler.accounts.AccountViewPagerAd
 import com.chelz.features.home.presentation.recycler.accounts.HorizontalMarginItemDecoration
 import com.chelz.features.home.presentation.recycler.categories.CategoryAdapter
 import com.chelz.features.home.presentation.recycler.categories.CategoryClickListener
-import com.chelz.features.home.presentation.recycler.categories.CategoryItem
-import com.chelz.features.home.presentation.recycler.categories.toCategory
-import com.chelz.features.home.presentation.recycler.categories.toCategoryItem
+
 import com.chelz.features.home.presentation.recycler.operations.OperationAdapter
 import com.chelz.libraries.theme.getThemeColor
+import com.chelz.shared.accounts.domain.entity.CategoryItem
+import com.chelz.shared.accounts.domain.entity.toCategory
+import com.chelz.shared.accounts.domain.entity.toCategoryItem
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -50,9 +51,9 @@ internal fun MainLayoutBinding.bind(viewModel: HomeViewModel, viewLifecycleOwner
 	}.launchIn(scope)
 
 	viewModel.weekSpend.onEach { week ->
-		val labels: List<String> = listOf("Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс")
+		val labels: List<String> = listOf("", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс")
 		val entries: MutableList<Entry> = ArrayList()
-		for (day in 0..6) {
+		for (day in 1..7) {
 			val list = week[day] ?: emptyList()
 			val totalSpendForDay = list.sumOf { abs(it.quantity) }
 			entries.add(Entry(day.toFloat(), totalSpendForDay.toFloat()))

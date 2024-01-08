@@ -6,6 +6,13 @@ import org.koin.dsl.module
 
 val StatisticsModule = module {
 	viewModel {
-		StatisticsViewModel(router = get())
+		StatisticsViewModel(
+			router = get(),
+			getAllAccountsUseCase = get(),
+			getAllCategoriesUseCase = get(),
+			getAllOperationsUseCase = get(),
+			getAccountByIdUseCase = get(),
+			getCategoryByIdUseCase = get(),
+		)
 	}
 }
