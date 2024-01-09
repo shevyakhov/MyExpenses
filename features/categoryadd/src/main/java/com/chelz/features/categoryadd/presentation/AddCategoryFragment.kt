@@ -40,7 +40,7 @@ class AddCategoryFragment : Fragment() {
 
 		bindData(scope)
 
-		binding.buttonAdd.setOnClickListener {
+		binding.buttonSave.setOnClickListener {
 			viewModel.saveCategory()
 		}
 		binding.buttonColor.setOnClickListener {

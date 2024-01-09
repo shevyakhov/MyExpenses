@@ -28,9 +28,19 @@
 					android:layout_height="match_parent"
 					android:layout_marginStart="@dimen/spacing_15"
 					android:gravity="center"
-					android:text="@string/add_account"
+					android:text="@string/account"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<ImageView
+					android:id="@+id/deleteButton"
+					android:layout_width="@dimen/height_40"
+					android:layout_height="@dimen/height_40"
+					android:layout_marginEnd="@dimen/spacing_15"
+					android:src="@android:drawable/ic_delete"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintTop_toTopOf="parent" />
 
 			</androidx.constraintlayout.widget.ConstraintLayout>
@@ -179,9 +189,11 @@
 
 		<CheckBox
 			android:id="@+id/isSharedCheckBox"
+			style="@style/Widget.AppCompat.CompoundButton.CheckBox"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="@dimen/spacing_10"
+			android:clickable="false"
 			android:text="@string/isAccountShared"
 			app:layout_constraintTop_toBottomOf="@id/cardBalanceLayout" />
 
@@ -221,9 +233,9 @@
 					android:id="@+id/addChip"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					app:closeIconEnabled="false"
 					android:text="@string/plus_sign"
 					app:chipBackgroundColor="?attr/colorSecondary"
+					app:closeIconEnabled="false"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintStart_toStartOf="parent" />
 

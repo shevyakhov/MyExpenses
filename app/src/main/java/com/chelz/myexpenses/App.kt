@@ -2,6 +2,7 @@ package com.chelz.myexpenses
 
 import android.app.Application
 import com.chelz.features.accountadd.di.AddAccountModule
+import com.chelz.features.accountedit.di.EditAccountModule
 import com.chelz.features.categoryadd.di.AddCategoryFragmentModule
 import com.chelz.features.home.di.HomeModule
 import com.chelz.features.main.di.MainFragmentModule
@@ -52,6 +53,7 @@ class App : Application() {
 			modules(PlanningModule)
 			modules(ProfileModule)
 			modules(AddAccountModule)
+			modules(EditAccountModule)
 			modules(AddCategoryFragmentModule)
 
 			modules(AccountsDataModule)

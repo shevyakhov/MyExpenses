@@ -408,4 +408,8 @@ class HomeViewModel(
 	fun navigateToAddCategory() {
 		router.navigateToAddCategory()
 	}
+
+	fun navigateToEditAccount(accountItem: AccountItem) {
+		router.navigateToEditAccount(accountItem)
+	}
 }
