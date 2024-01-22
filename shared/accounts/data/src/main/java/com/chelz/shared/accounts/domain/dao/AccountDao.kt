@@ -30,4 +30,8 @@ interface AccountDao {
 	@Transaction
 	@Query("SELECT * FROM Accounts")
 	fun getAccountsWithUsers(): List<AccountWithUsersDto>
+
+	@Transaction
+	@Query("DELETE FROM Accounts")
+	fun clearAccounts()
 }

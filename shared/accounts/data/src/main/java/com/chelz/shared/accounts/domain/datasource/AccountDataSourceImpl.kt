@@ -31,4 +31,8 @@ class AccountDataSourceImpl(private val accountDao: AccountDao) : AccountDataSou
 	override suspend fun getAccountsWithUsers(): List<AccountWithUsersDto> = withContext(Dispatchers.IO) {
 		accountDao.getAccountsWithUsers()
 	}
+
+	override suspend fun clearAccounts() = withContext(Dispatchers.IO) {
+		accountDao.clearAccounts()
+	}
 }

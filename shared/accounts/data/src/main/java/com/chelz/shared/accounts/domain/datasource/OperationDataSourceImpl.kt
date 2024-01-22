@@ -34,4 +34,8 @@ class OperationDataSourceImpl(private val operationDao: OperationDao) : Operatio
 	override suspend fun deleteOperation(operationDto: OperationDto) = withContext(Dispatchers.IO) {
 		operationDao.deleteOperation(operationDto)
 	}
+
+	override suspend fun clearOperations() = withContext(Dispatchers.IO) {
+		operationDao.clearOperations()
+	}
 }

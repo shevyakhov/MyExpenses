@@ -12,4 +12,5 @@ interface AccountDataSource {
 	suspend fun deleteAccount(accountDto: AccountDto)
 
 	suspend fun getAccountsWithUsers(): List<AccountWithUsersDto>
+	suspend fun clearAccounts()
 }

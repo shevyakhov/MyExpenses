@@ -25,7 +25,7 @@ val RouterModule = module {
 	factory<MainFragmentRouter> { MainFragmentRouterImpl(get()) }
 	factory<StatisticsRouter> { StatisticsRouterImpl(/*get()*/) }
 	factory<PlanningRouter> { PlanningRouterImpl(/*get()*/) }
-	factory<ProfileRouter> { ProfileRouterImpl(/*get()*/) }
+	factory<ProfileRouter> { ProfileRouterImpl(get()) }
 	factory<AddAccountRouter> { AddAccountRouterImpl(get()) }
 	factory<EditAccountRouter> { EditAccountRouterImpl(get()) }
 	factory<AddCategoryRouter> { AddCategoryRouterImpl(get()) }

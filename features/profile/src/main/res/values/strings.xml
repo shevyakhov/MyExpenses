@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="profile_fragment_name">Профиль</string>
+	<string name="exit">Выход</string>
+	<string name="email">Email</string>
+	<string name="timeCreation">Вы с нами с</string>
+	<string name="accounts">Ваши счета</string>
+	<string name="spendLabel">Категории трат</string>
+	<string name="earnLabel">Категории дохода</string>
+	<string name="confirm_dialog">Удалить категорию?</string>
+	<string name="ok">Да</string>
+	<string name="cancel">Отмена</string>
+	<string name="if_deleted">При удалении категории </string>
+	<string name="if_deleted_after">данные об этой категории будут утрачены</string>
+	<string name="logout_message">Данные о локальных операциях/счетах/категориях останутся в памяти устройства.</string>
+	<string name="logout_message_after">Удалить их?</string>
+	<string name="logout_title">Выйти из аккаунта?</string>
+</resources>

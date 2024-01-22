@@ -90,4 +90,10 @@ class AccountRepositoryImpl(
 	override suspend fun deleteUser(user: User) {
 		userDataSource.deleteUser(user.toDto())
 	}
+
+	override suspend fun clearDatabase() {
+		accountDataSource.clearAccounts()
+		operationDataSource.clearOperations()
+		categoryDataSource.clearCategories()
+	}
 }

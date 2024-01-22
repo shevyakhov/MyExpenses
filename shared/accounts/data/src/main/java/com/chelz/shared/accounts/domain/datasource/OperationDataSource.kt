@@ -11,4 +11,5 @@ interface OperationDataSource {
 	suspend fun insertOperation(operationDto: OperationDto): Long
 	suspend fun updateOperation(operationDto: OperationDto)
 	suspend fun deleteOperation(operationDto: OperationDto)
+	suspend fun clearOperations()
 }
