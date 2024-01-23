@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:padding="@dimen/spacing_10">
+
+	<!-- Article Image with Semi-Transparent Overlay -->
+	<androidx.cardview.widget.CardView
+		android:layout_width="match_parent"
+		android:layout_height="150dp"
+		android:layout_marginBottom="8dp"
+		app:cardCornerRadius="@dimen/spacing_15"
+		app:cardElevation="@dimen/spacing_5">
+
+		<!-- Background Image -->
+		<ImageView
+			android:id="@+id/imageViewArticle"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:scaleType="centerCrop"
+			android:src="@android:drawable/ic_menu_search" />
+
+		<!-- Semi-Transparent Overlay -->
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="#80000000" /> <!-- Change the alpha value as needed -->
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:gravity="bottom"
+			android:orientation="vertical"
+			android:padding="16dp">
+
+			<!-- Article Title -->
+			<TextView
+				android:id="@+id/textViewTitle"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="@dimen/spacing_15"
+				android:textColor="#FFFFFF"
+				android:textSize="18sp"
+				android:textStyle="bold" /> <!-- Set text color to be readable -->
+
+			<!-- Article Description -->
+			<androidx.core.widget.NestedScrollView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/textViewDescription"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textColor="#FFFFFF"
+					android:textSize="14sp" /> <!-- Set text color to be readable -->
+			</androidx.core.widget.NestedScrollView>
+
+		</LinearLayout>
+	</androidx.cardview.widget.CardView>
+
+</LinearLayout>

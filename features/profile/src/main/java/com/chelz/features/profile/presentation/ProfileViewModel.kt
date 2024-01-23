@@ -4,6 +4,8 @@ import android.content.ContentValues
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.chelz.features.profile.domain.entity.ArticlesEntity
+import com.chelz.features.profile.domain.usecase.NewsUseCase
 import com.chelz.features.profile.presentation.navigation.ProfileRouter
 import com.chelz.shared.accounts.domain.entity.Account
 import com.chelz.shared.accounts.domain.entity.AccountItem
@@ -36,8 +38,6 @@ import kotlinx.coroutines.tasks.await
 import org.joda.time.DateTime
 import org.joda.time.LocalDateTime
 import org.joda.time.format.DateTimeFormat
-import java.net.HttpURLConnection
-import java.net.URL
 import java.util.LinkedList
 
 class ProfileViewModel(
@@ -48,6 +48,7 @@ class ProfileViewModel(
 	private val deleteCategoryUseCase: DeleteCategoryUseCase,
 	private val getCategoryByIdUseCase: GetCategoryByIdUseCase,
 	private val clearDataBaseUseCase: ClearDataBaseUseCase,
+	private val newsUseCase: NewsUseCase,
 	private val router: ProfileRouter,
 ) : ViewModel() {
 
@@ -55,6 +56,7 @@ class ProfileViewModel(
 	private val store by lazy { Firebase.firestore }
 
 	private val accountsFlow = MutableStateFlow<List<Account>>(listOf())
+	val newsFlow = MutableStateFlow<List<ArticlesEntity>>(listOf())
 	val fullAccountsFlow = MutableStateFlow<List<AccountItem>>(listOf())
 	private val operationFlow = MutableStateFlow<List<Operation>>(listOf())
 	val sharedOperationFlow = MutableStateFlow<List<OperationItem>>(listOf())
@@ -78,6 +80,7 @@ class ProfileViewModel(
 		updateAccounts().await()
 		updateOperation().await()
 		updateCategory()
+		newsFlow.value = newsUseCase.invoke().articles
 
 		fullAccountsFlow.value.filterIsInstance<SharedAccountItem>().map { it.operations.toOperationItem() }.flatten()
 		sharedAccountsCollection.whereArrayContains(
@@ -239,30 +242,7 @@ class ProfileViewModel(
 		router.navigateToLogin()
 	}
 
-	fun getFinalRedirectedUrl(initialUrl: String): String {
-		var urlConnection: HttpURLConnection? = null
-
-		try {
-			var currentUrl = initialUrl
-			var redirected: Boolean
-
-			do {
-				val url = URL(currentUrl)
-				urlConnection = url.openConnection() as HttpURLConnection
-				urlConnection.instanceFollowRedirects = false
-				val statusCode = urlConnection.responseCode
-
-				if (statusCode == HttpURLConnection.HTTP_MOVED_PERM || statusCode == HttpURLConnection.HTTP_MOVED_TEMP || statusCode == HttpURLConnection.HTTP_SEE_OTHER) {
-					redirected = true
-					currentUrl = urlConnection.getHeaderField("Location")
-				} else {
-					redirected = false
-				}
-			} while (redirected)
-
-			return currentUrl
-		} finally {
-			urlConnection?.disconnect()
-		}
+	fun navigateToSettings() {
+		router.navigateToSettings()
 	}
 }

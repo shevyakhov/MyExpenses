@@ -15,4 +15,8 @@ class ProfileRouterImpl(private val router: GlobalRouter) : ProfileRouter {
 	override fun navigateToLogin() {
 		router.replace(LoginDestination)
 	}
+
+	override fun navigateToSettings() {
+		TODO("Not yet implemented")
+	}
 }

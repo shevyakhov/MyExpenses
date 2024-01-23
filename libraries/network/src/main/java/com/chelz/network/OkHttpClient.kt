@@ -1,5 +1,6 @@
 package com.chelz.network
 
+import com.chelz.network.interceptors.NewsTokenInterceptor
 import com.chelz.network.interceptors.QrTokenInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,6 +17,13 @@ internal fun okHttpQrClientSetups(): OkHttpClient =
 	OkHttpClient().newBuilder()
 		.addInterceptor(HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) })
 		.addInterceptor(QrTokenInterceptor())
+		.applyDefaultSetups()
+		.build()
+
+internal fun okHttpNewsClientSetups(key: String): OkHttpClient =
+	OkHttpClient().newBuilder()
+		.addInterceptor(HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) })
+		.addInterceptor(NewsTokenInterceptor(key))
 		.applyDefaultSetups()
 		.build()
 

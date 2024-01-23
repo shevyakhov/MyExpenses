@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content">
 
@@ -31,24 +32,27 @@
 					app:layout_constraintTop_toTopOf="parent" />
 
 				<androidx.appcompat.widget.AppCompatImageButton
+					android:id="@+id/settings_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="@dimen/spacing_20"
+					android:backgroundTint="?attr/colorSecondary"
+					android:src="@drawable/ic_settings"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toStartOf="@id/exitButton"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<androidx.appcompat.widget.AppCompatImageButton
 					android:id="@+id/exitButton"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginEnd="@dimen/spacing_20"
 					android:backgroundTint="?attr/colorError"
-					android:src="@android:drawable/ic_input_delete"
+					android:src="@drawable/ic_exit"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintTop_toTopOf="parent" />
 
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginHorizontal="@dimen/spacing_10"
-					android:text="@string/exit"
-					app:layout_constraintBottom_toBottomOf="parent"
-					app:layout_constraintEnd_toStartOf="@id/exitButton"
-					app:layout_constraintTop_toTopOf="parent" />
 
 			</androidx.constraintlayout.widget.ConstraintLayout>
 		</com.google.android.material.appbar.AppBarLayout>
@@ -58,7 +62,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:orientation="vertical"
-			android:padding="@dimen/spacing_20"
+			android:padding="@dimen/spacing_10"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/topAppBarLayout">
@@ -86,7 +90,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:orientation="vertical"
-			android:padding="@dimen/spacing_20"
+			android:padding="@dimen/spacing_10"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/layout_email">
@@ -108,12 +112,28 @@
 		</LinearLayout>
 
 		<TextView
+			android:id="@+id/newsLabel"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/spacing_10"
+			android:text="@string/news"
+			app:layout_constraintTop_toBottomOf="@id/layout_time" />
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/recycler_news"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:layout_constraintTop_toBottomOf="@id/newsLabel"
+			tools:itemCount="1"
+			tools:listitem="@layout/news_item" />
+
+		<TextView
 			android:id="@+id/accountLabel"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:padding="@dimen/spacing_20"
+			android:padding="@dimen/spacing_10"
 			android:text="@string/accounts"
-			app:layout_constraintTop_toBottomOf="@id/layout_time" />
+			app:layout_constraintTop_toBottomOf="@id/recycler_news" />
 
 		<androidx.viewpager2.widget.ViewPager2
 			android:id="@+id/accountViewPager"
@@ -126,7 +146,7 @@
 			android:id="@+id/spendLabel"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:padding="@dimen/spacing_20"
+			android:padding="@dimen/spacing_10"
 			android:text="@string/spendLabel"
 			app:layout_constraintTop_toBottomOf="@id/accountViewPager" />
 
@@ -144,7 +164,7 @@
 			android:id="@+id/earnLabel"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:padding="@dimen/spacing_20"
+			android:padding="@dimen/spacing_10"
 			android:text="@string/earnLabel"
 			app:layout_constraintTop_toBottomOf="@id/rv_categories_spend" />
 

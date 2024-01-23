@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chelz.features.profile.R
 import com.chelz.features.profile.databinding.FragmentProfileBinding
 import com.chelz.features.profile.presentation.adapter.AccountViewPagerAdapter
+import com.chelz.features.profile.presentation.adapter.ArticlesAdapter
 import com.chelz.features.profile.presentation.adapter.CategoryAdapter
 import com.chelz.features.profile.presentation.adapter.CategoryClickListener
 import com.chelz.features.profile.presentation.adapter.HorizontalMarginItemDecoration
@@ -46,18 +47,25 @@ class ProfileFragment : Fragment() {
 		val scope = viewLifecycleOwner.lifecycleScope
 		viewModel.init()
 
+		val newsAdapter = ArticlesAdapter(emptyList()) // Initial empty list
+		binding.recyclerNews.adapter = newsAdapter
+		binding.recyclerNews.layoutManager = LinearLayoutManager(
+			requireContext(),
+			LinearLayoutManager.HORIZONTAL,
+			false
+		)
+		viewModel.newsFlow.onEach {
+			newsAdapter.submitData(it)
+		}.launchIn(scope)
+
+		binding.settingsButton.setOnClickListener {
+			viewModel.navigateToSettings()
+		}
+
 		binding.exitButton.setOnClickListener {
 			val builder = MaterialAlertDialogBuilder(requireContext())
-			val redColor = ContextCompat.getColor(requireContext(), android.R.color.holo_red_light)
-			val mes = getString(R.string.logout_message_after)
 			val message = SpannableStringBuilder()
 				.append(getString(R.string.logout_message))
-				.append(" ")
-				.bold {
-					append(mes)
-					setSpan(ForegroundColorSpan(redColor), length - mes.length, length, 0)
-				}
-				.append()
 
 			builder.setMessage(message)
 				.setTitle(getString(R.string.logout_title))
@@ -115,7 +123,7 @@ class ProfileFragment : Fragment() {
 					.append(" ")
 					.bold {
 						append(categoryItem.name)
-						setSpan(ForegroundColorSpan(colorPrimary), length - categoryItem.name?.length!!, length, 0)
+						setSpan(ForegroundColorSpan(colorPrimary), length - categoryItem.name.length, length, 0)
 					}
 					.append(" ")
 					.bold {

@@ -6,4 +6,5 @@ interface ProfileRouter {
 
 	fun navigateToEditAccount(accountItem: AccountItem)
 	fun navigateToLogin()
+	fun navigateToSettings()
 }

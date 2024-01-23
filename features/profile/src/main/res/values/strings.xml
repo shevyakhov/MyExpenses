@@ -13,6 +13,7 @@
 	<string name="if_deleted">При удалении категории </string>
 	<string name="if_deleted_after">данные об этой категории будут утрачены</string>
 	<string name="logout_message">Данные о локальных операциях/счетах/категориях останутся в памяти устройства.</string>
-	<string name="logout_message_after">Удалить их?</string>
+	<string name="logout_message_after">Удалить их!</string>
 	<string name="logout_title">Выйти из аккаунта?</string>
+	<string name="news">Новости дня</string>
 </resources>

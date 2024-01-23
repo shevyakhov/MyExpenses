@@ -24,6 +24,9 @@ android {
 
 		buildConfigField "String", "QR_KEY", "\"${properties.getProperty("QR_KEY")}\""
 		buildConfigField "String", "QR_URL", "\"${properties.getProperty("QR_URL")}\""
+
+		buildConfigField "String", "NEWS_KEY", "\"${properties.getProperty("NEWS_KEY")}\""
+		buildConfigField "String", "NEWS_URL", "\"${properties.getProperty("NEWS_URL")}\""
 	}
 
 	buildTypes {

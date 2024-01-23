@@ -24,5 +24,6 @@ dependencies {
 
 	implementation project(Modules.LIBRARIES.NAVIGATION)
 	implementation project(Modules.LIBRARIES.THEME)
+	implementation project(Modules.LIBRARIES.NETWORK)
 	implementation project(Modules.SHARED_MODULES.ACCOUNTS_DOMAIN)
 }

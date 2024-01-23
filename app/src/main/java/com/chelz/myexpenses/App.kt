@@ -14,10 +14,14 @@ import com.chelz.features.registration.di.RegistrationModule
 import com.chelz.features.splash.di.SplashModule
 import com.chelz.features.statistics.di.StatisticsModule
 import com.chelz.login.di.LoginModule
+import com.chelz.myexpenses.BuildConfig.NEWS_KEY
+import com.chelz.myexpenses.BuildConfig.NEWS_URL
 import com.chelz.myexpenses.BuildConfig.QR_KEY
 import com.chelz.myexpenses.BuildConfig.QR_URL
 import com.chelz.myexpenses.di.AppModule
 import com.chelz.myexpenses.di.RouterModule
+import com.chelz.network.BACKEND_NEWS
+import com.chelz.network.BACKEND_NEWS_KEY
 import com.chelz.network.BACKEND_QR
 import com.chelz.network.BACKEND_QR_KEY
 import com.chelz.network.NetworkModule
@@ -36,6 +40,8 @@ class App : Application() {
 				mapOf(
 					BACKEND_QR to QR_URL,
 					BACKEND_QR_KEY to QR_KEY,
+					BACKEND_NEWS to NEWS_URL,
+					BACKEND_NEWS_KEY to NEWS_KEY,
 				)
 			)
 			modules(AppModule)
