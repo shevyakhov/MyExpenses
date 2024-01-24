@@ -1,10 +1,10 @@
 package com.chelz.features.home.domain.usecase
 
-import com.chelz.shared.accounts.domain.entity.Operation
+import com.chelz.shared.accounts.domain.entity.OperationItem
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-class GetTodaySpendUseCase(private val operations: List<Operation>) {
+class GetTodaySpendUseCase(private val operations: List<OperationItem>) {
 
 	operator fun invoke(): Double {
 		val df = DecimalFormat("#.##")

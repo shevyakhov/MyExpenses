@@ -4,8 +4,10 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import com.chelz.shared.accounts.domain.dto.AccountDto
+import com.chelz.shared.accounts.domain.dto.AccountWithUsersDto
 
 @Dao
 interface AccountDao {
@@ -24,4 +26,12 @@ interface AccountDao {
 
 	@Delete
 	suspend fun deleteAccount(accountDto: AccountDto)
+
+	@Transaction
+	@Query("SELECT * FROM Accounts")
+	fun getAccountsWithUsers(): List<AccountWithUsersDto>
+
+	@Transaction
+	@Query("DELETE FROM Accounts")
+	fun clearAccounts()
 }

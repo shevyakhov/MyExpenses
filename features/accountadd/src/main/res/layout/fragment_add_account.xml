@@ -185,14 +185,60 @@
 			android:text="@string/isAccountShared"
 			app:layout_constraintTop_toBottomOf="@id/cardBalanceLayout" />
 
+		<TextView
+			android:id="@+id/usersText"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:layout_margin="20dp"
+			android:text="@string/users"
+			android:visibility="gone"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/isSharedCheckBox" />
+
+		<HorizontalScrollView
+			android:id="@+id/usersScroll"
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:visibility="gone"
+			app:layout_constraintTop_toBottomOf="@id/usersText">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent">
+
+				<com.google.android.material.chip.ChipGroup
+					android:id="@+id/users_chip_group"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="bottom"
+					app:chipSpacingHorizontal="4dp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toEndOf="@id/addChip"
+					app:layout_constraintTop_toTopOf="parent" />
+
+
+				<com.google.android.material.chip.Chip
+					android:id="@+id/addChip"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					app:closeIconEnabled="false"
+					android:text="@string/plus_sign"
+					app:chipBackgroundColor="?attr/colorSecondary"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+		</HorizontalScrollView>
+
 		<Button
-			android:id="@+id/button_add"
+			android:id="@+id/button_save"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="@dimen/spacing_10"
 			android:backgroundTint="?attr/colorSecondary"
 			android:text="@string/save"
-			app:layout_constraintTop_toBottomOf="@id/isSharedCheckBox" />
+			app:layout_constraintTop_toBottomOf="@id/usersScroll" />
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

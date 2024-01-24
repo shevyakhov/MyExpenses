@@ -14,12 +14,16 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/accountadd" />
+            <option value="$PROJECT_DIR$/features/accountedit" />
             <option value="$PROJECT_DIR$/features/categoryadd" />
             <option value="$PROJECT_DIR$/features/home" />
+            <option value="$PROJECT_DIR$/features/login" />
             <option value="$PROJECT_DIR$/features/main" />
+            <option value="$PROJECT_DIR$/features/onboarding" />
             <option value="$PROJECT_DIR$/features/planning" />
             <option value="$PROJECT_DIR$/features/profile" />
             <option value="$PROJECT_DIR$/features/qrscanner" />
+            <option value="$PROJECT_DIR$/features/registration" />
             <option value="$PROJECT_DIR$/features/splash" />
             <option value="$PROJECT_DIR$/features/statistics" />
             <option value="$PROJECT_DIR$/libraries" />

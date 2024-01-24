@@ -19,9 +19,7 @@ import com.chelz.features.qrscanner.domain.entity.ItemsEntity
 import com.chelz.features.qrscanner.presentation.result.adapter.AccountViewPagerAdapter
 import com.chelz.features.qrscanner.presentation.result.adapter.HorizontalMarginItemDecoration
 import com.chelz.features.qrscanner.presentation.result.adapter.QrListAdapter
-import com.chelz.features.qrscanner.presentation.result.adapter.toAccount
 import com.chelz.features.qrscanner.presentation.result.adapter.toQrItem
-import com.chelz.features.qrscanner.presentation.result.adapter.toSliderItem
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -93,13 +91,13 @@ class QrResultFragment : Fragment() {
 		binding.accountViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
 			override fun onPageSelected(position: Int) {
 				super.onPageSelected(position)
-				val account = accountAdapter.getItemAt(position).toAccount()
+				val account = accountAdapter.getItemAt(position)
 				viewModel.currentAccount.value = account
 			}
 		})
 
-		viewModel.accountsFlow.onEach {
-			accountAdapter.initList(it.toSliderItem())
+		viewModel.fullAccountsFlow.onEach {
+			accountAdapter.initList(it)
 		}.launchIn(scope)
 	}
 

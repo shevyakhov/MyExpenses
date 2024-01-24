@@ -58,4 +58,9 @@ ext.Dependencies =
 		CAMERAX_CAMERA         : "androidx.camera:camera-camera2:${Versions.CAMERAX_CAMERA}",
 		CAMERAX_LIFECYCLE      : "androidx.camera:camera-lifecycle:${Versions.CAMERAX_LIFECYCLE}",
 		CAMERAX_VIEW           : "androidx.camera:camera-view:${Versions.CAMERAX_VIEW}",
+
+		FIREBASE_BOM           : "com.google.firebase:firebase-bom:32.6.0",
+		FIREBASE_DATABASE      : "com.google.firebase:firebase-database",
+		FIREBASE_FIRESTORE     : "com.google.firebase:firebase-firestore",
+		FIREBASE_AUTH          : "com.google.firebase:firebase-auth",
 	]

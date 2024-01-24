@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="skip">Пропустить</string>
+	<string name="introFirstMain">Храните информацию о доходах и расходах!</string>
+	<string name="introSecondMain">Анализируйте траты!</string>
+	<string name="introThirdMain">Создайте совместный счет!</string>
+	<string name="introFirstSub">Отсканируйте qr код, добавьте каждой трате категорию, и вперед!</string>
+	<string name="introSecondSub">Вы можете это сделать с помощью множества графиков</string>
+	<string name="introThirdSub">И следите за общими тратами</string>
+	<string name="start">Начать</string>
+	<string name="next">Далее</string>
+</resources>

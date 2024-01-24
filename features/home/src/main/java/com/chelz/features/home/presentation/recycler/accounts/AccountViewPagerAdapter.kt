@@ -10,12 +10,13 @@ import androidx.core.graphics.red
 import androidx.recyclerview.widget.RecyclerView
 import com.chelz.features.home.R
 import com.chelz.features.home.databinding.AccountItemBinding
+import com.chelz.shared.accounts.domain.entity.AccountItem
 
-class AccountViewPagerAdapter : RecyclerView.Adapter<AccountViewPagerAdapter.SliderHolder>() {
+class AccountViewPagerAdapter(private val onClick: (AccountItem) -> Unit) : RecyclerView.Adapter<AccountViewPagerAdapter.SliderHolder>() {
 
 	private var sliderList = listOf<AccountItem>()
 
-	class SliderHolder(view: View) : RecyclerView.ViewHolder(view) {
+	inner class SliderHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 		private val sliderItemBinding = AccountItemBinding.bind(view)
 		fun bind(item: AccountItem) = with(sliderItemBinding) {
@@ -33,6 +34,9 @@ class AccountViewPagerAdapter : RecyclerView.Adapter<AccountViewPagerAdapter.Sli
 			numberTitle.setTextColor(new)
 			balanceTitle.setTextColor(new)
 			balance.setTextColor(new)
+			root.setOnClickListener {
+				onClick.invoke(item)
+			}
 		}
 	}
 

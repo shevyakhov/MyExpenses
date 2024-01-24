@@ -52,10 +52,11 @@
 			app:layout_constraintTop_toBottomOf="@id/topAppBarLayout" />
 
 		<com.github.mikephil.charting.charts.LineChart
-			app:layout_constraintTop_toBottomOf="@id/todayStats"
-			android:id="@+id/chart"
+			android:id="@+id/chartWeekly"
 			android:layout_width="match_parent"
-			android:layout_height="200dp" />
+			android:layout_height="300dp"
+			android:padding="@dimen/spacing_10"
+			app:layout_constraintTop_toBottomOf="@id/todayStats" />
 
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:id="@+id/todayStats"
@@ -121,7 +122,7 @@
 			android:layout_height="wrap_content"
 			android:paddingHorizontal="@dimen/spacing_10"
 			android:text="@string/recentOperations"
-			app:layout_constraintTop_toBottomOf="@id/chart" />
+			app:layout_constraintTop_toBottomOf="@id/chartWeekly" />
 
 		<androidx.recyclerview.widget.RecyclerView
 			android:id="@+id/rvOperations"

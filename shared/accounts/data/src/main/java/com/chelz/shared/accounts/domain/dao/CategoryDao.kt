@@ -28,4 +28,8 @@ interface CategoryDao {
 	@Transaction
 	@Delete
 	suspend fun deleteCategory(categoryDto: CategoryDto)
+
+	@Transaction
+	@Query("DELETE FROM Categories")
+	fun clearCategories()
 }

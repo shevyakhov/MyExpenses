@@ -9,4 +9,5 @@ interface CategoryDataSource {
 	suspend fun insertCategory(category: CategoryDto): Long
 	suspend fun updateCategory(category: CategoryDto)
 	suspend fun deleteCategory(category: CategoryDto)
+	suspend fun clearCategories()
 }

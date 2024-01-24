@@ -3,9 +3,12 @@ package com.chelz.shared.accounts.domain.repository
 import com.chelz.shared.accounts.domain.datasource.AccountDataSource
 import com.chelz.shared.accounts.domain.datasource.CategoryDataSource
 import com.chelz.shared.accounts.domain.datasource.OperationDataSource
+import com.chelz.shared.accounts.domain.datasource.UserDataSource
 import com.chelz.shared.accounts.domain.entity.Account
+import com.chelz.shared.accounts.domain.entity.AccountWithUsers
 import com.chelz.shared.accounts.domain.entity.Category
 import com.chelz.shared.accounts.domain.entity.Operation
+import com.chelz.shared.accounts.domain.entity.User
 import com.chelz.shared.accounts.domain.mapper.toDto
 import com.chelz.shared.accounts.domain.mapper.toEntity
 
@@ -13,6 +16,7 @@ class AccountRepositoryImpl(
 	private val accountDataSource: AccountDataSource,
 	private val operationDataSource: OperationDataSource,
 	private val categoryDataSource: CategoryDataSource,
+	private val userDataSource: UserDataSource,
 ) : AccountRepository {
 
 	override suspend fun getAllAccounts(): List<Account> =
@@ -29,6 +33,9 @@ class AccountRepositoryImpl(
 
 	override suspend fun deleteAccount(account: Account) =
 		accountDataSource.deleteAccount(account.toDto())
+
+	override suspend fun getAccountWithUsers(): List<AccountWithUsers> =
+		accountDataSource.getAccountsWithUsers().toEntity()
 
 	override suspend fun getAllOperations(): List<Operation> =
 		operationDataSource.getAllOperations().map { it.toEntity() }
@@ -65,4 +72,28 @@ class AccountRepositoryImpl(
 
 	override suspend fun deleteCategory(category: Category) =
 		categoryDataSource.deleteCategory(category.toDto())
+
+	override suspend fun getAllUsers(): List<User> =
+		userDataSource.getAllUsers().map { User(it.userId, it.name, it.email) }
+
+	override suspend fun getUserById(id: Long): User? =
+		userDataSource.getUserById(id)?.toEntity()
+
+	override suspend fun addUser(user: User) {
+		userDataSource.insertUser(user.toDto())
+	}
+
+	override suspend fun updateUser(user: User) {
+		userDataSource.updateUser(user.toDto())
+	}
+
+	override suspend fun deleteUser(user: User) {
+		userDataSource.deleteUser(user.toDto())
+	}
+
+	override suspend fun clearDatabase() {
+		accountDataSource.clearAccounts()
+		operationDataSource.clearOperations()
+		categoryDataSource.clearCategories()
+	}
 }

@@ -1,20 +1,28 @@
 package com.chelz.features.accountadd.presentation
 
 import android.R.string
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.core.graphics.blue
 import androidx.core.graphics.green
 import androidx.core.graphics.red
+import androidx.core.view.children
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.lifecycleScope
 import com.chelz.features.accountadd.R
 import com.chelz.features.accountadd.databinding.FragmentAddAccountBinding
+import com.google.android.material.chip.Chip
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 import kotlinx.coroutines.flow.launchIn
@@ -41,7 +49,9 @@ class AddAccountFragment : Fragment() {
 
 		bindData(scope)
 
-		binding.buttonAdd.setOnClickListener {
+		binding.buttonSave.setOnClickListener {
+			val emails = binding.usersChipGroup.children.map { (it as TextView).text.toString() }
+			viewModel.usersEmails.value = emails.toList()
 			viewModel.saveAccount()
 		}
 		binding.buttonColor.setOnClickListener {
@@ -50,6 +60,10 @@ class AddAccountFragment : Fragment() {
 	}
 
 	private fun bindData(scope: LifecycleCoroutineScope) {
+		viewModel.error.onEach {
+			Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+		}.launchIn(scope)
+
 		viewModel.chosenColorFlow.onEach {
 			val color = Color.parseColor(it)
 			binding.accountLayout.setCardBackgroundColor(color)
@@ -91,6 +105,13 @@ class AddAccountFragment : Fragment() {
 		binding.isSharedCheckBox.setOnCheckedChangeListener { _, b ->
 			viewModel.isSharedFlow.value = b
 		}
+		binding.addChip.setOnClickListener {
+			addChip()
+		}
+		viewModel.isSharedFlow.onEach {
+			binding.usersScroll.visibility = if (it) View.VISIBLE else View.GONE
+			binding.usersText.visibility = if (it) View.VISIBLE else View.GONE
+		}.launchIn(scope)
 	}
 
 	private fun bindErrorLayout(notEmpty: Boolean): String? {
@@ -112,5 +133,34 @@ class AddAccountFragment : Fragment() {
 			.attachBrightnessSlideBar(true)
 			.attachAlphaSlideBar(false)
 		dialog.show()
+	}
+
+	private fun addChip() {
+		val builder = MaterialAlertDialogBuilder(requireContext())
+		builder.setTitle("Пригласить пользователя")
+		val input = EditText(requireContext())
+		input.hint = "email пользователя"
+		input.inputType = InputType.TYPE_CLASS_TEXT
+		builder.setView(input)
+
+		builder.setPositiveButton(getString(R.string.add)) { _, _ ->
+			val chip = createChip(requireContext(), input.text.toString())
+			binding.usersChipGroup.addView(chip, 0)
+			chip.isChecked = true
+		}
+		builder.setNegativeButton(getString(R.string.cancel)) { dialog, _ -> dialog.cancel() }
+		builder.show()
+	}
+
+	private fun createChip(context: Context, chipName: String): Chip {
+		return Chip(context).apply {
+			text = chipName
+			isCheckable = false
+			isCloseIconVisible = true
+			isCheckedIconVisible = true
+			setOnCloseIconClickListener {
+				binding.usersChipGroup.removeView(this)
+			}
+		}
 	}
 }

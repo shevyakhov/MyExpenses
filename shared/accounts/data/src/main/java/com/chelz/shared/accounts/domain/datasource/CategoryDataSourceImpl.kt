@@ -26,4 +26,8 @@ class CategoryDataSourceImpl(private val categoryDao: CategoryDao) : CategoryDat
 	override suspend fun deleteCategory(category: CategoryDto) = withContext(Dispatchers.IO) {
 		categoryDao.deleteCategory(category)
 	}
+
+	override suspend fun clearCategories() = withContext(Dispatchers.IO) {
+		categoryDao.clearCategories()
+	}
 }

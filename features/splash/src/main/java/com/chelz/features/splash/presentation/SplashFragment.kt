@@ -1,6 +1,5 @@
 package com.chelz.features.splash.presentation
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,7 +23,7 @@ class SplashFragment : Fragment() {
 
 	private val viewModel: SplashViewModel by viewModel {
 		parametersOf(
-			requireContext().getSharedPreferences("USER", Context.MODE_PRIVATE).getBoolean("FIRST_START", true)
+			arguments?.getBoolean(FIRST_START_FLAG)
 		)
 	}
 	private var _binding: FragmentSplashBinding? = null

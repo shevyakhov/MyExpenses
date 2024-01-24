@@ -35,4 +35,7 @@ interface OperationDao {
 	@Delete
 	suspend fun deleteOperation(operationDto: OperationDto)
 
+	@Transaction
+	@Query("DELETE FROM Operations")
+	fun clearOperations()
 }
