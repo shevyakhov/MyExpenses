@@ -1,6 +1,7 @@
 package com.chelz.myexpenses.di
 
 import com.chelz.features.accountadd.presentation.navigation.AddAccountRouter
+import com.chelz.features.accountedit.presentation.navigation.EditAccountRouter
 import com.chelz.features.categoryadd.presentation.navigation.AddCategoryRouter
 import com.chelz.features.home.navigation.HomeRouter
 import com.chelz.features.main.presentation.navigation.MainFragmentRouter
@@ -24,8 +25,9 @@ val RouterModule = module {
 	factory<MainFragmentRouter> { MainFragmentRouterImpl(get()) }
 	factory<StatisticsRouter> { StatisticsRouterImpl(/*get()*/) }
 	factory<PlanningRouter> { PlanningRouterImpl(/*get()*/) }
-	factory<ProfileRouter> { ProfileRouterImpl(/*get()*/) }
+	factory<ProfileRouter> { ProfileRouterImpl(get()) }
 	factory<AddAccountRouter> { AddAccountRouterImpl(get()) }
+	factory<EditAccountRouter> { EditAccountRouterImpl(get()) }
 	factory<AddCategoryRouter> { AddCategoryRouterImpl(get()) }
 	factory<QrScannerRouter> { QrScannerRouterImpl(get()) }
 	factory<QrResultRouter> { QrResultRouterImpl(get()) }

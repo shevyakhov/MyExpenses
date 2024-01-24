@@ -1,5 +1,6 @@
 package com.chelz.shared.accounts.domain.di
 
+import com.chelz.shared.accounts.domain.usecase.ClearDataBaseUseCase
 import com.chelz.shared.accounts.domain.usecase.account.DeleteAccountUseCase
 import com.chelz.shared.accounts.domain.usecase.account.GetAccountByIdUseCase
 import com.chelz.shared.accounts.domain.usecase.account.GetAccountsWithUsersUseCase
@@ -49,4 +50,5 @@ val AccountsDomainModule = module {
 	factory { AddUserUseCase(get()) }
 	factory { UpdateUserUseCase(get()) }
 	factory { DeleteUserUseCase(get()) }
+	factory { ClearDataBaseUseCase(get()) }
 }

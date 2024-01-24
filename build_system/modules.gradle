@@ -8,6 +8,7 @@ ext.Modules = [
 		STATISTICS  : ":features:statistics",
 		PROFILE     : ":features:profile",
 		ACCOUNT_ADD : ":features:accountadd",
+		ACCOUNT_EDIT: ":features:accountedit",
 		CATEGORY_ADD: ":features:categoryadd",
 		QR_SCANNER  : ":features:qrscanner",
 		ONBOARDING  : ":features:onboarding",

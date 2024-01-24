@@ -32,7 +32,9 @@ import java.lang.StrictMath.abs
 
 internal fun MainLayoutBinding.bind(viewModel: HomeViewModel, viewLifecycleOwner: LifecycleOwner) {
 	val scope = viewLifecycleOwner.lifecycleScope
-	val accountAdapter = AccountViewPagerAdapter()
+	val accountAdapter = AccountViewPagerAdapter {
+		viewModel.navigateToEditAccount(it)
+	}
 	val operationAdapter = OperationAdapter()
 	screenName.setOnClickListener {
 		viewModel.navigateToAddAccount()

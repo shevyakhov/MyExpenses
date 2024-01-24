@@ -49,7 +49,7 @@ class AddAccountFragment : Fragment() {
 
 		bindData(scope)
 
-		binding.buttonAdd.setOnClickListener {
+		binding.buttonSave.setOnClickListener {
 			val emails = binding.usersChipGroup.children.map { (it as TextView).text.toString() }
 			viewModel.usersEmails.value = emails.toList()
 			viewModel.saveAccount()
