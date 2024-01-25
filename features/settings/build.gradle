@@ -1,0 +1,29 @@
+apply from: ModuleType.Library
+apply plugin: Plugins.GOOGLE_SERVICES
+dependencies {
+	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
+	implementation Dependencies.CORE
+	implementation Dependencies.APPCOMPAT
+	implementation Dependencies.MATERIAL
+	implementation Dependencies.FRAGMENT
+	implementation Dependencies.CONSTRAINT_LAYOUT
+	implementation Dependencies.KOIN_CORE
+	implementation Dependencies.KOIN_ANDROID
+	implementation Dependencies.RETROFIT
+	implementation Dependencies.OKHTTP_INTERCEPTOR
+	implementation Dependencies.GSON
+	implementation Dependencies.GSON_CONVERTER
+	implementation Dependencies.GLIDE
+	implementation Dependencies.CICERONE
+	implementation Dependencies.SLIDING
+	implementation Dependencies.JODA_TIME
+	implementation Dependencies.CHART
+	implementation platform(Dependencies.FIREBASE_BOM)
+	implementation Dependencies.FIREBASE_FIRESTORE
+	implementation Dependencies.FIREBASE_AUTH
+
+	implementation project(Modules.LIBRARIES.NAVIGATION)
+	implementation project(Modules.LIBRARIES.THEME)
+	implementation project(Modules.LIBRARIES.NETWORK)
+	implementation project(Modules.SHARED_MODULES.ACCOUNTS_DOMAIN)
+}

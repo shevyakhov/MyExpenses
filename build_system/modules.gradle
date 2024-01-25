@@ -14,6 +14,7 @@ ext.Modules = [
 		ONBOARDING  : ":features:onboarding",
 		REGISTRATION: ":features:registration",
 		LOGIN       : ":features:login",
+		SETTINGS    : ":features:settings",
 	],
 	LIBRARIES     : [
 		NAVIGATION: ":libraries:navigation",
