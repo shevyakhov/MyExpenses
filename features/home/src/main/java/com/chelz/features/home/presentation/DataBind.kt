@@ -2,6 +2,7 @@ package com.chelz.features.home.presentation
 
 import android.graphics.Color
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,58 +31,74 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import java.lang.StrictMath.abs
 
-internal fun MainLayoutBinding.bind(viewModel: HomeViewModel, viewLifecycleOwner: LifecycleOwner) {
+internal fun MainLayoutBinding.bind(
+	viewModel: HomeViewModel,
+	viewLifecycleOwner: LifecycleOwner,
+	isGraphVisible: Boolean,
+	isHistoryVisible: Boolean,
+	isStatsVisible: Boolean,
+) {
 	val scope = viewLifecycleOwner.lifecycleScope
+	chartWeekly.isVisible = isGraphVisible
+	todayStats.isVisible = isStatsVisible
+	rvOperations.isVisible = isHistoryVisible
+	rvText.isVisible = isHistoryVisible
+
 	val accountAdapter = AccountViewPagerAdapter {
 		viewModel.navigateToEditAccount(it)
 	}
-	val operationAdapter = OperationAdapter()
-	screenName.setOnClickListener {
-		viewModel.navigateToAddAccount()
-	}
-	rvOperations.layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
-	rvOperations.adapter = operationAdapter
-
-
-	viewModel.sharedOperationFlow.onEach {
-		operationAdapter.setNewData(it)
-		rvOperations.smoothSnapToPosition(0)
-	}.launchIn(scope)
-
-	viewModel.todaySpend.onEach {
-		statsQuantity.text = it.toString()
-	}.launchIn(scope)
-
-	viewModel.weekSpend.onEach { week ->
-		val labels: List<String> = listOf("", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс")
-		val entries: MutableList<Entry> = ArrayList()
-		for (day in 1..7) {
-			val list = week[day] ?: emptyList()
-			val totalSpendForDay = list.sumOf { abs(it.quantity) }
-			entries.add(Entry(day.toFloat(), totalSpendForDay.toFloat()))
+	if (isHistoryVisible) {
+		val operationAdapter = OperationAdapter()
+		screenName.setOnClickListener {
+			viewModel.navigateToAddAccount()
 		}
+		rvOperations.layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
+		rvOperations.adapter = operationAdapter
 
-		val lineDataSet = LineDataSet(entries, "Weekly Spend")
-		lineDataSet.color = Color.BLUE
-		lineDataSet.valueTextColor = Color.BLACK
-		lineDataSet.valueTextSize = 14f
-		lineDataSet.lineWidth = 2f
-		lineDataSet.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
-		lineDataSet.setCircleColors(Color.BLUE)
-		lineDataSet.circleRadius = 3f
-		val lineData = LineData(lineDataSet)
-		chartWeekly.data = lineData
 
-		val xAxis = chartWeekly.xAxis
-		xAxis.valueFormatter = IndexAxisValueFormatter(labels)
-		xAxis.textSize = 14f
+		viewModel.sharedOperationFlow.onEach {
+			operationAdapter.setNewData(it)
+			rvOperations.smoothSnapToPosition(0)
+		}.launchIn(scope)
+	}
 
-		val description = Description()
-		description.text = "Weekly Spend Progress"
-		chartWeekly.setExtraOffsets(10f, 10f, 10f, 20f)
-		chartWeekly.description = description
-		chartWeekly.invalidate()
-	}.launchIn(scope)
+	if (isStatsVisible) {
+		viewModel.todaySpend.onEach {
+			statsQuantity.text = it.toString()
+		}.launchIn(scope)
+	}
+	if (isGraphVisible) {
+		viewModel.weekSpend.onEach { week ->
+			val labels: List<String> = listOf("", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс")
+			val entries: MutableList<Entry> = ArrayList()
+			for (day in 1..7) {
+				val list = week[day] ?: emptyList()
+				val totalSpendForDay = list.sumOf { abs(it.quantity) }
+				entries.add(Entry(day.toFloat(), totalSpendForDay.toFloat()))
+			}
+
+			val lineDataSet = LineDataSet(entries, "Weekly Spend")
+			lineDataSet.color = Color.BLUE
+			lineDataSet.valueTextColor = Color.BLACK
+			lineDataSet.valueTextSize = 14f
+			lineDataSet.lineWidth = 2f
+			lineDataSet.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
+			lineDataSet.setCircleColors(Color.BLUE)
+			lineDataSet.circleRadius = 3f
+			val lineData = LineData(lineDataSet)
+			chartWeekly.data = lineData
+
+			val xAxis = chartWeekly.xAxis
+			xAxis.valueFormatter = IndexAxisValueFormatter(labels)
+			xAxis.textSize = 14f
+
+			val description = Description()
+			description.text = "Weekly Spend Progress"
+			chartWeekly.setExtraOffsets(10f, 10f, 10f, 20f)
+			chartWeekly.description = description
+			chartWeekly.invalidate()
+		}.launchIn(scope)
+	}
 
 	val itemDecoration = HorizontalMarginItemDecoration(root.context, R.dimen.viewpager_current_item_horizontal_margin)
 	accountViewPager.adapter = accountAdapter

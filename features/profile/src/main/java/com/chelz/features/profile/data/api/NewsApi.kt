@@ -9,7 +9,7 @@ interface NewsApi {
 	@GET("./everything")
 	suspend fun searchArticles(
 		@Query("apiKey") apiKey: String? = null,
-		@Query("q") query: String = "финансы",
+		@Query("q") query: String = "финанс",
 		@Query("searchIn") searchIn: String? = null,
 		@Query("sources") sources: String? = null,
 		@Query("domains") domains: String? = null,

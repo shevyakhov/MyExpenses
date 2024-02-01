@@ -11,6 +11,7 @@ import com.chelz.features.profile.presentation.navigation.ProfileRouter
 import com.chelz.features.qrscanner.presentation.result.navigation.QrResultRouter
 import com.chelz.features.qrscanner.presentation.scanner.navigation.QrScannerRouter
 import com.chelz.features.registration.presentation.navigation.RegistrationRouter
+import com.chelz.features.settings.presentation.navigation.SettingsRouter
 import com.chelz.features.splash.presentation.navigation.SplashRouter
 import com.chelz.features.statistics.presentation.navigation.StatisticsRouter
 import com.chelz.login.presentation.navigation.LoginRouter
@@ -31,4 +32,5 @@ val RouterModule = module {
 	factory<AddCategoryRouter> { AddCategoryRouterImpl(get()) }
 	factory<QrScannerRouter> { QrScannerRouterImpl(get()) }
 	factory<QrResultRouter> { QrResultRouterImpl(get()) }
+	factory<SettingsRouter> { SettingsRouterImpl(get()) }
 }

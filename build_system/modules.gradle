@@ -14,11 +14,13 @@ ext.Modules = [
 		ONBOARDING  : ":features:onboarding",
 		REGISTRATION: ":features:registration",
 		LOGIN       : ":features:login",
+		SETTINGS    : ":features:settings",
 	],
 	LIBRARIES     : [
-		NAVIGATION: ":libraries:navigation",
-		THEME     : ":libraries:theme",
-		NETWORK   : ":libraries:network",
+		NAVIGATION  : ":libraries:navigation",
+		THEME       : ":libraries:theme",
+		NETWORK     : ":libraries:network",
+		NOTIFICATION: ":libraries:notification",
 	],
 	SHARED_MODULES: [
 		ACCOUNTS_DOMAIN: ":shared:accounts:domain",

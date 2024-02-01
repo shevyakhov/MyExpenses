@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<com.google.android.material.appbar.AppBarLayout
+		android:id="@+id/topAppBarLayout"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/height_65"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<TextView
+				android:id="@+id/screenName"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:layout_marginStart="@dimen/spacing_15"
+				android:gravity="center"
+				android:text="@string/settings"
+				android:textSize="30sp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</com.google.android.material.appbar.AppBarLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:padding="20dp"
+		app:layout_constraintTop_toBottomOf="@id/topAppBarLayout">
+
+		<androidx.appcompat.widget.SwitchCompat
+			android:id="@+id/switchHistory"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:text="@string/show_history" />
+
+		<androidx.appcompat.widget.SwitchCompat
+			android:id="@+id/switchTodayStats"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:text="@string/show_today_stats" />
+
+		<androidx.appcompat.widget.SwitchCompat
+			android:id="@+id/switchGraphs"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:text="@string/switchGraphs" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="8dp"
+			android:text="@string/notification_arrival_time"
+			android:textSize="16sp" />
+
+		<TimePicker
+
+			android:id="@+id/timePickerNotification"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:timePickerMode="spinner" />
+
+		<androidx.appcompat.widget.SwitchCompat
+			android:id="@+id/switchDailyExpenseReminder"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:text="@string/daily_expense_reminder" />
+
+		<!-- Switch for Weekly Stats Reminder -->
+		<androidx.appcompat.widget.SwitchCompat
+			android:id="@+id/switchWeeklyStatsReminder"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:text="@string/weekly_look_at_stats_reminder" />
+
+		<Button
+			android:id="@+id/buttonSave"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:layout_marginTop="16dp"
+			android:text="Save Settings" />
+	</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

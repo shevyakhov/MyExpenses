@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="settings">Настройки</string>
+	<string name="switchGraphs">Показывать графики на главном экране</string>
+	<string name="show_today_stats">Показывать сегодняшние траты</string>
+	<string name="show_history">Показывать историю трат</string>
+	<string name="notification_arrival_time">Желаемое время получения уведомлений</string>
+	<string name="daily_expense_reminder">Ежедневное напоминание о добавлении трат</string>
+	<string name="weekly_look_at_stats_reminder">Еженедельное напоминание о просмотре статистики</string>
+	<string name="daily_expense_message">Ежедневное напоминание о добавлении трат</string>
+	<string name="weekly_look_at_stats_message">Еженедельное напоминание о просмотре статистики</string>
+</resources>
