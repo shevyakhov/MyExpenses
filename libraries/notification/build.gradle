@@ -21,10 +21,5 @@ dependencies {
 	implementation platform(Dependencies.FIREBASE_BOM)
 	implementation Dependencies.FIREBASE_FIRESTORE
 	implementation Dependencies.FIREBASE_AUTH
-
-	implementation project(Modules.LIBRARIES.NAVIGATION)
-	implementation project(Modules.LIBRARIES.THEME)
-	implementation project(Modules.LIBRARIES.NETWORK)
-	implementation project(Modules.LIBRARIES.NOTIFICATION)
-	implementation project(Modules.SHARED_MODULES.ACCOUNTS_DOMAIN)
+	implementation Dependencies.FIREBASE_AUTH
 }

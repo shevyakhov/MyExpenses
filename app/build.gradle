@@ -15,6 +15,7 @@ dependencies {
 	implementation Dependencies.OKHTTP_INTERCEPTOR
 	implementation Dependencies.GSON
 	implementation Dependencies.GSON_CONVERTER
+	implementation Dependencies.JODA_TIME
 	implementation Dependencies.FIREBASE_AUTH
 	implementation platform(Dependencies.FIREBASE_BOM)
 

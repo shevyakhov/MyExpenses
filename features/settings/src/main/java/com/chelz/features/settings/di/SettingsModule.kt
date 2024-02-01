@@ -9,7 +9,8 @@ val SettingsModule = module {
 	viewModel {
 		SettingsViewModel(
 			router = get(),
-			application = androidApplication()
+			application = androidApplication(),
+			notificationManager = get()
 		)
 	}
 }

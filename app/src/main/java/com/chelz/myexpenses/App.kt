@@ -14,6 +14,7 @@ import com.chelz.features.registration.di.RegistrationModule
 import com.chelz.features.settings.di.SettingsModule
 import com.chelz.features.splash.di.SplashModule
 import com.chelz.features.statistics.di.StatisticsModule
+import com.chelz.libraries.notification.NotificationModule
 import com.chelz.login.di.LoginModule
 import com.chelz.myexpenses.BuildConfig.NEWS_KEY
 import com.chelz.myexpenses.BuildConfig.NEWS_URL
@@ -48,6 +49,7 @@ class App : Application() {
 			modules(AppModule)
 			modules(RouterModule)
 			modules(NetworkModule)
+			modules(NotificationModule)
 
 			modules(MainFragmentModule)
 			modules(SplashModule)

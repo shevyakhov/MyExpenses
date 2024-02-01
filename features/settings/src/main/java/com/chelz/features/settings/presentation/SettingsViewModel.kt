@@ -5,18 +5,22 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.chelz.features.settings.presentation.navigation.SettingsRouter
+import com.chelz.libraries.notification.LocalNotificationManager
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class SettingsViewModel(
 	private val router: SettingsRouter,
 	private val application: Application,
+	private val notificationManager: LocalNotificationManager,
 ) : AndroidViewModel(application) {
 
 	companion object {
 
 		const val TIME_PREFERENCE = "TIME_PREFERENCE"
 		const val TIME_PREFERENCE_KEY = "TIME_PREFERENCE_KEY"
+		const val DAILY_NOTIFY = 0
+		const val WEEKLY_NOTIFY = 1
 
 		const val SETTINGS_PREFERENCE = "SETTINGS_PREFERENCE"
 		const val GRAPHS = "switchGraphsFlow"
@@ -51,16 +55,6 @@ class SettingsViewModel(
 			editor.putString(TIME_PREFERENCE_KEY, it)
 		}
 		editor.apply()
-		/*items.forEach {
-			if (it.remindIn != null && it.bestBefore != null) {
-				notificationManager.scheduleNotification(
-					it.foodId!!,
-					it.name,
-					it.bestBefore,
-					it.remindIn
-				)
-			}
-		}*/
 	}
 
 	fun getPreferredTime(): String? {
@@ -109,6 +103,13 @@ class SettingsViewModel(
 		val editor = sharedPreferences.edit()
 
 		switchDailyExpenseReminderFlow.value.let {
+			if (it) {
+				notificationManager.scheduleDailyNotification(
+					preferredTimeFlow.value ?: "14:00"
+				)
+			} else {
+				notificationManager.cancelNotification(DAILY_NOTIFY)
+			}
 			editor.putBoolean(DAILY, it)
 		}
 		editor.apply()
@@ -118,7 +119,7 @@ class SettingsViewModel(
 		return application
 			.applicationContext
 			.getSharedPreferences(SETTINGS_PREFERENCE, Context.MODE_PRIVATE)
-			.getBoolean(DAILY, true)
+			.getBoolean(DAILY, false)
 	}
 
 	fun saveSwitchWeeklyStatsReminderFlow() = viewModelScope.launch {
@@ -126,6 +127,14 @@ class SettingsViewModel(
 		val editor = sharedPreferences.edit()
 
 		switchWeeklyStatsReminderFlow.value.let {
+			if (it) {
+				notificationManager.scheduleWeeklyNotification(
+					7,
+					preferredTimeFlow.value ?: "14:00"
+				)
+			} else {
+				notificationManager.cancelNotification(WEEKLY_NOTIFY)
+			}
 			editor.putBoolean(WEEKLY, it)
 		}
 		editor.apply()
@@ -135,7 +144,7 @@ class SettingsViewModel(
 		return application
 			.applicationContext
 			.getSharedPreferences(SETTINGS_PREFERENCE, Context.MODE_PRIVATE)
-			.getBoolean(WEEKLY, true)
+			.getBoolean(WEEKLY, false)
 	}
 
 	fun saveSwitchTodayStatsFlow() = viewModelScope.launch {

@@ -1,9 +1,11 @@
 package com.chelz.features.settings.presentation
 
+import android.Manifest
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.chelz.features.settings.databinding.FragmentSettingsBinding
@@ -14,6 +16,11 @@ class SettingsFragment : Fragment() {
 	private var _binding: FragmentSettingsBinding? = null
 	private val binding get() = _binding!!
 	private val viewModel by viewModel<SettingsViewModel>()
+	private var notificationEnabled = false
+	private val requestPermissionLauncher =
+		registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+			notificationEnabled = isGranted
+		}
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
@@ -43,10 +50,16 @@ class SettingsFragment : Fragment() {
 			viewModel.switchHistoryFlow.value = b
 		}
 		binding.switchDailyExpenseReminder.setOnCheckedChangeListener { _, b ->
-			viewModel.switchDailyExpenseReminderFlow.value = b
+			requestPermissionLauncher.launch(Manifest.permission.SET_ALARM)
+			if (notificationEnabled) {
+				viewModel.switchDailyExpenseReminderFlow.value = b
+			}
 		}
 		binding.switchWeeklyStatsReminder.setOnCheckedChangeListener { _, b ->
-			viewModel.switchWeeklyStatsReminderFlow.value = b
+			requestPermissionLauncher.launch(Manifest.permission.SET_ALARM)
+			if (notificationEnabled) {
+				viewModel.switchWeeklyStatsReminderFlow.value = b
+			}
 		}
 		binding.switchTodayStats.setOnCheckedChangeListener { _, b ->
 			viewModel.switchTodayStatsFlow.value = b

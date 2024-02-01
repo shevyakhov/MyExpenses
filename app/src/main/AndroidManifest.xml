@@ -4,7 +4,11 @@
 	package="com.chelz.myexpenses">
 
 	<uses-feature android:name="android.hardware.camera.any" />
+
+	<uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 	<uses-permission android:name="android.permission.CAMERA" />
+
 	<application
 		android:name=".App"
 		android:allowBackup="true"
@@ -29,6 +33,16 @@
 				android:name="android.app.lib_name"
 				android:value="" />
 		</activity>
+
+		<receiver
+			android:name="com.chelz.libraries.notification.AlarmReceiver"
+			android:enabled="true"
+			android:exported="false"
+			android:permission="com.android.alarm.permission.SET_ALARM">
+			<intent-filter>
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</receiver>
 	</application>
 
 </manifest>
