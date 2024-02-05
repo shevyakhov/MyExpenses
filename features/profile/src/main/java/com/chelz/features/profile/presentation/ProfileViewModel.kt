@@ -80,7 +80,10 @@ class ProfileViewModel(
 		updateAccounts().await()
 		updateOperation().await()
 		updateCategory()
-		newsFlow.value = newsUseCase.invoke().articles
+		val finance = newsUseCase.invoke().articles.filter { it.url?.contains("https://") == true }
+		val money = newsUseCase.invoke(query = "экономить").articles.filter { it.url?.contains("https://") == true }
+		val invest = newsUseCase.invoke(query = "инвестиции").articles.filter { it.url?.contains("https://") == true }
+		newsFlow.value = (money + invest + finance).sortedByDescending { it.publishedAt }
 
 		fullAccountsFlow.value.filterIsInstance<SharedAccountItem>().map { it.operations.toOperationItem() }.flatten()
 		sharedAccountsCollection.whereArrayContains(

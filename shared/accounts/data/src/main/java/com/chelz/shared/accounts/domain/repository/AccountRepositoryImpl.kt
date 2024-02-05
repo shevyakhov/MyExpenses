@@ -2,21 +2,27 @@ package com.chelz.shared.accounts.domain.repository
 
 import com.chelz.shared.accounts.domain.datasource.AccountDataSource
 import com.chelz.shared.accounts.domain.datasource.CategoryDataSource
+import com.chelz.shared.accounts.domain.datasource.MonthGoalDataSource
 import com.chelz.shared.accounts.domain.datasource.OperationDataSource
 import com.chelz.shared.accounts.domain.datasource.UserDataSource
 import com.chelz.shared.accounts.domain.entity.Account
 import com.chelz.shared.accounts.domain.entity.AccountWithUsers
 import com.chelz.shared.accounts.domain.entity.Category
+import com.chelz.shared.accounts.domain.entity.MonthGoal
 import com.chelz.shared.accounts.domain.entity.Operation
 import com.chelz.shared.accounts.domain.entity.User
 import com.chelz.shared.accounts.domain.mapper.toDto
 import com.chelz.shared.accounts.domain.mapper.toEntity
+import com.chelz.shared.accounts.domain.mapper.toMonthGoalDto
+import com.chelz.shared.accounts.domain.mapper.toMonthGoalEntities
+import com.chelz.shared.accounts.domain.mapper.toMonthGoalEntity
 
 class AccountRepositoryImpl(
 	private val accountDataSource: AccountDataSource,
 	private val operationDataSource: OperationDataSource,
 	private val categoryDataSource: CategoryDataSource,
 	private val userDataSource: UserDataSource,
+	private val monthGoalDataSource: MonthGoalDataSource,
 ) : AccountRepository {
 
 	override suspend fun getAllAccounts(): List<Account> =
@@ -85,6 +91,35 @@ class AccountRepositoryImpl(
 
 	override suspend fun updateUser(user: User) {
 		userDataSource.updateUser(user.toDto())
+	}
+
+	override suspend fun insertMonthGoal(monthGoal: MonthGoal) {
+		val monthGoalDto = monthGoal.toMonthGoalDto()
+		monthGoalDataSource.insertMonthGoal(monthGoalDto)
+	}
+
+	override suspend fun getMonthGoalById(id: Long): MonthGoal? {
+		val monthGoalDto = monthGoalDataSource.getMonthGoalById(id)
+		return monthGoalDto?.toMonthGoalEntity()
+	}
+
+	override suspend fun getMonthGoalByAccountAndCategory(accountId: Long, categoryId: Long, yearMonth: String): MonthGoal? {
+		val monthGoalDto = monthGoalDataSource.getMonthGoalByAccountAndCategory(accountId, categoryId, yearMonth)
+		return monthGoalDto?.toMonthGoalEntity()
+	}
+
+	override suspend fun getAllMonthGoals(): List<MonthGoal> {
+		val monthGoalDtos = monthGoalDataSource.getAllMonthGoals()
+		return monthGoalDtos.toMonthGoalEntities()
+	}
+
+	override suspend fun updateMonthGoal(monthGoal: MonthGoal) {
+		val monthGoalDto = monthGoal.toMonthGoalDto()
+		monthGoalDataSource.updateMonthGoal(monthGoalDto)
+	}
+
+	override suspend fun deleteMonthGoalById(id: Long) {
+		monthGoalDataSource.deleteMonthGoalById(id)
 	}
 
 	override suspend fun deleteUser(user: User) {

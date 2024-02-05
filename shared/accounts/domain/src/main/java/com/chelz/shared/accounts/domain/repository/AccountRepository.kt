@@ -3,6 +3,7 @@ package com.chelz.shared.accounts.domain.repository
 import com.chelz.shared.accounts.domain.entity.Account
 import com.chelz.shared.accounts.domain.entity.AccountWithUsers
 import com.chelz.shared.accounts.domain.entity.Category
+import com.chelz.shared.accounts.domain.entity.MonthGoal
 import com.chelz.shared.accounts.domain.entity.Operation
 import com.chelz.shared.accounts.domain.entity.User
 
@@ -35,6 +36,13 @@ interface AccountRepository {
 	suspend fun addUser(user: User)
 	suspend fun updateUser(user: User)
 	suspend fun deleteUser(user: User)
+
+	suspend fun insertMonthGoal(monthGoal: MonthGoal)
+	suspend fun getMonthGoalById(id: Long): MonthGoal?
+	suspend fun getMonthGoalByAccountAndCategory(accountId: Long, categoryId: Long, yearMonth: String): MonthGoal?
+	suspend fun getAllMonthGoals(): List<MonthGoal>
+	suspend fun updateMonthGoal(monthGoal: MonthGoal)
+	suspend fun deleteMonthGoalById(id: Long)
 
 	suspend fun clearDatabase()
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="MyMonthYearPickerDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+		<item name="headerBackgroundColor">?colorPrimaryContainer</item>
+		<item name="headerTextColor">?colorPrimary</item>
+		<item name="headerTextColorSelected">?colorOnPrimaryContainer</item>
+
+		<!-- Month Style -->
+		<item name="monthBackgroundColorSelected">?colorSecondaryContainer</item>
+		<item name="monthTextColor">?colorSecondary</item>
+		<item name="monthTextColorDisabled">?colorTertiary</item>
+		<item name="monthTextColorSelected">?colorError</item>
+
+		<!-- Year Style -->
+		<item name="yearTextColor">?colorSecondary</item>
+		<item name="yearTextColorSelected">?colorPrimary</item>
+	</style>
+</resources>

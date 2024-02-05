@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginHorizontal="@dimen/height_20"
+	android:orientation="horizontal"
+	android:paddingHorizontal="@dimen/spacing_10"
+	android:paddingVertical="@dimen/spacing_5">
+
+	<androidx.cardview.widget.CardView
+		android:id="@+id/background"
+		android:layout_width="@dimen/height_80"
+		android:layout_height="@dimen/height_80"
+		android:layout_gravity="center"
+		app:cardCornerRadius="@dimen/spacing_10">
+
+		<TextView
+			android:id="@+id/categoryLetter"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:gravity="center"
+			android:padding="@dimen/spacing_10"
+			android:textSize="20sp"
+			tools:text="L" />
+
+	</androidx.cardview.widget.CardView>
+
+	<TextView
+		android:id="@+id/category"
+		style="@style/TextAppearance.AppCompat.Title"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:layout_marginHorizontal="@dimen/spacing_16"
+		android:layout_marginTop="3dp"
+		android:gravity="center"
+		android:textSize="12sp"
+		tools:text="blablabla" />
+
+</LinearLayout>
