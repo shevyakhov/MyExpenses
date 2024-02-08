@@ -76,6 +76,7 @@ class PlanningViewModel(
 
 	val currentAccount = MutableStateFlow<AccountItem?>(null)
 	val currentCategory = MutableStateFlow<Category?>(null)
+	val currentCalendar = MutableStateFlow<String>(DateTime.now().toString("MM-YYYY"))
 
 	private val sharedAccountsCollection = store.collection(SharedAccountConstants.SHARED_ACCOUNTS_TABLE)
 
@@ -244,4 +245,26 @@ class PlanningViewModel(
 			OperationItem(it.id, it.name, it.quantity, category, it.date, account.name)
 		}.sortedByDescending { it.id }
 	}.await()
+
+	fun insertGoal(goal: Pair<String, String>) {
+		viewModelScope.launch {
+			val monthGoal = MonthGoal(
+				id = 0,
+				goal.first,
+				currentAccount.value?.name ?: return@launch,
+				currentCategory.value?.name.toString(),
+				monthlyLimit = goal.second.toDouble(),
+				yearMonth = currentCalendar.value
+			)
+			insertMonthGoalUseCase.invoke(monthGoal)
+			getAllMonthGoals()
+		}
+	}
+
+	fun deleteGoal(goal: MonthGoal) {
+		viewModelScope.launch {
+			deleteMonthGoalByIdUseCase.invoke(goal.id)
+			getAllMonthGoals()
+		}
+	}
 }

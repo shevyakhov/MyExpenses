@@ -7,6 +7,7 @@ fun MonthGoalDto.toMonthGoalEntity(): MonthGoal {
 	return MonthGoal(
 		id = this.monthGoalId,
 		account = this.account,
+		title = this.title,
 		category = this.category,
 		monthlyLimit = this.monthlyLimit,
 		yearMonth = this.yearMonth
@@ -21,6 +22,7 @@ fun MonthGoal.toMonthGoalDto(): MonthGoalDto {
 	return MonthGoalDto(
 		monthGoalId = this.id,
 		account = this.account,
+		title = this.title,
 		category = this.category,
 		monthlyLimit = this.monthlyLimit,
 		yearMonth = this.yearMonth

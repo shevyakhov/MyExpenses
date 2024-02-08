@@ -20,4 +20,9 @@
 	<string name="categories">Категории</string>
 	<string name="earnings">Доход</string>
 	<string name="progress">Ваш прогресс</string>
+	<string name="addGoal">Добавить цель на период</string>
+	<string name="are_you_sure">Вы уверены?</string>
+	<string name="delete_goal">Вы удалите цель на данный месяц</string>
+	<string name="total_sum">Итоговая сумма</string>
+	<string name="delete">Удалить</string>
 </resources>

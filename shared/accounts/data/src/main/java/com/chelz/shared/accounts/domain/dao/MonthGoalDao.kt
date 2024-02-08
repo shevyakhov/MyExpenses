@@ -17,7 +17,7 @@ interface MonthGoalDao {
 	suspend fun getMonthGoalById(id: Long): MonthGoalDto?
 
 	@Query("SELECT * FROM MonthGoals WHERE account = :accountId AND category = :categoryId AND yearMonth = :yearMonth")
-	suspend fun getMonthGoalByAccountAndCategory(accountId: Long, categoryId: Long, yearMonth: String): MonthGoalDto?
+	suspend fun getMonthGoalByAccountAndCategory(accountId: String, categoryId: String, yearMonth: String): MonthGoalDto?
 
 	@Query("SELECT * FROM MonthGoals")
 	suspend fun getAllMonthGoals(): List<MonthGoalDto>

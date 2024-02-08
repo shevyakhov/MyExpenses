@@ -103,7 +103,7 @@ class AccountRepositoryImpl(
 		return monthGoalDto?.toMonthGoalEntity()
 	}
 
-	override suspend fun getMonthGoalByAccountAndCategory(accountId: Long, categoryId: Long, yearMonth: String): MonthGoal? {
+	override suspend fun getMonthGoalByAccountAndCategory(accountId: String, categoryId: String, yearMonth: String): MonthGoal? {
 		val monthGoalDto = monthGoalDataSource.getMonthGoalByAccountAndCategory(accountId, categoryId, yearMonth)
 		return monthGoalDto?.toMonthGoalEntity()
 	}

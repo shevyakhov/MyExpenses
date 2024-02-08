@@ -39,7 +39,7 @@ interface AccountRepository {
 
 	suspend fun insertMonthGoal(monthGoal: MonthGoal)
 	suspend fun getMonthGoalById(id: Long): MonthGoal?
-	suspend fun getMonthGoalByAccountAndCategory(accountId: Long, categoryId: Long, yearMonth: String): MonthGoal?
+	suspend fun getMonthGoalByAccountAndCategory(accountId: String, categoryId: String, yearMonth: String): MonthGoal?
 	suspend fun getAllMonthGoals(): List<MonthGoal>
 	suspend fun updateMonthGoal(monthGoal: MonthGoal)
 	suspend fun deleteMonthGoalById(id: Long)

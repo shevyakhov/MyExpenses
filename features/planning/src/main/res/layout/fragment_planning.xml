@@ -109,7 +109,7 @@
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintTop_toTopOf="@id/category" />
 
-		<com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
+		<androidx.viewpager2.widget.ViewPager2
 			android:id="@+id/rv_categories"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -125,24 +125,59 @@
 			android:orientation="vertical"
 			app:layout_constraintTop_toBottomOf="@id/rv_categories">
 
-			<TextView
-				android:id="@+id/progress_label"
+			<FrameLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="@dimen/spacing_20"
-				android:text="@string/progress"
-				android:textSize="26sp"
-				android:textStyle="bold"
-				app:layout_constraintTop_toBottomOf="@id/accountViewPager" />
+				android:orientation="horizontal">
 
-			<com.google.android.material.progressindicator.LinearProgressIndicator
-				android:layout_width="match_parent"
-				android:layout_height="@dimen/spacing_4" />
+				<TextView
+					android:id="@+id/progress_label"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_vertical"
+					android:text="@string/progress"
+					android:textSize="26sp"
+					android:textStyle="bold" />
 
-			<com.github.mikephil.charting.charts.LineChart
+				<ImageButton
+					android:id="@+id/deleteGoal"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="end|center_vertical"
+					android:src="@android:drawable/ic_menu_delete" />
+
+				<com.google.android.material.progressindicator.LinearProgressIndicator
+					android:id="@+id/progress_horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="@dimen/spacing_4"
+					android:layout_gravity="bottom"
+					android:paddingTop="@dimen/spacing_10"
+					android:progressDrawable="@drawable/progress_drawable" />
+			</FrameLayout>
+
+
+			<FrameLayout
 				android:layout_width="match_parent"
-				android:layout_height="0dp"
-				android:minHeight="300dp" />
+				android:layout_height="wrap_content"
+				android:paddingVertical="@dimen/spacing_10">
+
+				<com.github.mikephil.charting.charts.LineChart
+					android:id="@+id/lineChart"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:minHeight="300dp" />
+
+				<Button
+					android:id="@+id/buttonAddGoal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_marginVertical="@dimen/height_50"
+					android:text="@string/addGoal"
+					android:visibility="gone" />
+			</FrameLayout>
+
+
 		</LinearLayout>
 
 	</androidx.constraintlayout.widget.ConstraintLayout>

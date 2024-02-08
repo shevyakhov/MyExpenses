@@ -19,7 +19,7 @@ class MonthGoalDataSourceImpl(private val monthGoalDao: MonthGoalDao) : MonthGoa
 		}
 	}
 
-	override suspend fun getMonthGoalByAccountAndCategory(accountId: Long, categoryId: Long, yearMonth: String): MonthGoalDto? {
+	override suspend fun getMonthGoalByAccountAndCategory(accountId: String, categoryId: String, yearMonth: String): MonthGoalDto? {
 		return withContext(Dispatchers.IO) {
 			monthGoalDao.getMonthGoalByAccountAndCategory(accountId, categoryId, yearMonth)
 		}
