@@ -80,7 +80,7 @@ class ProfileViewModel(
 		updateAccounts().await()
 		updateOperation().await()
 		updateCategory()
-		newsFlow.value = newsUseCase.invoke().articles
+		updateNews()
 
 		fullAccountsFlow.value.filterIsInstance<SharedAccountItem>().map { it.operations.toOperationItem() }.flatten()
 		sharedAccountsCollection.whereArrayContains(
@@ -107,6 +107,13 @@ class ProfileViewModel(
 				updateOperation().await()
 			}
 		}
+	}
+
+	private suspend fun updateNews() = viewModelScope.launch(handler) {
+		val finance = newsUseCase.invoke().articles.filter { it.url?.contains("https://") == true }
+		val money = newsUseCase.invoke(query = "экономить").articles.filter { it.url?.contains("https://") == true }
+		val invest = newsUseCase.invoke(query = "инвестиции").articles.filter { it.url?.contains("https://") == true }
+		newsFlow.value = (money + invest + finance).sortedByDescending { it.publishedAt }
 	}
 
 	private suspend fun updateOperation() = viewModelScope.async {

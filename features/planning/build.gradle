@@ -1,5 +1,5 @@
 apply from: ModuleType.Library
-
+apply plugin: Plugins.GOOGLE_SERVICES
 dependencies {
 	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
 	implementation Dependencies.CORE
@@ -15,7 +15,18 @@ dependencies {
 	implementation Dependencies.GSON_CONVERTER
 	implementation Dependencies.GLIDE
 	implementation Dependencies.CICERONE
+	implementation Dependencies.SLIDING
+	implementation Dependencies.JODA_TIME
+	implementation Dependencies.CHART
+	implementation platform(Dependencies.FIREBASE_BOM)
+	implementation Dependencies.FIREBASE_FIRESTORE
+	implementation Dependencies.FIREBASE_AUTH
+	implementation 'com.github.sparrow007:carouselrecyclerview:1.2.6'
+	implementation 'io.github.dzmitry-lakisau:month-year-picker-dialog:1.0.0'
+
 
 	implementation project(Modules.LIBRARIES.NAVIGATION)
 	implementation project(Modules.LIBRARIES.THEME)
+	implementation project(Modules.LIBRARIES.NETWORK)
+	implementation project(Modules.SHARED_MODULES.ACCOUNTS_DOMAIN)
 }

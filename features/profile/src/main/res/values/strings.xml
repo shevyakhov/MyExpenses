@@ -15,5 +15,5 @@
 	<string name="logout_message">Данные о локальных операциях/счетах/категориях останутся в памяти устройства.</string>
 	<string name="logout_message_after">Удалить их!</string>
 	<string name="logout_title">Выйти из аккаунта?</string>
-	<string name="news">Новости дня</string>
+	<string name="news">Популярные новости</string>
 </resources>

@@ -6,6 +6,8 @@ import com.chelz.shared.accounts.domain.datasource.AccountDataSource
 import com.chelz.shared.accounts.domain.datasource.AccountDataSourceImpl
 import com.chelz.shared.accounts.domain.datasource.CategoryDataSource
 import com.chelz.shared.accounts.domain.datasource.CategoryDataSourceImpl
+import com.chelz.shared.accounts.domain.datasource.MonthGoalDataSource
+import com.chelz.shared.accounts.domain.datasource.MonthGoalDataSourceImpl
 import com.chelz.shared.accounts.domain.datasource.OperationDataSource
 import com.chelz.shared.accounts.domain.datasource.OperationDataSourceImpl
 import com.chelz.shared.accounts.domain.datasource.UserDataSource
@@ -28,10 +30,12 @@ internal val DaoModule = module {
 	single { get<AccountsDatabase>().categoryDao() }
 	single { get<AccountsDatabase>().operationDao() }
 	single { get<AccountsDatabase>().userDao() }
+	single { get<AccountsDatabase>().goalDao() }
 }
 
 internal val DataSourceModule = module {
 	single<AccountDataSource> { AccountDataSourceImpl(get()) }
+	single<MonthGoalDataSource> { MonthGoalDataSourceImpl(get()) }
 	single<CategoryDataSource> { CategoryDataSourceImpl(get()) }
 	single<OperationDataSource> { OperationDataSourceImpl(get()) }
 	single<UserDataSource> { UserDataSourceImpl(get()) }
@@ -43,7 +47,8 @@ internal val RepositoryModule = module {
 			accountDataSource = get(),
 			operationDataSource = get(),
 			categoryDataSource = get(),
-			userDataSource = get()
+			userDataSource = get(),
+			monthGoalDataSource = get()
 		)
 	}
 

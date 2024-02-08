@@ -1,6 +1,12 @@
 package com.chelz.shared.accounts.domain.di
 
 import com.chelz.shared.accounts.domain.usecase.ClearDataBaseUseCase
+import com.chelz.shared.accounts.domain.usecase.DeleteMonthGoalByIdUseCase
+import com.chelz.shared.accounts.domain.usecase.GetAllMonthGoalsUseCase
+import com.chelz.shared.accounts.domain.usecase.GetMonthGoalByAccountAndCategoryUseCase
+import com.chelz.shared.accounts.domain.usecase.GetMonthGoalByIdUseCase
+import com.chelz.shared.accounts.domain.usecase.InsertMonthGoalUseCase
+import com.chelz.shared.accounts.domain.usecase.UpdateMonthGoalUseCase
 import com.chelz.shared.accounts.domain.usecase.account.DeleteAccountUseCase
 import com.chelz.shared.accounts.domain.usecase.account.GetAccountByIdUseCase
 import com.chelz.shared.accounts.domain.usecase.account.GetAccountsWithUsersUseCase
@@ -51,4 +57,11 @@ val AccountsDomainModule = module {
 	factory { UpdateUserUseCase(get()) }
 	factory { DeleteUserUseCase(get()) }
 	factory { ClearDataBaseUseCase(get()) }
+
+	factory { InsertMonthGoalUseCase(get()) }
+	factory { GetMonthGoalByIdUseCase(get()) }
+	factory { GetMonthGoalByAccountAndCategoryUseCase(get()) }
+	factory { GetAllMonthGoalsUseCase(get()) }
+	factory { UpdateMonthGoalUseCase(get()) }
+	factory { DeleteMonthGoalByIdUseCase(get()) }
 }

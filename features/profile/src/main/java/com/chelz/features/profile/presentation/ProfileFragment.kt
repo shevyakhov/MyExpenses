@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.text.bold
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -55,6 +56,7 @@ class ProfileFragment : Fragment() {
 			false
 		)
 		viewModel.newsFlow.onEach {
+			binding.newsLabel.isVisible = it.isNotEmpty()
 			newsAdapter.submitData(it)
 		}.launchIn(scope)
 
