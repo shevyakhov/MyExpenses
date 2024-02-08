@@ -146,13 +146,13 @@
 					android:layout_gravity="end|center_vertical"
 					android:src="@android:drawable/ic_menu_delete" />
 
-				<com.google.android.material.progressindicator.LinearProgressIndicator
+				<com.chelz.features.planning.presentation.CustomProgressBar
 					android:id="@+id/progress_horizontal"
+					style="?android:attr/progressBarStyleHorizontal"
 					android:layout_width="match_parent"
 					android:layout_height="@dimen/spacing_4"
 					android:layout_gravity="bottom"
-					android:paddingTop="@dimen/spacing_10"
-					android:progressDrawable="@drawable/progress_drawable" />
+					android:max="100" />
 			</FrameLayout>
 
 

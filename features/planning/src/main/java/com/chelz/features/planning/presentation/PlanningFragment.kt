@@ -278,7 +278,7 @@ class PlanningFragment : Fragment() {
 		} else {
 			limitLineValue * 1.05f
 		}
-		binding.progressHorizontal.progress = (currentSum / goal.monthlyLimit * 100).toInt()
+		binding.progressHorizontal.setProgressSmoothly(currentSum / goal.monthlyLimit * 100)
 		binding.lineChart.apply {
 			axisLeft.removeAllLimitLines()
 			description.isEnabled = false
