@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
+import androidx.core.text.bold
+import androidx.core.text.buildSpannedString
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
 import androidx.fragment.app.Fragment
@@ -20,7 +22,6 @@ import com.chelz.features.planning.databinding.FragmentPlanningBinding
 import com.chelz.features.planning.presentation.adapter.AccountPlanningViewPagerAdapter
 import com.chelz.features.planning.presentation.adapter.CategoryPlanningAdapter
 import com.chelz.features.planning.presentation.adapter.HorizontalMarginItemDecoration
-import com.chelz.libraries.theme.getThemeColor
 import com.chelz.shared.accounts.domain.entity.AccountItem
 import com.chelz.shared.accounts.domain.entity.Category
 import com.chelz.shared.accounts.domain.entity.MonthGoal
@@ -30,6 +31,7 @@ import com.github.mikephil.charting.components.LimitLine
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.ValueFormatter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -145,12 +147,18 @@ class PlanningFragment : Fragment() {
 	}
 
 	private fun deleteGoal() {
-		val goal = viewModel.allMonthGoals.value.firstOrNull() ?: return
+		val goal = viewModel.currentGoal.value ?: return
 		val builder = MaterialAlertDialogBuilder(requireContext())
 		builder.setTitle(getString(R.string.are_you_sure))
 		builder.setMessage(
-			getString(R.string.delete_goal)
+			buildSpannedString {
+				append(getString(R.string.delete_goal))
+				bold {
+					append("\n${goal.category} - ${goal.yearMonth}")
+				}
+			}
 		)
+
 		builder.setPositiveButton(getString(R.string.delete)) { dialog, _ ->
 			viewModel.deleteGoal(goal)
 		}
@@ -215,6 +223,7 @@ class PlanningFragment : Fragment() {
 	}
 
 	private fun renderEmptyList() {
+		viewModel.currentGoal.value = null
 		binding.lineChart.isVisible = false
 		binding.progressHorizontal.isVisible = false
 		binding.deleteGoal.isVisible = false
@@ -222,6 +231,7 @@ class PlanningFragment : Fragment() {
 	}
 
 	private fun renderGoal(goal: MonthGoal) {
+		viewModel.currentGoal.value = goal
 		binding.lineChart.isVisible = true
 		binding.progressHorizontal.isVisible = true
 		binding.deleteGoal.isVisible = true
@@ -231,7 +241,7 @@ class PlanningFragment : Fragment() {
 		val operations = viewModel.sharedOperationFlow.value
 		val filteredOperations = operations.filter {
 			convertDateFormat(it.date) == goal.yearMonth && goal.account in it.account && goal.category == it.category?.name
-		}
+		}.sortedBy { it.date }
 
 		val dailySums = mutableMapOf<Int, Double>()
 		val today = DateTime.now().dayOfMonth().get()
@@ -244,49 +254,71 @@ class PlanningFragment : Fragment() {
 		for (dayOfMonth in 1..totalDaysInMonth) {
 			dailySums[dayOfMonth] = 0.0
 		}
-
-		var currentSum = 0.0
 		for (operation in filteredOperations) {
 			val dayOfMonth = operation.date.substringBefore("-").toInt()
-			dailySums[dayOfMonth] = currentSum + abs(operation.quantity)
-			currentSum += abs(operation.quantity)
+			dailySums[dayOfMonth] = abs(operation.quantity)
+		}
+		for (dayOfMonth in 2..totalDaysInMonth) {
+			dailySums[dayOfMonth] = (dailySums[dayOfMonth] ?: 0.0) + (dailySums[dayOfMonth - 1] ?: 0.0)
 		}
 
 		val entries = mutableListOf<Entry>()
 		dailySums.forEach { (day, sum) ->
 			entries.add(Entry(day.toFloat(), sum.toFloat()))
 		}
+		binding.progressHorizontal.setProgressSmoothly(filteredOperations.sumOf { abs(it.quantity) } / goal.monthlyLimit * 100)
 
-		val dataSet = LineDataSet(entries, getString(R.string.total_sum))
-		dataSet.color = getThemeColor(requireContext(), com.google.android.material.R.attr.colorSecondary)
+		val dataSet = LineDataSet(entries, "Daily Sum")
+		dataSet.color = Color.BLUE
 		dataSet.setCircleColor(Color.BLUE)
 		dataSet.valueTextColor = Color.BLACK
 		dataSet.valueTextSize = 14f
 		dataSet.lineWidth = 2f
 		dataSet.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
-		dataSet.circleRadius = 0f
+		dataSet.setCircleColors(Color.BLUE)
+		dataSet.circleRadius = 3f
+		dataSet.apply {
+			setDrawValues(true)
+			valueFormatter = object : ValueFormatter() {
+				private var previousValue: Float? = null
+
+				override fun getPointLabel(entry: Entry?): String {
+					val currentValue = entry?.y ?: return ""
+					val label = if (previousValue == null || previousValue != currentValue) {
+						currentValue.toString()
+					} else {
+						""
+					}
+					previousValue = currentValue
+					return label
+				}
+			}
+		}
 
 		val limitLineValue = goal.monthlyLimit.toFloat()
-		val limitLine = LimitLine(limitLineValue, goal.title)
+		val limitLine = LimitLine(limitLineValue, "Monthly Limit")
 		limitLine.lineWidth = 2f
 		limitLine.enableDashedLine(10f, 10f, 0f)
 
-		// Calculate the range for the y-axis
+		val currentProgress = filteredOperations.sumOf { abs(it.quantity) }
+
+		binding.progressHorizontal.progress = (currentProgress / goal.monthlyLimit * 100).toInt()
+
 		val yAxisMin = 0f
 		val yAxisMax = if ((dailySums.values.maxOrNull() ?: 0.0) > limitLineValue) {
-			((dailySums.values.maxOrNull() ?: (0.0 * 1.05))).toFloat()
+			((dailySums.values.maxOrNull() ?: 0.0) * 1.05).toFloat()
 		} else {
 			limitLineValue * 1.05f
 		}
-		binding.progressHorizontal.setProgressSmoothly(currentSum / goal.monthlyLimit * 100)
+
+
 		binding.lineChart.apply {
-			axisLeft.removeAllLimitLines()
-			description.isEnabled = false
+			description.isEnabled = true
 			xAxis.setDrawGridLines(true)
 			axisRight.isEnabled = true
 			axisLeft.axisMinimum = yAxisMin
 			axisLeft.axisMaximum = yAxisMax
-
+			axisLeft.removeAllLimitLines()
 			axisLeft.addLimitLine(limitLine)
 
 			data = LineData(dataSet)

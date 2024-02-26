@@ -63,6 +63,8 @@ class PlanningViewModel(
 	private val router: PlanningRouter,
 ) : ViewModel() {
 
+	val currentGoal = MutableStateFlow<MonthGoal?>(null)
+
 	val auth by lazy { Firebase.auth }
 	private val store by lazy { Firebase.firestore }
 
