@@ -9,8 +9,8 @@
 
 	<androidx.cardview.widget.CardView
 		android:id="@+id/background"
-		android:layout_width="@dimen/height_50"
-		android:layout_height="@dimen/height_50"
+		android:layout_width="@dimen/height_65"
+		android:layout_height="@dimen/height_65"
 		app:cardCornerRadius="@dimen/spacing_10">
 
 		<TextView
