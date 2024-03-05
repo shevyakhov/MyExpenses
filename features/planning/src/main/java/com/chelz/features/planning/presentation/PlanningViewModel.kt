@@ -131,8 +131,8 @@ class PlanningViewModel(
 		}
 	}
 
-	fun searchMonthGoalsByDate(date: String) {
-		_allMonthGoals.value = _allMonthGoals.value.filter { it.yearMonth == date }
+	fun searchMonthGoalsByDate(date: String): List<MonthGoal> {
+		return _allMonthGoals.value.filter { it.yearMonth == date }
 	}
 
 	private suspend fun updateOperation() = viewModelScope.async {

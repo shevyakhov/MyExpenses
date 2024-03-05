@@ -9,7 +9,7 @@ ext.Versions =
 		KOTLIN              : "1.8.0-RC",
 		GRADLE              : "7.3.1",
 		LIFECYCLE           : "2.5.1",
-		MATERIAL            : "1.7.0",
+		MATERIAL            : "1.11.0",
 		CONSTRAINT_LAYOUT   : "2.1.4",
 		CORE                : "1.9.0",
 		APP_COMPAT          : "1.6.0-rc01",

@@ -15,9 +15,9 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent">
 
-			<TextView
+			<com.google.android.material.textview.MaterialTextView
 				android:id="@+id/screenName"
-				style="?attr/textAppearanceTitleLarge"
+				style="@style/TextAppearance.Material3.HeadlineLarge"
 				android:layout_width="wrap_content"
 				android:layout_height="match_parent"
 				android:gravity="center"
@@ -26,7 +26,7 @@
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent" />
 
-			<Button
+			<com.google.android.material.button.MaterialButton
 				android:id="@+id/buttonLogin"
 				style="?attr/buttonBarButtonStyle"
 				android:layout_width="wrap_content"
@@ -41,7 +41,6 @@
 
 	<com.google.android.material.textfield.TextInputLayout
 		android:id="@+id/textInputLayoutName"
-		style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginBottom="100dp"
@@ -58,7 +57,6 @@
 	<com.google.android.material.textfield.TextInputLayout
 
 		android:id="@+id/textInputLayoutEmail"
-		style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_marginVertical="@dimen/spacing_10"
@@ -76,7 +74,6 @@
 
 	<com.google.android.material.textfield.TextInputLayout
 		android:id="@+id/textInputLayoutPassword"
-		style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_marginVertical="@dimen/spacing_10"
@@ -92,7 +89,7 @@
 			android:inputType="textPassword" />
 	</com.google.android.material.textfield.TextInputLayout>
 
-	<Button
+	<com.google.android.material.button.MaterialButton
 		android:id="@+id/buttonRegister"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"

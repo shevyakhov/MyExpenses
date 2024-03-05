@@ -22,6 +22,7 @@ import com.chelz.features.planning.databinding.FragmentPlanningBinding
 import com.chelz.features.planning.presentation.adapter.AccountPlanningViewPagerAdapter
 import com.chelz.features.planning.presentation.adapter.CategoryPlanningAdapter
 import com.chelz.features.planning.presentation.adapter.HorizontalMarginItemDecoration
+import com.chelz.libraries.theme.getThemeColor
 import com.chelz.shared.accounts.domain.entity.AccountItem
 import com.chelz.shared.accounts.domain.entity.Category
 import com.chelz.shared.accounts.domain.entity.MonthGoal
@@ -39,6 +40,7 @@ import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
+import com.google.android.material.R as MaterialR
 
 class PlanningFragment : Fragment() {
 
@@ -73,11 +75,13 @@ class PlanningFragment : Fragment() {
 		binding.calendar.setOnClickListener {
 			callDateDialog()
 		}
+
+
 		bindAdapters(scope)
 	}
 
 	private fun bindAdapters(scope: LifecycleCoroutineScope) {
-		val accountAdapter = AccountPlanningViewPagerAdapter {}
+		val accountAdapter = AccountPlanningViewPagerAdapter()
 		val itemDecoration = HorizontalMarginItemDecoration(binding.root.context, R.dimen.viewpager_current_item_horizontal_margin)
 		binding.accountViewPager.adapter = accountAdapter
 		binding.accountViewPager.apply {
@@ -95,7 +99,7 @@ class PlanningFragment : Fragment() {
 			override fun onPageSelected(position: Int) {
 				super.onPageSelected(position)
 				viewModel.currentAccount.value = accountAdapter.getItemAt(position)
-				renderGraph(viewModel.allMonthGoals.value, viewModel.currentAccount.value, viewModel.currentCategory.value)
+				renderGraph(viewModel.currentAccount.value, viewModel.currentCategory.value)
 			}
 		})
 		viewModel.fullAccountsFlow.onEach {
@@ -122,7 +126,7 @@ class PlanningFragment : Fragment() {
 			override fun onPageSelected(position: Int) {
 				super.onPageSelected(position)
 				viewModel.currentCategory.value = categoryAdapter.getItemAt(position).toCategory()
-				renderGraph(viewModel.allMonthGoals.value, viewModel.currentAccount.value, viewModel.currentCategory.value)
+				renderGraph(viewModel.currentAccount.value, viewModel.currentCategory.value)
 			}
 		})
 
@@ -131,19 +135,25 @@ class PlanningFragment : Fragment() {
 			categoryAdapter.setData(items)
 		}.launchIn(scope)
 
+		viewModel.currentCalendar.onEach {
+			val account = viewModel.currentAccount.value
+			val category = viewModel.currentCategory.value
+			renderGraph(account, category)
+		}.launchIn(scope)
+
 		viewModel.allMonthGoals.onEach {
 			val account = viewModel.currentAccount.value
 			val category = viewModel.currentCategory.value
-			renderGraph(it, account, category)
-
+			renderGraph(account, category)
 		}.launchIn(scope)
 	}
 
 	private fun bindCalendarReload() {
-		viewModel.getAllMonthGoals()
+		viewModel.currentCalendar.value = DateTime.now().toString("MM-YYYY")
 		binding.calendarReload.isVisible = false
 		binding.textCalendarReload.isVisible = false
 		binding.calendar.isVisible = true
+		renderGraph(viewModel.currentAccount.value, viewModel.currentCategory.value)
 	}
 
 	private fun deleteGoal() {
@@ -208,18 +218,20 @@ class PlanningFragment : Fragment() {
 	}
 
 	private fun renderGraph(
-		it: List<MonthGoal>,
 		account: AccountItem?,
 		category: Category?,
 	) {
-		val list = it.filter { goal ->
+		val goals = viewModel.searchMonthGoalsByDate(viewModel.currentCalendar.value)
+		val list = goals.filter { goal ->
 			goal.account in (account?.name ?: "") &&
 				goal.category == category?.name
 		}
 		if (list.isEmpty()) {
 			renderEmptyList()
-		} else
-			renderGoal(list.first())
+		} else {
+			val goal = list.first()
+			renderGoal(goal)
+		}
 	}
 
 	private fun renderEmptyList() {
@@ -269,13 +281,13 @@ class PlanningFragment : Fragment() {
 		binding.progressHorizontal.setProgressSmoothly(filteredOperations.sumOf { abs(it.quantity) } / goal.monthlyLimit * 100)
 
 		val dataSet = LineDataSet(entries, "Daily Sum")
-		dataSet.color = Color.BLUE
-		dataSet.setCircleColor(Color.BLUE)
+		dataSet.color = primaryColor()
+		dataSet.setCircleColor(primaryColor())
 		dataSet.valueTextColor = Color.BLACK
 		dataSet.valueTextSize = 14f
 		dataSet.lineWidth = 2f
 		dataSet.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
-		dataSet.setCircleColors(Color.BLUE)
+		dataSet.setCircleColors(primaryColor())
 		dataSet.circleRadius = 3f
 		dataSet.apply {
 			setDrawValues(true)
@@ -326,6 +338,8 @@ class PlanningFragment : Fragment() {
 		}
 	}
 
+	private fun primaryColor() = getThemeColor(requireContext(), MaterialR.attr.colorTertiary)
+
 	private fun callDateDialog() {
 		val builder = MonthYearPickerDialog.Builder(
 			context = requireContext(),
@@ -337,7 +351,6 @@ class PlanningFragment : Fragment() {
 				val formattedDate = formatMonthYear(month + 1, year)
 				binding.textCalendarReload.text = "${month + 1}-$year"
 				viewModel.currentCalendar.value = formattedDate
-				viewModel.searchMonthGoalsByDate(formattedDate)
 			},
 		).build()
 		builder.show()

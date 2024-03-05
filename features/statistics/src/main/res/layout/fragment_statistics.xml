@@ -18,8 +18,9 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent">
 
-				<TextView
+				<com.google.android.material.textview.MaterialTextView
 					android:id="@+id/screenName"
+					style="@style/TextAppearance.Material3.HeadlineLarge"
 					android:layout_width="wrap_content"
 					android:layout_height="match_parent"
 					android:layout_marginStart="@dimen/spacing_15"
@@ -130,28 +131,28 @@
 			app:layout_constraintTop_toBottomOf="@id/chart_line">
 
 
-			<RadioButton
+			<com.google.android.material.radiobutton.MaterialRadioButton
 				android:id="@+id/radioButtonWeek"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				android:text="@string/week" />
 
-			<RadioButton
+			<com.google.android.material.radiobutton.MaterialRadioButton
 				android:id="@+id/radioButtonFourteen"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				android:text="@string/fourteen" />
 
-			<RadioButton
+			<com.google.android.material.radiobutton.MaterialRadioButton
 				android:id="@+id/radioButtonMonth"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				android:text="@string/month" />
 
-			<RadioButton
+			<com.google.android.material.radiobutton.MaterialRadioButton
 				android:id="@+id/radioButtonOther"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
@@ -160,15 +161,13 @@
 
 		</RadioGroup>
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/reverse_text"
+			style="@style/TextAppearance.Material3.TitleLarge"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:paddingHorizontal="@dimen/spacing_20"
 			android:text="@string/categories"
-			android:textColor="@color/md_theme_dark_onPrimary"
-			android:textSize="30sp"
-			android:textStyle="bold"
 			app:layout_constraintTop_toBottomOf="@id/radioGroupTimePeriod" />
 
 

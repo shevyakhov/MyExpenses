@@ -18,6 +18,7 @@ import com.chelz.features.statistics.domain.DatePeriod
 import com.chelz.features.statistics.domain.TabState
 import com.chelz.features.statistics.presentation.adapter.HorizontalMarginItemDecoration
 import com.chelz.features.statistics.presentation.adapter.SwipeItemAdapter
+import com.chelz.libraries.theme.getThemeColor
 import com.chelz.shared.accounts.domain.entity.AccountItem
 import com.chelz.shared.accounts.domain.entity.CategoryItem
 import com.chelz.shared.accounts.domain.entity.OperationItem
@@ -46,6 +47,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Calendar
 import java.util.Date
 import kotlin.math.abs
+import com.google.android.material.R as MaterialR
 
 class StatisticsFragment : Fragment() {
 
@@ -179,12 +181,12 @@ class StatisticsFragment : Fragment() {
 			}
 		}
 		val dataSet = LineDataSet(entries, "Ваши траты")
-		dataSet.color = Color.BLUE
+		dataSet.color = getThemeColor(requireContext(), MaterialR.attr.colorPrimary)
 		dataSet.valueTextColor = Color.BLACK
 		dataSet.valueTextSize = 14f
 		dataSet.lineWidth = 2f
 		dataSet.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
-		dataSet.setCircleColors(Color.BLUE)
+		dataSet.setCircleColors(getThemeColor(requireContext(), MaterialR.attr.colorPrimary))
 		dataSet.circleRadius = 3f
 		val data = LineData(dataSet)
 
@@ -214,12 +216,12 @@ class StatisticsFragment : Fragment() {
 			}
 		}
 		val barDataSet = BarDataSet(entries, "Ваши траты")
-		barDataSet.color = Color.BLUE
-		barDataSet.color = Color.BLUE
+		barDataSet.color = getThemeColor(requireContext(), MaterialR.attr.colorPrimary)
+		barDataSet.color = getThemeColor(requireContext(), MaterialR.attr.colorPrimary)
 		barDataSet.valueTextColor = Color.BLACK
 		barDataSet.valueTextSize = 14f
 		barDataSet.barBorderWidth = 2f
-		barDataSet.setColors(Color.BLUE)
+		barDataSet.setColors(getThemeColor(requireContext(), MaterialR.attr.colorPrimary))
 
 		val data = BarData(barDataSet)
 		binding.chartBar.data = data
@@ -240,7 +242,7 @@ class StatisticsFragment : Fragment() {
 
 		val pieDataSet = PieDataSet(entries, "Ваши траты")
 		pieDataSet.valueTextSize = 20f
-		pieDataSet.colors = ColorTemplate.COLORFUL_COLORS.toList()
+		pieDataSet.colors = ColorTemplate.PASTEL_COLORS.toList()
 
 		val data = PieData(pieDataSet)
 
@@ -266,7 +268,7 @@ class StatisticsFragment : Fragment() {
 		}
 
 		val dataSet = PieDataSet(dataEntries, if (isAccount) "Categories" else "Accounts")
-		dataSet.colors = ColorTemplate.COLORFUL_COLORS.toList()
+		dataSet.colors = ColorTemplate.PASTEL_COLORS.toList()
 		dataSet.valueTextColor = Color.BLACK
 		dataSet.valueTextSize = 12f
 		dataSet.valueFormatter = PercentFormatter(binding.semiChartPie)

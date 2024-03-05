@@ -9,7 +9,7 @@
 	android:padding="@dimen/spacing_15"
 	app:cardCornerRadius="@dimen/spacing_10">
 
-	<androidx.cardview.widget.CardView
+	<com.google.android.material.card.MaterialCardView
 		android:id="@+id/background"
 		android:layout_width="@dimen/height_50"
 		android:layout_height="@dimen/height_50"
@@ -18,7 +18,7 @@
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent">
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/categoryLetter"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
@@ -26,9 +26,9 @@
 			android:padding="@dimen/spacing_10"
 			android:textSize="20sp"
 			tools:text="L" />
-	</androidx.cardview.widget.CardView>
+	</com.google.android.material.card.MaterialCardView>
 
-	<TextView
+	<com.google.android.material.textview.MaterialTextView
 		android:id="@+id/category"
 		style="@style/OperationMainText"
 		android:layout_width="0dp"
@@ -38,7 +38,7 @@
 		app:layout_constraintStart_toEndOf="@id/background"
 		app:layout_constraintTop_toTopOf="parent" />
 
-	<TextView
+	<com.google.android.material.textview.MaterialTextView
 		android:id="@+id/accountName"
 		style="@style/OperationSubText"
 		android:layout_width="0dp"
@@ -54,7 +54,7 @@
 		app:barrierDirection="left"
 		app:constraint_referenced_ids="money" />
 
-	<TextView
+	<com.google.android.material.textview.MaterialTextView
 		android:id="@+id/money"
 		style="@style/OperationMoneyText"
 		android:layout_width="wrap_content"
