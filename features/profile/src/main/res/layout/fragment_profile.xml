@@ -19,35 +19,35 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent">
 
-				<TextView
+				<com.google.android.material.textview.MaterialTextView
 					android:id="@+id/screenName"
 					android:layout_width="wrap_content"
 					android:layout_height="match_parent"
 					android:layout_marginStart="@dimen/spacing_15"
 					android:gravity="center"
 					android:text="@string/profile_fragment_name"
-					android:textSize="30sp"
+					style="@style/TextAppearance.Material3.HeadlineLarge"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toTopOf="parent" />
 
-				<androidx.appcompat.widget.AppCompatImageButton
+				<androidx.appcompat.widget.AppCompatImageView
 					android:id="@+id/settings_button"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginEnd="@dimen/spacing_20"
-					android:backgroundTint="?attr/colorSecondary"
 					android:src="@drawable/ic_settings"
+					android:tint="?colorPrimary"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintEnd_toStartOf="@id/exitButton"
 					app:layout_constraintTop_toTopOf="parent" />
 
-				<androidx.appcompat.widget.AppCompatImageButton
+				<androidx.appcompat.widget.AppCompatImageView
 					android:id="@+id/exitButton"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginEnd="@dimen/spacing_20"
-					android:backgroundTint="?attr/colorError"
+					android:tint="?attr/colorError"
 					android:src="@drawable/ic_exit"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintEnd_toEndOf="parent"
@@ -68,14 +68,14 @@
 			app:layout_constraintTop_toBottomOf="@id/topAppBarLayout">
 
 
-			<TextView
+			<com.google.android.material.textview.MaterialTextView
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="top"
 				android:text="@string/email"
 				android:textStyle="bold" />
 
-			<TextView
+			<com.google.android.material.textview.MaterialTextView
 				android:id="@+id/textViewEmail"
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
@@ -95,13 +95,13 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/layout_email">
 
-			<TextView
+			<com.google.android.material.textview.MaterialTextView
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:text="@string/timeCreation"
 				android:textStyle="bold" />
 
-			<TextView
+			<com.google.android.material.textview.MaterialTextView
 				android:id="@+id/textViewCreationTime"
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
@@ -111,9 +111,10 @@
 				app:layout_constraintTop_toTopOf="@id/textViewEmail" />
 		</LinearLayout>
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/newsLabel"
 			android:layout_width="match_parent"
+			style="@style/TextAppearance.Material3.TitleLarge"
 			android:layout_height="wrap_content"
 			android:padding="@dimen/spacing_10"
 			android:text="@string/news"
@@ -127,9 +128,10 @@
 			tools:itemCount="1"
 			tools:listitem="@layout/news_item" />
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/accountLabel"
 			android:layout_width="match_parent"
+			style="@style/TextAppearance.Material3.TitleLarge"
 			android:layout_height="wrap_content"
 			android:padding="@dimen/spacing_10"
 			android:text="@string/accounts"
@@ -142,8 +144,9 @@
 			android:clipToPadding="false"
 			app:layout_constraintTop_toBottomOf="@id/accountLabel" />
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/spendLabel"
+			style="@style/TextAppearance.Material3.TitleLarge"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:padding="@dimen/spacing_10"
@@ -160,8 +163,9 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/spendLabel" />
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/earnLabel"
+			style="@style/TextAppearance.Material3.TitleLarge"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:padding="@dimen/spacing_10"
@@ -172,7 +176,6 @@
 			android:id="@+id/rv_categories_earning"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:layout_margin="-20dp"
 			android:layout_weight="2"
 			android:background="?attr/colorTertiary"
 			app:layout_constraintEnd_toEndOf="parent"

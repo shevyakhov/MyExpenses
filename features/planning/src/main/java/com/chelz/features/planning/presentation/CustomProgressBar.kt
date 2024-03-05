@@ -4,6 +4,7 @@ import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.widget.ProgressBar
@@ -19,7 +20,7 @@ class CustomProgressBar @JvmOverloads constructor(
 	val colorError = getThemeColor(context, MaterialR.attr.colorError)
 	val colorPrimary = getThemeColor(context, MaterialR.attr.colorPrimary)
 	val colorSurface = getThemeColor(context, MaterialR.attr.colorSurfaceVariant)
-	val colorMedium = context.getColor(android.R.color.holo_orange_light)
+	val colorMedium = Color.parseColor("#EBC200")
 
 	init {
 		this.max = 100

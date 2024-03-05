@@ -9,14 +9,14 @@
 	android:paddingHorizontal="@dimen/spacing_10"
 	android:paddingVertical="@dimen/spacing_5">
 
-	<androidx.cardview.widget.CardView
+	<com.google.android.material.card.MaterialCardView
 		android:id="@+id/background"
 		android:layout_width="@dimen/height_80"
 		android:layout_height="@dimen/height_80"
 		android:layout_gravity="center"
 		app:cardCornerRadius="@dimen/spacing_10">
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/categoryLetter"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
@@ -25,9 +25,9 @@
 			android:textSize="20sp"
 			tools:text="L" />
 
-	</androidx.cardview.widget.CardView>
+	</com.google.android.material.card.MaterialCardView>
 
-	<TextView
+	<com.google.android.material.textview.MaterialTextView
 		android:id="@+id/category"
 		style="@style/TextAppearance.AppCompat.Title"
 		android:layout_width="match_parent"

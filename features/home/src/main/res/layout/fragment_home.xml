@@ -4,11 +4,11 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:gravity="bottom"
-	sothree:umanoDragView="@id/line_layout"
 	sothree:layout_constraintBottom_toBottomOf="parent"
-	sothree:umanoScrollableView="@id/main_layout"
+	sothree:umanoDragView="@id/line_layout"
 	sothree:umanoFadeColor="@android:color/transparent"
 	sothree:umanoPanelHeight="@dimen/spacing_15"
+	sothree:umanoScrollableView="@id/main_layout"
 	sothree:umanoShadowHeight="4dp">
 
 	<include

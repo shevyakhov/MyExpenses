@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="earning">Доходы</string>
-	<string name="account_dots">● ● ● ●</string>
+	<string name="add_account">Добавить счет</string>
 	<string name="balance">Баланс</string>
+	<string name="account_dots">● ● ● ●</string>
+	<string name="colorTitle">Выбранный цвет</string>
+	<string name="choose_color">Выбрать цвет</string>
+	<string name="check_color">Проверить цвет</string>
+	<string name="last_digits">Последние 4 цифры карты</string>
+	<string name="cardName">Название счета</string>
+	<string name="isAccountShared">Совместный счет</string>
+	<string name="save">Сохранить</string>
+	<string name="empty_value">Поле не должно быть пустым</string>
+	<string name="users">Приглашенные пользователи</string>
+	<string name="plus_sign">+</string>
+	<string name="add">Добавить</string>
+	<string name="planning_fragment_name">Планирование</string>
+	<string name="your_accounts">Счета</string>
+	<string name="categories">Категории</string>
+	<string name="earnings">Доход</string>
+	<string name="progress">Ваш прогресс</string>
+	<string name="addGoal">Добавить цель на период</string>
+	<string name="are_you_sure">Вы уверены?</string>
+	<string name="delete_goal">Вы удалите цель на данный месяц</string>
+	<string name="total_sum">Итоговая сумма</string>
+	<string name="delete">Удалить</string>
+	<string name="earning">Доходы</string>
 	<string name="profile_fragment_name">Профиль</string>
 	<string name="exit">Выход</string>
 	<string name="email">Email</string>

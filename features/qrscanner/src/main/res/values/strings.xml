@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="qr_check">Сканирование чека</string>
-	<string name="save">Сохранить</string>
-	<string name="category">Категория</string>
+	<string name="qr_check" translatable="false">Сканирование чека</string>
+	<string name="save" translatable="false">Сохранить</string>
+	<string name="category" translatable="false">Категория</string>
 	<string name="earning">Доходы</string>
-	<string name="account_dots">● ● ● ●</string>
-	<string name="balance">Баланс</string>
-	<string name="empty" />
+	<string name="empty" translatable="false" />
+	<string name="statistics_fragment_name" translatable="false">Ваша статистика</string>
+	<string name="day" translatable="false">1д</string>
+	<string name="week" translatable="false">7д</string>
+	<string name="fourteen" translatable="false">14д</string>
+	<string name="month" translatable="false">30д</string>
+	<string name="other" translatable="false">Другое</string>
+	<string name="categories" translatable="false">Категории</string>
+	<string name="account_dots" translatable="false">● ● ● ●</string>
+	<string name="balance" translatable="false">Баланс</string>
+	<string name="your_accounts" translatable="false">Ваши счета</string>
+	<string name="linechart" translatable="false">Линейный</string>
+	<string name="barChart" translatable="false">Гистограмма</string>
+	<string name="pieChart" translatable="false">Круговая</string>
+	<string name="boxplot" translatable="false">Размах</string>
+	<string name="earnings" translatable="false">Доходы</string>
 </resources>

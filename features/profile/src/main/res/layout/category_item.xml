@@ -7,13 +7,13 @@
 	android:orientation="vertical"
 	android:padding="@dimen/spacing_5">
 
-	<androidx.cardview.widget.CardView
+	<com.google.android.material.card.MaterialCardView
 		android:id="@+id/background"
 		android:layout_width="@dimen/height_65"
 		android:layout_height="@dimen/height_65"
 		app:cardCornerRadius="@dimen/spacing_10">
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/categoryLetter"
 			android:layout_width="match_parent"
 			android:padding="@dimen/spacing_10"
@@ -32,9 +32,9 @@
 			android:visibility="invisible"
 			tools:text="L" />
 
-	</androidx.cardview.widget.CardView>
+	</com.google.android.material.card.MaterialCardView>
 
-	<TextView
+	<com.google.android.material.textview.MaterialTextView
 		android:id="@+id/category"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"

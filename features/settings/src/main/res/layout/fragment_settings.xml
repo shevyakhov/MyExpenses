@@ -14,14 +14,14 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent">
 
-			<TextView
+			<com.google.android.material.textview.MaterialTextView
 				android:id="@+id/screenName"
+				style="@style/TextAppearance.Material3.HeadlineLarge"
 				android:layout_width="wrap_content"
 				android:layout_height="match_parent"
 				android:layout_marginStart="@dimen/spacing_15"
 				android:gravity="center"
 				android:text="@string/settings"
-				android:textSize="30sp"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent" />
@@ -36,28 +36,28 @@
 		android:padding="20dp"
 		app:layout_constraintTop_toBottomOf="@id/topAppBarLayout">
 
-		<androidx.appcompat.widget.SwitchCompat
+		<com.google.android.material.materialswitch.MaterialSwitch
 			android:id="@+id/switchHistory"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="16dp"
 			android:text="@string/show_history" />
 
-		<androidx.appcompat.widget.SwitchCompat
+		<com.google.android.material.materialswitch.MaterialSwitch
 			android:id="@+id/switchTodayStats"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="16dp"
 			android:text="@string/show_today_stats" />
 
-		<androidx.appcompat.widget.SwitchCompat
+		<com.google.android.material.materialswitch.MaterialSwitch
 			android:id="@+id/switchGraphs"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="16dp"
 			android:text="@string/switchGraphs" />
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="8dp"
@@ -71,7 +71,7 @@
 			android:layout_height="wrap_content"
 			android:timePickerMode="spinner" />
 
-		<androidx.appcompat.widget.SwitchCompat
+		<com.google.android.material.materialswitch.MaterialSwitch
 			android:id="@+id/switchDailyExpenseReminder"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -79,20 +79,20 @@
 			android:text="@string/daily_expense_reminder" />
 
 		<!-- Switch for Weekly Stats Reminder -->
-		<androidx.appcompat.widget.SwitchCompat
+		<com.google.android.material.materialswitch.MaterialSwitch
 			android:id="@+id/switchWeeklyStatsReminder"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="16dp"
 			android:text="@string/weekly_look_at_stats_reminder" />
 
-		<Button
+		<com.google.android.material.button.MaterialButton
 			android:id="@+id/buttonSave"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
 			android:layout_marginTop="16dp"
-			android:text="Save Settings" />
+			android:text="@string/save" />
 	</LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

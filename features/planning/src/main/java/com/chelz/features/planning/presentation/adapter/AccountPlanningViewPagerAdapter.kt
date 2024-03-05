@@ -12,7 +12,7 @@ import com.chelz.features.planning.R
 import com.chelz.features.planning.databinding.AccountPlanItemBinding
 import com.chelz.shared.accounts.domain.entity.AccountItem
 
-class AccountPlanningViewPagerAdapter(private val onClick: (AccountItem) -> Unit) : RecyclerView.Adapter<AccountPlanningViewPagerAdapter.SliderHolder>() {
+class AccountPlanningViewPagerAdapter : RecyclerView.Adapter<AccountPlanningViewPagerAdapter.SliderHolder>() {
 
 	private var sliderList = listOf<AccountItem>()
 
@@ -22,7 +22,8 @@ class AccountPlanningViewPagerAdapter(private val onClick: (AccountItem) -> Unit
 		fun bind(item: AccountItem) = with(sliderItemBinding) {
 			accountName.text = item.name
 			number.text = item.number
-			balance.text = item.money.toString()
+			val moneyFormatted = String.format("%.2f", item.money).replace(',', '.')
+			balance.text = moneyFormatted
 			val color = Color.parseColor(item.color)
 			root.setCardBackgroundColor(color)
 			val r = 255 - color.red
@@ -34,9 +35,6 @@ class AccountPlanningViewPagerAdapter(private val onClick: (AccountItem) -> Unit
 			numberTitle.setTextColor(new)
 			balanceTitle.setTextColor(new)
 			balance.setTextColor(new)
-			root.setOnClickListener {
-				onClick.invoke(item)
-			}
 		}
 	}
 

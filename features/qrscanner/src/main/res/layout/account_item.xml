@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:layout_marginVertical="@dimen/spacing_5"
@@ -13,16 +12,15 @@
 		android:layout_height="match_parent"
 		android:padding="@dimen/spacing_20">
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/accountName"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			app:layout_constraintBottom_toTopOf="@id/balanceTitle"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
-			tools:text="@string/earning" />
+			app:layout_constraintTop_toTopOf="parent" />
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/numberTitle"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
@@ -33,36 +31,33 @@
 			app:layout_constraintEnd_toStartOf="@id/number"
 			app:layout_constraintTop_toTopOf="@id/number" />
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/number"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="@dimen/spacing_10"
 			app:layout_constraintBottom_toBottomOf="@id/accountName"
 			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintTop_toTopOf="@id/accountName"
-			tools:text="@string/earning" />
+			app:layout_constraintTop_toTopOf="@id/accountName" />
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/balanceTitle"
 			android:layout_width="wrap_content"
 			android:text="@string/balance"
 			android:layout_height="wrap_content"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toStartOf="@id/balanceTitle"
-			app:layout_constraintTop_toBottomOf="@id/accountName"
-			tools:text="@string/earning" />
+			app:layout_constraintTop_toBottomOf="@id/accountName" />
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/balance"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="@dimen/spacing_10"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintStart_toEndOf="@id/balanceTitle"
-			app:layout_constraintTop_toBottomOf="@id/accountName"
-			tools:text="@string/earning" />
+			app:layout_constraintTop_toBottomOf="@id/accountName" />
 
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

@@ -87,7 +87,8 @@ class SwipeItemAdapter :
 			with(binding) {
 				accountName.text = accountItem.name
 				number.text = accountItem.number
-				balance.text = accountItem.money.toString()
+				val moneyFormatted = String.format("%.2f", accountItem.money).replace(',', '.')
+				balance.text = moneyFormatted
 				val color = Color.parseColor(accountItem.color)
 				root.setCardBackgroundColor(color)
 				val r = 255 - color.red

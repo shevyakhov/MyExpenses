@@ -7,7 +7,7 @@
 	android:padding="@dimen/spacing_10">
 
 	<!-- Article Image with Semi-Transparent Overlay -->
-	<androidx.cardview.widget.CardView
+	<com.google.android.material.card.MaterialCardView
 		android:layout_width="match_parent"
 		android:layout_height="150dp"
 		android:layout_marginBottom="8dp"
@@ -36,7 +36,7 @@
 			android:padding="16dp">
 
 			<!-- Article Title -->
-			<TextView
+			<com.google.android.material.textview.MaterialTextView
 				android:id="@+id/textViewTitle"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content">
 
-				<TextView
+				<com.google.android.material.textview.MaterialTextView
 					android:id="@+id/textViewDescription"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
@@ -59,6 +59,6 @@
 			</androidx.core.widget.NestedScrollView>
 
 		</LinearLayout>
-	</androidx.cardview.widget.CardView>
+	</com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

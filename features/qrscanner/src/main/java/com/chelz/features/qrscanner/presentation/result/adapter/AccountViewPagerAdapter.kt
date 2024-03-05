@@ -22,7 +22,8 @@ class AccountViewPagerAdapter : RecyclerView.Adapter<AccountViewPagerAdapter.Sli
 		fun bind(item: AccountItem) = with(sliderItemBinding) {
 			accountName.text = item.name
 			number.text = item.number
-			balance.text = item.money.toString()
+			val moneyFormatted = String.format("%.2f", item.money).replace(',', '.')
+			balance.text = moneyFormatted
 			val color = Color.parseColor(item.color)
 			root.setCardBackgroundColor(color)
 			val r = 255 - color.red
