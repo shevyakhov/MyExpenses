@@ -16,7 +16,6 @@ import com.chelz.features.home.presentation.recycler.accounts.AccountViewPagerAd
 import com.chelz.features.home.presentation.recycler.accounts.HorizontalMarginItemDecoration
 import com.chelz.features.home.presentation.recycler.categories.CategoryAdapter
 import com.chelz.features.home.presentation.recycler.categories.CategoryClickListener
-
 import com.chelz.features.home.presentation.recycler.operations.OperationAdapter
 import com.chelz.libraries.theme.getThemeColor
 import com.chelz.shared.accounts.domain.entity.CategoryItem
@@ -78,12 +77,14 @@ internal fun MainLayoutBinding.bind(
 			}
 
 			val lineDataSet = LineDataSet(entries, "Weekly Spend")
-			lineDataSet.color = Color.BLUE
+			lineDataSet.color = getThemeColor(root.context, com.google.android.material.R.attr.colorPrimary)
 			lineDataSet.valueTextColor = Color.BLACK
 			lineDataSet.valueTextSize = 14f
 			lineDataSet.lineWidth = 2f
 			lineDataSet.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
-			lineDataSet.setCircleColors(Color.BLUE)
+			lineDataSet.setCircleColors(
+				getThemeColor(root.context, com.google.android.material.R.attr.colorPrimary)
+			)
 			lineDataSet.circleRadius = 3f
 			val lineData = LineData(lineDataSet)
 			chartWeekly.data = lineData

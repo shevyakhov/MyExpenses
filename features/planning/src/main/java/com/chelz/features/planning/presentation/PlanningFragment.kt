@@ -308,7 +308,7 @@ class PlanningFragment : Fragment() {
 		}
 
 		val limitLineValue = goal.monthlyLimit.toFloat()
-		val limitLine = LimitLine(limitLineValue, "Monthly Limit")
+		val limitLine = LimitLine(limitLineValue, "Цель")
 		limitLine.lineWidth = 2f
 		limitLine.enableDashedLine(10f, 10f, 0f)
 

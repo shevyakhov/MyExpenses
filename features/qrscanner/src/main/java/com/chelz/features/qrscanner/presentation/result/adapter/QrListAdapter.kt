@@ -30,8 +30,9 @@ class QrListAdapter(
 
 			with(binding) {
 				bindCategory(item)
+				val moneyFormatted = String.format("%.2f", (item.quantity!! * item.price!! / 100)).replace(',', '.')
 				money.text = buildString {
-					append((item.quantity!! * item.price!! / 100).toString())
+					append(moneyFormatted).toString()
 					append(END_SYMBOL)
 				}
 
