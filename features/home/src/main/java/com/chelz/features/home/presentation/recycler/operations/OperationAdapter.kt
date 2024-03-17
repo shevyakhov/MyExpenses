@@ -3,12 +3,8 @@ package com.chelz.features.home.presentation.recycler.operations
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.graphics.blue
-import androidx.core.graphics.green
-import androidx.core.graphics.red
 import androidx.recyclerview.widget.RecyclerView
 import com.chelz.features.home.databinding.OperationItemBinding
-import com.chelz.libraries.theme.getThemeColor
 import com.chelz.shared.accounts.domain.entity.OperationItem
 
 class OperationAdapter : RecyclerView.Adapter<OperationAdapter.OperationHolder>() {
@@ -32,22 +28,22 @@ class OperationAdapter : RecyclerView.Adapter<OperationAdapter.OperationHolder>(
 					append(END_SYMBOL)
 				}
 				val color = if (item.quantity > 0.0) {
-					getThemeColor(root.context, com.google.android.material.R.attr.colorPrimary)
+					root.context.getColor(com.chelz.libraries.theme.R.color.semantic_cyan)
 				} else {
-					getThemeColor(root.context, com.google.android.material.R.attr.colorError)
+					root.context.getColor(com.chelz.libraries.theme.R.color.semantic_red)
 				}
 				val itemColor = Color.parseColor(item.category?.color ?: "#FFFBBB")
 				background.setCardBackgroundColor(itemColor)
-				category.setTextColor(color)
-				money.setTextColor(color)
 
-				val r = 255 - itemColor.red
-				val g = 255 - itemColor.green
-				val b = 255 - itemColor.blue
-				val new = Color.rgb(r, g, b)
-				categoryLetter.setTextColor(new)
+				val brightness = (Color.red(itemColor) * 0.299 + Color.green(itemColor) * 0.587 + Color.blue(itemColor) * 0.114) / 255
+
+				val textColor = if (brightness > 0.5) root.context.getColor(com.chelz.libraries.theme.R.color.neutral_1) else Color.WHITE
+
+				money.setTextColor(color)
+				categoryLetter.setTextColor(textColor)
 			}
 		}
+
 	}
 
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OperationHolder {

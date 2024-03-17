@@ -11,15 +11,17 @@
 		android:id="@+id/background"
 		android:layout_width="@dimen/height_65"
 		android:layout_height="@dimen/height_65"
-		app:cardCornerRadius="@dimen/spacing_10">
+		app:cardCornerRadius="@dimen/spacing_20">
 
 		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/categoryLetter"
+			style="@style/TitleLarge"
 			android:layout_width="match_parent"
-			android:padding="@dimen/spacing_10"
 			android:layout_height="match_parent"
 			android:gravity="center"
+			android:padding="@dimen/spacing_10"
 			android:textSize="20sp"
+			android:textStyle="bold"
 			tools:text="L" />
 
 		<ImageView
@@ -28,7 +30,6 @@
 			android:layout_height="match_parent"
 			android:gravity="center"
 			android:src="@drawable/checked"
-			android:textSize="20sp"
 			android:visibility="invisible"
 			tools:text="L" />
 
@@ -36,11 +37,12 @@
 
 	<com.google.android.material.textview.MaterialTextView
 		android:id="@+id/category"
+		style="@style/Body1"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="3dp"
-		android:textColor="?attr/colorSurface"
 		android:gravity="center"
+		android:textColor="?attr/colorSurface"
 		android:textSize="12sp"
 		tools:text="blablabla" />
 

@@ -5,45 +5,52 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:layout_marginVertical="@dimen/spacing_5"
-	android:background="?attr/colorSurface"
-	android:padding="@dimen/spacing_15"
+	android:padding="@dimen/spacing_10"
 	app:cardCornerRadius="@dimen/spacing_10">
 
 	<com.google.android.material.card.MaterialCardView
 		android:id="@+id/background"
 		android:layout_width="@dimen/height_50"
 		android:layout_height="@dimen/height_50"
-		app:cardCornerRadius="@dimen/spacing_10"
+		app:cardCornerRadius="@dimen/spacing_15"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent">
 
 		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/categoryLetter"
+			style="@style/TitleLarge"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:gravity="center"
 			android:padding="@dimen/spacing_10"
 			android:textSize="20sp"
+			android:textStyle="bold"
 			tools:text="L" />
 	</com.google.android.material.card.MaterialCardView>
 
 	<com.google.android.material.textview.MaterialTextView
 		android:id="@+id/category"
-		style="@style/OperationMainText"
+		style="@style/Body1"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_marginHorizontal="@dimen/spacing_15"
+		android:ems="80"
+		android:maxLength="80"
+		android:maxLines="3"
+		android:textStyle="bold"
 		app:layout_constraintEnd_toStartOf="@+id/money"
 		app:layout_constraintStart_toEndOf="@id/background"
 		app:layout_constraintTop_toTopOf="parent" />
 
 	<com.google.android.material.textview.MaterialTextView
 		android:id="@+id/accountName"
-		style="@style/OperationSubText"
+		style="@style/Caption1"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="@dimen/spacing_10"
+		android:textColor="@color/neutral_3"
+		android:textStyle="bold"
 		app:layout_constraintEnd_toEndOf="@id/category"
 		app:layout_constraintStart_toStartOf="@id/category"
 		app:layout_constraintTop_toBottomOf="@id/category" />
@@ -56,10 +63,11 @@
 
 	<com.google.android.material.textview.MaterialTextView
 		android:id="@+id/money"
-		style="@style/OperationMoneyText"
+		style="@style/TitleSmall"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:minWidth="100dp"
+		android:textStyle="bold"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />

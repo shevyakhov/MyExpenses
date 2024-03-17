@@ -104,7 +104,7 @@ internal fun MainLayoutBinding.bind(
 	val itemDecoration = HorizontalMarginItemDecoration(root.context, R.dimen.viewpager_current_item_horizontal_margin)
 	accountViewPager.adapter = accountAdapter
 	accountViewPager.apply {
-		setPadding(48, 0, 48, 0)
+		setPadding(0, 0, 0, 0)
 		offscreenPageLimit = 1
 		val nextItemVisiblePx = root.resources.getDimension(R.dimen.viewpager_next_item_visible)
 		val currentItemHorizontalMarginPx = root.resources.getDimension(R.dimen.viewpager_current_item_horizontal_margin)

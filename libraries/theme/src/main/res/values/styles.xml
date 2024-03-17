@@ -8,7 +8,7 @@
 	</style>
 
 	<style name="TitleMedium" parent="TextAppearance.AppCompat">
-		<item name="font">@font/poppins_semibold</item>
+		<item name="font">@font/inter_bold</item>
 		<item name="android:textColor">@color/neutral_1</item>
 		<item name="android:textSize">20sp</item>
 	</style>

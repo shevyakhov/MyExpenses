@@ -32,7 +32,6 @@
 		android:id="@+id/categories_layout"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:background="?attr/colorTertiary"
 		app:layout_constraintBottom_toTopOf="@id/sum_layout"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent">
@@ -43,7 +42,6 @@
 			android:layout_height="wrap_content"
 			android:layout_margin="@dimen/spacing_5"
 			android:layout_weight="2"
-			android:background="?attr/colorTertiary"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toStartOf="@+id/add_category_button"
 			app:layout_constraintStart_toStartOf="parent"
@@ -67,21 +65,24 @@
 		android:id="@+id/sum_layout"
 		android:layout_width="match_parent"
 		android:layout_height="60dp"
-		android:background="?attr/colorOnSurface"
+		android:background="?attr/colorSurface"
 		android:gravity="center_vertical"
 		android:orientation="vertical"
 		app:layout_constraintBottom_toTopOf="@id/keyboard_layout">
 
 		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/sum"
-			style="@style/KeyBoardMainText"
+			style="@style/TitleLarge"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
+			android:background="@color/neutral_6"
 			android:gravity="end|center_vertical"
 			android:inputType="numberDecimal"
 			android:maxEms="15"
 			android:maxLines="1"
-			android:paddingHorizontal="@dimen/height_20" />
+			android:paddingHorizontal="@dimen/height_20"
+			android:textSize="30sp"
+			tools:text="@string/material_motion_easing_decelerated" />
 	</LinearLayout>
 
 	<LinearLayout

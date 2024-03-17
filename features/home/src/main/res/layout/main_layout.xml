@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="match_parent"
+	android:background="@color/primary">
 
 	<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
 		android:layout_width="match_parent"
@@ -12,6 +13,7 @@
 			android:id="@+id/topAppBarLayout"
 			android:layout_width="match_parent"
 			android:layout_height="@dimen/height_65"
+			android:background="@color/primary"
 			app:layout_constraintTop_toTopOf="parent">
 
 			<androidx.constraintlayout.widget.ConstraintLayout
@@ -20,28 +22,21 @@
 
 				<com.google.android.material.textview.MaterialTextView
 					android:id="@+id/screenName"
-					style="@style/TextAppearance.Material3.HeadlineLarge"
+					style="@style/TitleLarge"
+					android:fontFamily="@font/poppinsbold"
 					android:layout_width="wrap_content"
 					android:layout_height="match_parent"
 					android:layout_marginStart="@dimen/spacing_15"
 					android:gravity="center"
 					android:text="@string/home_fragment_your_accounts"
+					android:textColor="@color/neutral_6"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toTopOf="parent" />
-
-				<ImageView
-					android:layout_width="@dimen/height_40"
-					android:layout_height="@dimen/height_40"
-					android:layout_marginEnd="@dimen/spacing_15"
-					app:layout_constraintBottom_toBottomOf="parent"
-					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintTop_toTopOf="parent" />
 			</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 		</com.google.android.material.appbar.AppBarLayout>
-
 
 		<androidx.viewpager2.widget.ViewPager2
 			android:id="@+id/accountViewPager"
@@ -49,96 +44,110 @@
 			android:layout_height="120dp"
 			android:layout_marginVertical="@dimen/spacing_20"
 			android:clipToPadding="false"
+			android:elevation="10dp"
 			app:layout_constraintTop_toBottomOf="@id/topAppBarLayout" />
 
-		<com.github.mikephil.charting.charts.LineChart
-			android:id="@+id/chartWeekly"
-			android:layout_width="match_parent"
-			android:layout_height="300dp"
-			android:padding="@dimen/spacing_10"
-			app:layout_constraintTop_toBottomOf="@id/todayStats" />
-
-		<androidx.constraintlayout.widget.ConstraintLayout
-			android:id="@+id/todayStats"
-
+		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_margin="@dimen/spacing_15"
-			android:layout_marginVertical="@dimen/spacing_5"
-			android:background="?attr/colorSurface"
-			android:padding="@dimen/spacing_15"
-			app:cardCornerRadius="@dimen/spacing_10"
-			app:layout_constraintTop_toBottomOf="@id/accountViewPager">
+			android:layout_marginTop="70dp"
+			android:paddingTop="50dp"
+			android:background="@drawable/calc"
+			app:layout_constraintTop_toTopOf="@id/accountViewPager">
 
-			<com.google.android.material.card.MaterialCardView
-				android:id="@+id/background"
-				android:layout_width="@dimen/height_50"
-				android:layout_height="@dimen/height_50"
-				app:cardCornerRadius="@dimen/spacing_10"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent">
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
 
-				<ImageView
-					android:id="@+id/statsIcon"
+				<com.github.mikephil.charting.charts.LineChart
+					android:id="@+id/chartWeekly"
 					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:background="?attr/colorError"
-					android:gravity="center"
+					android:layout_height="300dp"
 					android:padding="@dimen/spacing_10"
-					android:src="@drawable/money_ic"
-					android:textSize="20sp"
-					tools:text="L" />
-			</com.google.android.material.card.MaterialCardView>
+					app:layout_constraintTop_toBottomOf="@id/todayStats" />
 
-			<com.google.android.material.textview.MaterialTextView
-				android:id="@+id/statsName"
-				style="@style/TextAppearance.Material3.LabelLarge"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="@dimen/spacing_15"
-				android:text="@string/todaySpend"
-				android:textStyle="bold"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toEndOf="@id/background"
-				app:layout_constraintTop_toTopOf="parent" />
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:id="@+id/todayStats"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="@dimen/spacing_15"
+					android:layout_marginVertical="@dimen/spacing_5"
+					android:padding="@dimen/spacing_15"
+					app:cardCornerRadius="@dimen/spacing_10"
+					app:layout_constraintTop_toTopOf="parent">
 
-			<com.google.android.material.textview.MaterialTextView
-				android:id="@+id/statsQuantity"
-				style="@style/TextAppearance.Material3.BodyMedium"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="@dimen/spacing_10"
-				android:textColor="?attr/colorError"
-				android:textStyle="bold"
-				app:layout_constraintEnd_toEndOf="@id/statsName"
-				app:layout_constraintStart_toStartOf="@id/statsName"
-				app:layout_constraintTop_toBottomOf="@id/statsName"
-				tools:text="@string/home_fragment_your_accounts" />
+					<com.google.android.material.card.MaterialCardView
+						android:id="@+id/background"
+						android:layout_width="@dimen/height_50"
+						android:layout_height="@dimen/height_50"
+						app:cardCornerRadius="@dimen/spacing_15"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent">
 
-		</androidx.constraintlayout.widget.ConstraintLayout>
+						<ImageView
+							android:id="@+id/statsIcon"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:background="?attr/colorError"
+							android:gravity="center"
+							android:padding="@dimen/spacing_10"
+							android:src="@drawable/money_ic"
+							android:textSize="20sp"
+							tools:text="L" />
+					</com.google.android.material.card.MaterialCardView>
 
-		<com.google.android.material.textview.MaterialTextView
-			android:id="@+id/rvText"
-			android:layout_width="match_parent"
-			style="@style/TextAppearance.Material3.TitleLarge"
-			android:layout_height="wrap_content"
-			android:paddingHorizontal="@dimen/spacing_10"
-			android:text="@string/recentOperations"
-			app:layout_constraintTop_toBottomOf="@id/chartWeekly" />
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/statsName"
+						style="@style/Body1"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="@dimen/spacing_15"
+						android:text="@string/todaySpend"
+						android:textStyle="bold"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toEndOf="@id/background"
+						app:layout_constraintTop_toTopOf="parent" />
 
-		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/rvOperations"
-			tools:itemCount="1"
-			android:layout_width="match_parent"
-			android:layout_height="400dp"
-			android:layout_margin="@dimen/spacing_15"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/rvText"
-			app:reverseLayout="true"
-			app:stackFromEnd="true"
-			tools:listitem="@layout/operation_item" />
+					<com.google.android.material.textview.MaterialTextView
+						android:id="@+id/statsQuantity"
+						style="@style/TitleSmall"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="@dimen/spacing_10"
+						android:textColor="@color/semantic_red"
+						android:textStyle="bold"
+						app:layout_constraintEnd_toEndOf="@id/statsName"
+						app:layout_constraintStart_toStartOf="@id/statsName"
+						app:layout_constraintTop_toBottomOf="@id/statsName"
+						tools:text="@string/home_fragment_your_accounts" />
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+
+				<com.google.android.material.textview.MaterialTextView
+					android:id="@+id/rvText"
+					android:fontFamily="@font/poppinsbold"
+					style="@style/TitleMedium"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:paddingHorizontal="@dimen/spacing_10"
+					android:text="@string/recentOperations"
+					app:layout_constraintTop_toBottomOf="@id/chartWeekly" />
+
+				<androidx.recyclerview.widget.RecyclerView
+					android:id="@+id/rvOperations"
+					android:layout_width="match_parent"
+					android:layout_height="400dp"
+					android:layout_margin="@dimen/spacing_15"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintTop_toBottomOf="@id/rvText"
+					app:reverseLayout="true"
+					app:stackFromEnd="true"
+					tools:itemCount="1"
+					tools:listitem="@layout/operation_item" />
 
 
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</LinearLayout>
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

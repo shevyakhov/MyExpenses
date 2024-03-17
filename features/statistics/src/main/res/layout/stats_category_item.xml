@@ -11,24 +11,26 @@
 		android:id="@+id/background"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		app:cardCornerRadius="@dimen/spacing_10"
+		app:cardCornerRadius="@dimen/spacing_15"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent">
 
 		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/categoryLetter"
+			style="@style/TitleLarge"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center|start"
 			android:gravity="center"
 			android:padding="@dimen/spacing_10"
 			android:textSize="20sp"
+			android:textStyle="bold"
 			tools:text="L" />
 
 		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/category"
-			style="@style/TextAppearance.Material3.LabelLarge"
+			style="@style/Body1"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
@@ -39,7 +41,7 @@
 
 		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/isEarning"
-			style="@style/TextAppearance.Material3.LabelLarge"
+			style="@style/Body1"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="top|end"

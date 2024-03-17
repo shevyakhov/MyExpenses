@@ -2,49 +2,49 @@
 <resources>
 
 	<style name="KeyboardSingleText" parent="TextAppearance.AppCompat">
-		<item name="font">@font/inter_medium</item>
+		<item name="font">@font/poppinsmedium</item>
 		<item name="android:gravity">center</item>
-		<item name="android:background">?attr/colorTertiary</item>
-		<item name="android:textColor">?attr/colorSurface</item>
+		<item name="android:background">@color/neutral_6</item>
+		<item name="android:textColor">@color/neutral_1</item>
 		<item name="android:textSize">30sp</item>
 	</style>
 
 	<style name="KeyboardSingleTextTop" parent="TextAppearance.AppCompat">
-		<item name="font">@font/inter_medium</item>
+		<item name="font">@font/poppinsmedium</item>
 		<item name="android:gravity">center</item>
 		<item name="android:background">?attr/colorButtonNormal</item>
-		<item name="android:textColor">?attr/colorSurface</item>
+		<item name="android:textColor">@color/neutral_6</item>
 		<item name="android:textSize">30sp</item>
 	</style>
 
 	<style name="KeyBoardText" parent="TextAppearance.AppCompat">
-		<item name="font">@font/inter_medium</item>
+		<item name="font">@font/poppinsmedium</item>
 		<item name="android:gravity">center</item>
 		<item name="android:background">?attr/colorButtonNormal</item>
-		<item name="android:textColor">?attr/colorSurface</item>
+		<item name="android:textColor">@color/neutral_6</item>
 		<item name="android:textSize">20sp</item>
 	</style>
 
 	<style name="KeyBoardMainText" parent="TextAppearance.AppCompat">
-		<item name="font">@font/inter_medium</item>
-		<item name="android:textColor">?attr/colorSurface</item>
+		<item name="font">@font/poppinsmedium</item>
+		<item name="android:textColor">@color/neutral_6</item>
 		<item name="android:textSize">30sp</item>
 	</style>
 
 	<style name="OperationMainText" parent="TextAppearance.AppCompat">
-		<item name="font">@font/inter_medium</item>
+		<item name="font">@font/poppinsmedium</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:textSize">20sp</item>
 	</style>
 
 	<style name="OperationMoneyText" parent="TextAppearance.AppCompat">
-		<item name="font">@font/inter_medium</item>
+		<item name="font">@font/poppinsmedium</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:textSize">20sp</item>
 	</style>
 
 	<style name="OperationSubText" parent="TextAppearance.AppCompat">
-		<item name="font">@font/inter_medium</item>
+		<item name="font">@font/poppinsmedium</item>
 		<item name="android:textSize">12sp</item>
 	</style>
 </resources>

@@ -14,22 +14,24 @@
 		android:layout_width="@dimen/height_80"
 		android:layout_height="@dimen/height_80"
 		android:layout_gravity="center"
-		app:cardCornerRadius="@dimen/spacing_10">
+		app:cardCornerRadius="@dimen/spacing_15">
 
 		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/categoryLetter"
+			style="@style/TitleLarge"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:gravity="center"
 			android:padding="@dimen/spacing_10"
 			android:textSize="20sp"
+			android:textStyle="bold"
 			tools:text="L" />
 
 	</com.google.android.material.card.MaterialCardView>
 
 	<com.google.android.material.textview.MaterialTextView
 		android:id="@+id/category"
-		style="@style/TextAppearance.AppCompat.Title"
+		style="@style/Body1"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_gravity="center"
