@@ -2,7 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_height="match_parent"
+	android:background="@color/neutral_6">
 
 	<androidx.viewpager2.widget.ViewPager2
 		android:id="@+id/viewPager"
@@ -13,9 +15,12 @@
 		app:layout_constraintTop_toBottomOf="@id/skipBtn">
 
 	</androidx.viewpager2.widget.ViewPager2>
+
 	<com.google.android.material.button.MaterialButton
 		android:id="@+id/botButton"
-		style="@style/Widget.Material3.Button"
+		style="@style/Body1"
+		android:textColor="@color/neutral_6"
+		tools:text="@string/material_motion_easing_decelerated"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_gravity="center|bottom"
@@ -26,12 +31,12 @@
 
 	<com.google.android.material.textview.MaterialTextView
 		android:id="@+id/skipBtn"
+		style="@style/Body1"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_gravity="end"
 		android:layout_margin="15dp"
 		android:text="@string/skip"
-		style="@style/TextAppearance.Material3.BodySmall"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
 
