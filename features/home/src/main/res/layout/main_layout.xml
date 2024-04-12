@@ -23,10 +23,10 @@
 				<com.google.android.material.textview.MaterialTextView
 					android:id="@+id/screenName"
 					style="@style/TitleLarge"
-					android:fontFamily="@font/poppinsbold"
 					android:layout_width="wrap_content"
 					android:layout_height="match_parent"
 					android:layout_marginStart="@dimen/spacing_15"
+					android:fontFamily="@font/poppinsbold"
 					android:gravity="center"
 					android:text="@string/home_fragment_your_accounts"
 					android:textColor="@color/neutral_6"
@@ -44,15 +44,15 @@
 			android:layout_height="120dp"
 			android:layout_marginVertical="@dimen/spacing_20"
 			android:clipToPadding="false"
-			android:elevation="10dp"
+			android:elevation="1dp"
 			app:layout_constraintTop_toBottomOf="@id/topAppBarLayout" />
 
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="70dp"
-			android:paddingTop="50dp"
 			android:background="@drawable/calc"
+			android:paddingTop="50dp"
 			app:layout_constraintTop_toTopOf="@id/accountViewPager">
 
 			<androidx.constraintlayout.widget.ConstraintLayout
@@ -63,73 +63,84 @@
 					android:id="@+id/chartWeekly"
 					android:layout_width="match_parent"
 					android:layout_height="300dp"
+					android:layout_marginTop="@dimen/height_20"
 					android:padding="@dimen/spacing_10"
 					app:layout_constraintTop_toBottomOf="@id/todayStats" />
 
-				<androidx.constraintlayout.widget.ConstraintLayout
+				<androidx.cardview.widget.CardView
 					android:id="@+id/todayStats"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_margin="@dimen/spacing_15"
-					android:layout_marginVertical="@dimen/spacing_5"
-					android:padding="@dimen/spacing_15"
-					app:cardCornerRadius="@dimen/spacing_10"
+					android:backgroundTint="@color/neutral_6"
+					app:cardCornerRadius="15dp"
+					app:cardElevation="1dp"
 					app:layout_constraintTop_toTopOf="parent">
 
-					<com.google.android.material.card.MaterialCardView
-						android:id="@+id/background"
-						android:layout_width="@dimen/height_50"
-						android:layout_height="@dimen/height_50"
-						app:cardCornerRadius="@dimen/spacing_15"
-						app:layout_constraintBottom_toBottomOf="parent"
-						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintTop_toTopOf="parent">
-
-						<ImageView
-							android:id="@+id/statsIcon"
-							android:layout_width="match_parent"
-							android:layout_height="match_parent"
-							android:background="?attr/colorError"
-							android:gravity="center"
-							android:padding="@dimen/spacing_10"
-							android:src="@drawable/money_ic"
-							android:textSize="20sp"
-							tools:text="L" />
-					</com.google.android.material.card.MaterialCardView>
-
-					<com.google.android.material.textview.MaterialTextView
-						android:id="@+id/statsName"
-						style="@style/Body1"
-						android:layout_width="0dp"
+					<androidx.constraintlayout.widget.ConstraintLayout
+						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:layout_marginHorizontal="@dimen/spacing_15"
-						android:text="@string/todaySpend"
-						android:textStyle="bold"
-						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintStart_toEndOf="@id/background"
-						app:layout_constraintTop_toTopOf="parent" />
+						android:layout_marginVertical="@dimen/spacing_5"
+						android:padding="@dimen/spacing_15"
+						app:cardCornerRadius="@dimen/spacing_10">
 
-					<com.google.android.material.textview.MaterialTextView
-						android:id="@+id/statsQuantity"
-						style="@style/TitleSmall"
-						android:layout_width="0dp"
-						android:layout_height="wrap_content"
-						android:layout_marginTop="@dimen/spacing_10"
-						android:textColor="@color/semantic_red"
-						android:textStyle="bold"
-						app:layout_constraintEnd_toEndOf="@id/statsName"
-						app:layout_constraintStart_toStartOf="@id/statsName"
-						app:layout_constraintTop_toBottomOf="@id/statsName"
-						tools:text="@string/home_fragment_your_accounts" />
+						<com.google.android.material.card.MaterialCardView
+							android:id="@+id/background"
+							android:layout_width="@dimen/height_50"
+							android:layout_height="@dimen/height_50"
+							app:cardCornerRadius="@dimen/spacing_15"
+							app:layout_constraintBottom_toBottomOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toTopOf="parent">
 
-				</androidx.constraintlayout.widget.ConstraintLayout>
+							<ImageView
+								android:id="@+id/statsIcon"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:background="?attr/colorError"
+								android:gravity="center"
+								android:padding="@dimen/spacing_10"
+								android:src="@drawable/money_ic"
+								android:textSize="20sp"
+								tools:text="L" />
+						</com.google.android.material.card.MaterialCardView>
+
+						<com.google.android.material.textview.MaterialTextView
+							android:id="@+id/statsName"
+							style="@style/Body1"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_marginHorizontal="@dimen/spacing_15"
+							android:text="@string/todaySpend"
+							android:textStyle="bold"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toEndOf="@id/background"
+							app:layout_constraintTop_toTopOf="parent" />
+
+						<com.google.android.material.textview.MaterialTextView
+							android:id="@+id/statsQuantity"
+							style="@style/TitleSmall"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/spacing_10"
+							android:textColor="@color/semantic_red"
+							android:textStyle="bold"
+							app:layout_constraintEnd_toEndOf="@id/statsName"
+							app:layout_constraintStart_toStartOf="@id/statsName"
+							app:layout_constraintTop_toBottomOf="@id/statsName"
+							tools:text="@string/home_fragment_your_accounts" />
+
+					</androidx.constraintlayout.widget.ConstraintLayout>
+				</androidx.cardview.widget.CardView>
+
 
 				<com.google.android.material.textview.MaterialTextView
 					android:id="@+id/rvText"
-					android:fontFamily="@font/poppinsbold"
 					style="@style/TitleMedium"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/spacing_20"
+					android:fontFamily="@font/poppinsbold"
 					android:paddingHorizontal="@dimen/spacing_10"
 					android:text="@string/recentOperations"
 					app:layout_constraintTop_toBottomOf="@id/chartWeekly" />

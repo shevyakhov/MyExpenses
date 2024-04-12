@@ -42,8 +42,7 @@
 		android:layout_height="wrap_content"
 		android:layout_marginTop="3dp"
 		android:gravity="center"
-		android:textColor="?attr/colorSurface"
-		android:textSize="12sp"
+		android:textColor="@color/primary"
 		tools:text="blablabla" />
 
 </LinearLayout>

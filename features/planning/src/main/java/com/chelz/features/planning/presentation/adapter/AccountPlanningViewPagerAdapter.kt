@@ -4,9 +4,6 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.blue
-import androidx.core.graphics.green
-import androidx.core.graphics.red
 import androidx.recyclerview.widget.RecyclerView
 import com.chelz.features.planning.R
 import com.chelz.features.planning.databinding.AccountPlanItemBinding
@@ -26,15 +23,14 @@ class AccountPlanningViewPagerAdapter : RecyclerView.Adapter<AccountPlanningView
 			balance.text = moneyFormatted
 			val color = Color.parseColor(item.color)
 			root.setCardBackgroundColor(color)
-			val r = 255 - color.red
-			val g = 255 - color.green
-			val b = 255 - color.blue
-			val new = Color.rgb(r, g, b)
-			accountName.setTextColor(new)
-			number.setTextColor(new)
-			numberTitle.setTextColor(new)
-			balanceTitle.setTextColor(new)
-			balance.setTextColor(new)
+			val brightness = (Color.red(color) * 0.299 + Color.green(color) * 0.587 + Color.blue(color) * 0.114) / 255
+
+			val textColor = if (brightness > 0.5) root.context.getColor(com.chelz.libraries.theme.R.color.neutral_1) else Color.WHITE
+			accountName.setTextColor(textColor)
+			number.setTextColor(textColor)
+			numberTitle.setTextColor(textColor)
+			balanceTitle.setTextColor(textColor)
+			balance.setTextColor(textColor)
 		}
 	}
 

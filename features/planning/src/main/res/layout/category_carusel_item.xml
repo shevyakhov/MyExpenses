@@ -14,6 +14,7 @@
 		android:layout_width="@dimen/height_80"
 		android:layout_height="@dimen/height_80"
 		android:layout_gravity="center"
+		android:elevation="1dp"
 		app:cardCornerRadius="@dimen/spacing_15">
 
 		<com.google.android.material.textview.MaterialTextView
@@ -31,14 +32,14 @@
 
 	<com.google.android.material.textview.MaterialTextView
 		android:id="@+id/category"
-		style="@style/Body1"
+		style="@style/TitleMedium"
+		android:textStyle="bold"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_gravity="center"
 		android:layout_marginHorizontal="@dimen/spacing_16"
 		android:layout_marginTop="3dp"
 		android:gravity="center"
-		android:textSize="12sp"
 		tools:text="blablabla" />
 
 </LinearLayout>

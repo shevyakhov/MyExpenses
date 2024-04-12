@@ -5,9 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.blue
-import androidx.core.graphics.green
-import androidx.core.graphics.red
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleCoroutineScope
@@ -53,10 +50,9 @@ class AddCategoryFragment : Fragment() {
 			val color = Color.parseColor(it)
 			binding.background.setCardBackgroundColor(color)
 
-			val r = 255 - color.red
-			val g = 255 - color.green
-			val b = 255 - color.blue
-			val textColor = Color.rgb(r, g, b)
+			val brightness = (Color.red(color) * 0.299 + Color.green(color) * 0.587 + Color.blue(color) * 0.114) / 255
+
+			val textColor = if (brightness > 0.5) requireContext().getColor(com.chelz.libraries.theme.R.color.neutral_1) else Color.WHITE
 			binding.colorChosen.text = it
 			binding.categoryLetter.setTextColor(textColor)
 		}.launchIn(scope)

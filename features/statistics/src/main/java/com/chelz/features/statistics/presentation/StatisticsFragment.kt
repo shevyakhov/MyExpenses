@@ -18,6 +18,7 @@ import com.chelz.features.statistics.domain.DatePeriod
 import com.chelz.features.statistics.domain.TabState
 import com.chelz.features.statistics.presentation.adapter.HorizontalMarginItemDecoration
 import com.chelz.features.statistics.presentation.adapter.SwipeItemAdapter
+import com.chelz.libraries.theme.ColorGenerator
 import com.chelz.libraries.theme.getThemeColor
 import com.chelz.shared.accounts.domain.entity.AccountItem
 import com.chelz.shared.accounts.domain.entity.CategoryItem
@@ -34,7 +35,6 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.PercentFormatter
-import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.android.material.datepicker.MaterialDatePicker.Builder
 import com.google.android.material.datepicker.MaterialDatePicker.thisMonthInUtcMilliseconds
 import com.google.android.material.datepicker.MaterialDatePicker.todayInUtcMilliseconds
@@ -242,7 +242,7 @@ class StatisticsFragment : Fragment() {
 
 		val pieDataSet = PieDataSet(entries, "Ваши траты")
 		pieDataSet.valueTextSize = 20f
-		pieDataSet.colors = ColorTemplate.PASTEL_COLORS.toList()
+		pieDataSet.colors = ColorGenerator.generateColors(entries.size)
 
 		val data = PieData(pieDataSet)
 
@@ -268,7 +268,7 @@ class StatisticsFragment : Fragment() {
 		}
 
 		val dataSet = PieDataSet(dataEntries, if (isAccount) "Categories" else "Accounts")
-		dataSet.colors = ColorTemplate.PASTEL_COLORS.toList()
+		dataSet.colors = ColorGenerator.generateColors(dataEntries.size)
 		dataSet.valueTextColor = Color.BLACK
 		dataSet.valueTextSize = 12f
 		dataSet.valueFormatter = PercentFormatter(binding.semiChartPie)
@@ -292,7 +292,7 @@ class StatisticsFragment : Fragment() {
 		val itemDecoration = HorizontalMarginItemDecoration(binding.root.context, R.dimen.viewpager_current_item_horizontal_margin)
 
 		binding.swipeViewPagerItems.apply {
-			setPadding(48, 0, 48, 0)
+			setPadding(0, 0, 0, 0)
 			offscreenPageLimit = 1
 			val nextItemVisiblePx = binding.root.resources.getDimension(R.dimen.viewpager_next_item_visible)
 			val currentItemHorizontalMarginPx = binding.root.resources.getDimension(R.dimen.viewpager_current_item_horizontal_margin)

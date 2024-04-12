@@ -4,18 +4,19 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="?attr/colorSurface">
+	android:background="@color/neutral_6">
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:background="?attr/colorSurface"
-		android:padding="@dimen/spacing_20">
+		android:background="@color/neutral_6">
+
 
 		<com.google.android.material.appbar.AppBarLayout
 			android:id="@+id/top_bar"
 			android:layout_width="match_parent"
 			android:layout_height="@dimen/height_65"
+			android:background="@color/primary"
 			app:layout_constraintTop_toTopOf="parent">
 
 			<androidx.constraintlayout.widget.ConstraintLayout
@@ -24,112 +25,125 @@
 
 				<com.google.android.material.textview.MaterialTextView
 					android:id="@+id/screenName"
-					style="@style/TextAppearance.Material3.HeadlineLarge"
+					style="@style/TitleLarge"
 					android:layout_width="wrap_content"
 					android:layout_height="match_parent"
 					android:layout_marginStart="@dimen/spacing_15"
+					android:fontFamily="@font/poppinsbold"
 					android:gravity="center"
 					android:text="@string/add_category"
+					android:textColor="@color/neutral_6"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toTopOf="parent" />
 			</androidx.constraintlayout.widget.ConstraintLayout>
 
+
 		</com.google.android.material.appbar.AppBarLayout>
 
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="?attr/colorSurface"
 
-		<com.google.android.material.card.MaterialCardView
-			android:id="@+id/background"
-			android:layout_width="@dimen/height_50"
-			android:layout_height="@dimen/height_50"
-			android:layout_marginTop="@dimen/spacing_20"
 			android:padding="@dimen/spacing_20"
-			app:cardCornerRadius="@dimen/spacing_10"
-			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/top_bar">
 
+			<com.google.android.material.card.MaterialCardView
+				android:id="@+id/background"
+				android:layout_width="@dimen/height_50"
+				android:layout_height="@dimen/height_50"
+				android:layout_marginTop="@dimen/spacing_20"
+				android:padding="@dimen/spacing_20"
+				app:cardCornerRadius="@dimen/spacing_10"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<com.google.android.material.textview.MaterialTextView
+					android:id="@+id/categoryLetter"
+					style="@style/TitleLarge"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:gravity="center"
+					android:padding="@dimen/spacing_10"
+					android:textSize="20sp"
+					tools:text="L" />
+			</com.google.android.material.card.MaterialCardView>
+
 			<com.google.android.material.textview.MaterialTextView
-				android:id="@+id/categoryLetter"
+				android:id="@+id/category"
+				style="@style/Body1"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/spacing_15"
+				android:textColor="?attr/colorOnBackground"
+				app:layout_constraintBottom_toBottomOf="@id/background"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toEndOf="@id/background"
+				app:layout_constraintTop_toTopOf="@id/background" />
+
+
+			<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/colorTitle"
+				style="@style/TitleSmall"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_10"
+				android:text="@string/colorTitle"
+				app:layout_constraintEnd_toStartOf="@id/colorChosen"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/background" />
+
+			<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/colorChosen"
+				style="@style/Caption2"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toBottomOf="@id/colorTitle"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toEndOf="@id/colorTitle"
+				app:layout_constraintTop_toTopOf="@id/colorTitle" />
+
+			<Button
+				android:id="@+id/button_color"
 				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:gravity="center"
-				android:padding="@dimen/spacing_10"
-				android:textSize="20sp"
-				tools:text="L" />
-		</com.google.android.material.card.MaterialCardView>
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_10"
+				android:text="@string/choose_color"
+				app:layout_constraintTop_toBottomOf="@id/colorTitle" />
 
-		<com.google.android.material.textview.MaterialTextView
-			android:id="@+id/category"
-			style="@style/TextAppearance.AppCompat.Headline"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_marginHorizontal="@dimen/spacing_15"
-			android:textColor="?attr/colorOnBackground"
-			app:layout_constraintBottom_toBottomOf="@id/background"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toEndOf="@id/background"
-			app:layout_constraintTop_toTopOf="@id/background" />
-
-
-		<com.google.android.material.textview.MaterialTextView
-			android:id="@+id/colorTitle"
-			style="@style/TextAppearance.Material3.LabelLarge"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="@dimen/spacing_10"
-			android:text="@string/colorTitle"
-			app:layout_constraintEnd_toStartOf="@id/colorChosen"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/background" />
-
-		<com.google.android.material.textview.MaterialTextView
-			android:id="@+id/colorChosen"
-			style="@style/TextAppearance.Material3.BodyLarge"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			app:layout_constraintBottom_toBottomOf="@id/colorTitle"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toEndOf="@id/colorTitle"
-			app:layout_constraintTop_toTopOf="@id/colorTitle" />
-
-		<Button
-			android:id="@+id/button_color"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="@dimen/spacing_10"
-			android:text="@string/choose_color"
-			app:layout_constraintTop_toBottomOf="@id/colorTitle" />
-
-		<com.google.android.material.textfield.TextInputLayout
-			android:id="@+id/categoryNameLayout"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="@dimen/spacing_10"
-			android:hint="@string/categoryName"
-			app:layout_constraintTop_toBottomOf="@id/button_color">
-
-			<com.google.android.material.textfield.TextInputEditText
-				android:id="@+id/categoryName"
+			<com.google.android.material.textfield.TextInputLayout
+				android:id="@+id/categoryNameLayout"
+				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content" />
-		</com.google.android.material.textfield.TextInputLayout>
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_10"
+				android:hint="@string/categoryName"
+				app:layout_constraintTop_toBottomOf="@id/button_color">
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/categoryName"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content" />
+			</com.google.android.material.textfield.TextInputLayout>
 
 
-		<com.google.android.material.checkbox.MaterialCheckBox
-			android:id="@+id/isEarningCheckBox"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="@dimen/spacing_10"
-			android:text="@string/isEarning"
-			app:layout_constraintTop_toBottomOf="@id/categoryNameLayout" />
+			<com.google.android.material.checkbox.MaterialCheckBox
+				android:id="@+id/isEarningCheckBox"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_10"
+				android:text="@string/isEarning"
+				app:layout_constraintTop_toBottomOf="@id/categoryNameLayout" />
 
-		<com.google.android.material.button.MaterialButton
-			android:id="@+id/button_save"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="@dimen/spacing_10"
-			android:text="@string/save"
-			app:layout_constraintTop_toBottomOf="@id/isEarningCheckBox" />
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/button_save"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_10"
+				android:text="@string/save"
+				app:layout_constraintTop_toBottomOf="@id/isEarningCheckBox" />
 
+		</androidx.constraintlayout.widget.ConstraintLayout>
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
