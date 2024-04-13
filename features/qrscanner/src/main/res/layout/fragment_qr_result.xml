@@ -3,18 +3,19 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="match_parent"
+	android:background="@color/neutral_6">
 
-	<androidx.constraintlayout.widget.ConstraintLayout
+	<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:padding="@dimen/spacing_20"
-		tools:background="@android:color/white">
+		android:background="@color/neutral_6">
 
 		<com.google.android.material.appbar.AppBarLayout
 			android:id="@+id/top_bar"
 			android:layout_width="match_parent"
 			android:layout_height="@dimen/height_65"
+			android:background="@color/primary"
 			app:layout_constraintTop_toTopOf="parent">
 
 			<androidx.constraintlayout.widget.ConstraintLayout
@@ -23,12 +24,14 @@
 
 				<com.google.android.material.textview.MaterialTextView
 					android:id="@+id/screenName"
-					style="@style/TextAppearance.Material3.HeadlineLarge"
+					style="@style/TitleLarge"
 					android:layout_width="wrap_content"
 					android:layout_height="match_parent"
 					android:layout_marginStart="@dimen/spacing_15"
+					android:fontFamily="@font/poppinsbold"
 					android:gravity="center"
 					android:text="@string/qr_check"
+					android:textColor="@color/neutral_6"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toTopOf="parent" />
@@ -36,13 +39,35 @@
 
 		</com.google.android.material.appbar.AppBarLayout>
 
-		<WebView
-			android:id="@+id/webView"
+		<com.google.android.material.textview.MaterialTextView
+			android:id="@+id/webText"
+			style="@style/TitleSmall"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_10"
+			android:fontFamily="@font/poppinsbold"
+			android:paddingHorizontal="@dimen/spacing_10"
+			android:text="@string/check"
+			app:layout_constraintTop_toBottomOf="@id/top_bar" />
+
+		<WebView
+			android:id="@+id/webView"
+			android:layout_width="0dp"
+			android:layout_height="50dp"
 			app:layout_constraintBottom_toTopOf="@id/accountViewPager"
-			app:layout_constraintTop_toBottomOf="@id/top_bar"
+			app:layout_constraintEnd_toStartOf="@id/expanded_menu"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/webText"
 			tools:ignore="WebViewLayout" />
+
+		<ImageView
+			android:id="@+id/expanded_menu"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="15dp"
+			android:src="@android:drawable/arrow_down_float"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="@id/webView" />
 
 		<androidx.viewpager2.widget.ViewPager2
 			android:id="@+id/accountViewPager"
@@ -50,24 +75,47 @@
 			android:layout_height="120dp"
 			android:layout_marginVertical="@dimen/spacing_20"
 			android:clipToPadding="false"
-			app:layout_constraintBottom_toTopOf="@id/recyclerView"
+			android:elevation="1dp"
 			app:layout_constraintTop_toBottomOf="@id/webView" />
 
-		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/recyclerView"
-			android:layout_width="match_parent"
-			android:layout_height="300dp"
-			android:layout_marginVertical="@dimen/spacing_5"
-			app:layout_constraintBottom_toTopOf="@id/save_button"
-			app:layout_constraintTop_toBottomOf="@id/accountViewPager"
-			tools:listitem="@layout/qr_list_item" />
-
-		<com.google.android.material.button.MaterialButton
-			android:id="@+id/save_button"
+		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/save"
-			app:layout_constraintBottom_toBottomOf="parent" />
+			android:layout_marginTop="70dp"
+			android:background="@drawable/calc"
+			android:orientation="vertical"
+			android:paddingTop="70dp"
+			app:layout_constraintTop_toTopOf="@id/accountViewPager">
+
+			<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/rvText"
+				style="@style/TitleMedium"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_20"
+				android:fontFamily="@font/poppinsbold"
+				android:paddingHorizontal="@dimen/spacing_10"
+				android:text="@string/purchase" />
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/recyclerView"
+				android:layout_width="match_parent"
+				android:layout_height="300dp"
+				android:layout_marginHorizontal="10dp"
+				android:layout_marginVertical="@dimen/spacing_5"
+				app:layout_constraintBottom_toTopOf="@id/save_button"
+				app:layout_constraintTop_toBottomOf="@id/accountViewPager"
+				tools:listitem="@layout/qr_list_item" />
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/save_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/spacing_20"
+				android:text="@string/save"
+				app:layout_constraintBottom_toBottomOf="parent" />
+		</LinearLayout>
+
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

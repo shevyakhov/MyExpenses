@@ -73,20 +73,20 @@
 
 
 			<com.google.android.material.textview.MaterialTextView
+				style="@style/Caption1"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="top"
-				style="@style/Caption1"
 
-				android:textColor="@color/neutral_6"
 				android:text="@string/email"
+				android:textColor="@color/neutral_6"
 				android:textStyle="bold" />
 
 			<com.google.android.material.textview.MaterialTextView
 				android:id="@+id/textViewEmail"
+				style="@style/Caption2"
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
-				style="@style/Caption2"
 				android:layout_weight="1"
 				android:textColor="@color/neutral_6"
 				app:layout_constraintEnd_toEndOf="parent"
@@ -105,20 +105,20 @@
 			app:layout_constraintTop_toBottomOf="@id/layout_email">
 
 			<com.google.android.material.textview.MaterialTextView
+				style="@style/Caption1"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				style="@style/Caption1"
-				android:textColor="@color/neutral_6"
 				android:text="@string/timeCreation"
+				android:textColor="@color/neutral_6"
 				android:textStyle="bold" />
 
 			<com.google.android.material.textview.MaterialTextView
 				android:id="@+id/textViewCreationTime"
-				android:layout_width="match_parent"
 				style="@style/Caption2"
+				android:layout_width="match_parent"
 				android:layout_height="0dp"
-				android:textColor="@color/neutral_6"
 				android:layout_weight="1"
+				android:textColor="@color/neutral_6"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toEndOf="@id/textViewEmail"
 				app:layout_constraintTop_toTopOf="@id/textViewEmail" />
@@ -127,12 +127,12 @@
 		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/newsLabel"
 			style="@style/TitleLarge"
-			android:fontFamily="@font/poppinsbold"
-			android:textColor="@color/neutral_6"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:fontFamily="@font/poppinsbold"
 			android:padding="@dimen/spacing_10"
 			android:text="@string/news"
+			android:textColor="@color/neutral_6"
 			app:layout_constraintTop_toBottomOf="@id/layout_time" />
 
 		<androidx.recyclerview.widget.RecyclerView

@@ -3,14 +3,16 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="wrap_content"
+	android:elevation="@dimen/spacing_5"
 	android:layout_height="wrap_content"
 	android:orientation="vertical"
 	android:padding="@dimen/spacing_5">
 
-	<com.google.android.material.card.MaterialCardView
+	<androidx.cardview.widget.CardView
 		android:id="@+id/background"
 		android:layout_width="@dimen/height_65"
 		android:layout_height="@dimen/height_65"
+		app:cardElevation="5dp"
 		app:cardCornerRadius="@dimen/spacing_20">
 
 		<com.google.android.material.textview.MaterialTextView
@@ -33,7 +35,7 @@
 			android:visibility="invisible"
 			tools:text="L" />
 
-	</com.google.android.material.card.MaterialCardView>
+	</androidx.cardview.widget.CardView>
 
 	<com.google.android.material.textview.MaterialTextView
 		android:id="@+id/category"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="qr_check" translatable="false">Сканирование чека</string>
+	<string name="check" translatable="false">Ваш чек</string>
 	<string name="save" translatable="false">Сохранить</string>
 	<string name="category" translatable="false">Категория</string>
 	<string name="earning">Доходы</string>
@@ -20,4 +21,5 @@
 	<string name="pieChart" translatable="false">Круговая</string>
 	<string name="boxplot" translatable="false">Размах</string>
 	<string name="earnings" translatable="false">Доходы</string>
+	<string name="purchase">Ваши покупки</string>
 </resources>

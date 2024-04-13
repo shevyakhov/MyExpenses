@@ -1,5 +1,6 @@
 package com.chelz.features.qrscanner.presentation.result
 
+import android.app.ActionBar.LayoutParams
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -39,10 +40,14 @@ class QrResultFragment : Fragment() {
 		return binding.root
 	}
 
+	private var expanded = false
+
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		val scope = viewLifecycleOwner.lifecycleScope
-
+		binding.expandedMenu.setOnClickListener {
+			expandWebView()
+		}
 		viewModel.init()
 		val items: ItemsEntity? = arguments?.serializable(ITEMS)
 		val html: HtmlEntity? = arguments?.serializable(HTML)
@@ -71,13 +76,25 @@ class QrResultFragment : Fragment() {
 		bindAccounts(scope)
 	}
 
+	private fun expandWebView() {
+		if (expanded) {
+			val params = binding.webView.layoutParams
+			params.height = 150
+			binding.webView.layoutParams = params
+		} else {
+			val params = binding.webView.layoutParams
+			params.height = LayoutParams.WRAP_CONTENT
+			binding.webView.layoutParams = params
+		}
+		expanded = !expanded
+	}
+
 	private fun bindAccounts(scope: LifecycleCoroutineScope) {
 		val accountAdapter = AccountViewPagerAdapter()
 		val itemDecoration = HorizontalMarginItemDecoration(binding.root.context, R.dimen.viewpager_current_item_horizontal_margin)
 
 		binding.accountViewPager.adapter = accountAdapter
 		binding.accountViewPager.apply {
-			setPadding(48, 0, 48, 0)
 			offscreenPageLimit = 1
 			val nextItemVisiblePx = binding.root.resources.getDimension(R.dimen.viewpager_next_item_visible)
 			val currentItemHorizontalMarginPx = binding.root.resources.getDimension(R.dimen.viewpager_current_item_horizontal_margin)
