@@ -9,7 +9,7 @@ ext.BuildSrc = [
 
 	configs           : "$folder/configs.gradle",
 	modules           : "$folder/modules.gradle",
-	dependencies      : "$folder/dependencies.gradle",
+	dependencies: "$folder/libs.gradle",
 	plugins           : "$folder/plugins.gradle",
 
 	ext               : "$folder/ext.gradle",

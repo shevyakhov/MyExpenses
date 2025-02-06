@@ -1,69 +1,72 @@
 apply from: "$rootDir/build_system/versions.gradle"
 
-ext.Dependencies =
-	[
-		APPCOMPAT              : "androidx.appcompat:appcompat:${Versions.APPCOMPAT}",
-		CORE                   : "androidx.core:core-ktx:${Versions.CORE}",
-		TEST_JUNIT             : "androidx.test.ext:junit:${Versions.TEST_JUNIT}",
-		MATERIAL               : "com.google.android.material:material:${Versions.MATERIAL}",
-		JUNIT                  : "junit:junit:${Versions.JUNIT}",
+ext {
+	libs =
+		[
+			GRADLE                 : "com.android.tools.build:gradle:${versions.GRADLE}",
 
-		KOTLIN                 : "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}",
-		KOTLIN_STANDARD_LIBRARY: "org.jetbrains.kotlin:kotlin-stdlib:${Versions.KOTLIN}",
-		REFLECT                : "org.jetbrains.kotlin:kotlin-reflect:${Versions.KOTLIN}",
+			APPCOMPAT              : "androidx.appcompat:appcompat:${versions.APPCOMPAT}",
+			CORE                   : "androidx.core:core-ktx:${versions.CORE}",
+			TEST_JUNIT             : "androidx.test.ext:junit:${versions.TEST_JUNIT}",
+			MATERIAL               : "com.google.android.material:material:${versions.MATERIAL}",
+			JUNIT                  : "junit:junit:${versions.JUNIT}",
 
-		ROOM_RUNTIME           : "androidx.room:room-runtime:${Versions.ROOM}",
-		ROOM_COMPILER          : "androidx.room:room-compiler:${Versions.ROOM}",
-		ROOM_COMMON            : "androidx.room:room-common:${Versions.ROOM}",
-		ROOM_KTX               : "androidx.room:room-ktx:${Versions.ROOM}",
+			KOTLIN                 : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.KOTLIN}",
+			KOTLIN_STANDARD_LIBRARY: "org.jetbrains.kotlin:kotlin-stdlib:${versions.KOTLIN}",
+			REFLECT                : "org.jetbrains.kotlin:kotlin-reflect:${versions.KOTLIN}",
 
-		KOIN_ANDROID           : "io.insert-koin:koin-android:${Versions.KOIN}",
-		KOIN_CORE              : "io.insert-koin:koin-core:${Versions.KOIN}",
+			ROOM_RUNTIME           : "androidx.room:room-runtime:${versions.ROOM}",
+			ROOM_COMPILER          : "androidx.room:room-compiler:${versions.ROOM}",
+			ROOM_COMMON            : "androidx.room:room-common:${versions.ROOM}",
+			ROOM_KTX               : "androidx.room:room-ktx:${versions.ROOM}",
 
-		RETROFIT               : "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}",
-		OKHTTP_INTERCEPTOR     : "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP}",
-		GSON                   : "com.google.code.gson:gson:${Versions.GSON}",
-		GSON_CONVERTER         : "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT}",
+			KOIN_ANDROID           : "io.insert-koin:koin-android:${versions.KOIN}",
+			KOIN_CORE              : "io.insert-koin:koin-core:${versions.KOIN}",
 
-		LIFECYCLE              : [
-			LIFECYCLE_LIVEDATA_KTX : "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.LIFECYCLE}",
-			LIFECYCLE_EXTENSIONS   : "androidx.lifecycle:lifecycle-extensions:2.2.0",
-			LIFECYCLE_RUNTIME      : "androidx.lifecycle:lifecycle-runtime:${Versions.LIFECYCLE}",
-			LIFECYCLE_RUNTIME_KTX  : "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.LIFECYCLE}",
-			LIFECYCLE_COMMON_JAVA8 : "androidx.lifecycle:lifecycle-common-java8:${Versions.LIFECYCLE}",
-			LIFECYCLE_VIEWMODEL_KTX: "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE}",
-		],
+			RETROFIT               : "com.squareup.retrofit2:retrofit:${versions.RETROFIT}",
+			OKHTTP_INTERCEPTOR     : "com.squareup.okhttp3:logging-interceptor:${versions.OKHTTP}",
+			GSON                   : "com.google.code.gson:gson:${versions.GSON}",
+			GSON_CONVERTER         : "com.squareup.retrofit2:converter-gson:${versions.RETROFIT}",
 
-		GRADLE                 : "com.android.tools.build:gradle:${Versions.GRADLE}",
-		CONSTRAINT_LAYOUT      : "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT_LAYOUT}",
+			LIFECYCLE              : [
+				LIFECYCLE_LIVEDATA_KTX : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.LIFECYCLE}",
+				LIFECYCLE_EXTENSIONS   : "androidx.lifecycle:lifecycle-extensions:2.2.0",
+				LIFECYCLE_RUNTIME      : "androidx.lifecycle:lifecycle-runtime:${versions.LIFECYCLE}",
+				LIFECYCLE_RUNTIME_KTX  : "androidx.lifecycle:lifecycle-runtime-ktx:${versions.LIFECYCLE}",
+				LIFECYCLE_COMMON_JAVA8 : "androidx.lifecycle:lifecycle-common-java8:${versions.LIFECYCLE}",
+				LIFECYCLE_VIEWMODEL_KTX: "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.LIFECYCLE}",
+			],
 
-		CORE_TESTING           : "androidx.arch.core:core-testing:${Versions.CORE_TESTING}",
+			CONSTRAINT_LAYOUT      : "androidx.constraintlayout:constraintlayout:${versions.CONSTRAINT_LAYOUT}",
 
-		CICERONE               : "com.github.terrakok:cicerone:${Versions.CICERONE}",
-		FRAGMENT               : "androidx.fragment:fragment-ktx:${Versions.FRAGMENT}",
-		GLIDE                  : "com.github.bumptech.glide:glide:${Versions.GLIDE}",
+			CORE_TESTING           : "androidx.arch.core:core-testing:${versions.CORE_TESTING}",
 
-		COROUTINE_CORE    : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.COROUTINE}",
-		COROUTINE_ANDROID : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINE}",
-		COROUTINE_TEST    : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINE}",
+			CICERONE               : "com.github.terrakok:cicerone:${versions.CICERONE}",
+			FRAGMENT               : "androidx.fragment:fragment-ktx:${versions.FRAGMENT}",
+			GLIDE                  : "com.github.bumptech.glide:glide:${versions.GLIDE}",
 
-		LOTTIE            : "com.airbnb.android:lottie:${Versions.LOTTIE}",
+			COROUTINE_CORE         : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.COROUTINE}",
+			COROUTINE_ANDROID      : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.COROUTINE}",
+			COROUTINE_TEST         : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.COROUTINE}",
 
-		SLIDING           : "com.sothree.slidinguppanel:library:${Versions.SLIDING}",
-		JODA_TIME         : "net.danlew:android.joda:${Versions.JODA_TIME}",
+			LOTTIE                 : "com.airbnb.android:lottie:${versions.LOTTIE}",
 
-		CHART             : "com.github.PhilJay:MPAndroidChart:v${Versions.CHART}",
-		COLOR_PICKER      : "com.github.skydoves:colorpickerview:${Versions.COLOR_PICKER}",
-		BARCODE_SCANNER   : "com.google.mlkit:barcode-scanning:${Versions.BARCODE_SCANNER}",
-		CAMERAX_CAMERA    : "androidx.camera:camera-camera2:${Versions.CAMERAX_CAMERA}",
-		CAMERAX_LIFECYCLE : "androidx.camera:camera-lifecycle:${Versions.CAMERAX_LIFECYCLE}",
-		CAMERAX_VIEW      : "androidx.camera:camera-view:${Versions.CAMERAX_VIEW}",
+			SLIDING                : "com.sothree.slidinguppanel:library:${versions.SLIDING}",
+			JODA_TIME              : "net.danlew:android.joda:${versions.JODA_TIME}",
 
-		FIREBASE_BOM      : "com.google.firebase:firebase-bom:32.6.0",
-		FIREBASE_DATABASE : "com.google.firebase:firebase-database",
-		FIREBASE_FIRESTORE: "com.google.firebase:firebase-firestore",
-		FIREBASE_AUTH     : "com.google.firebase:firebase-auth",
+			CHART                  : "com.github.PhilJay:MPAndroidChart:v${versions.CHART}",
+			COLOR_PICKER           : "com.github.skydoves:colorpickerview:${versions.COLOR_PICKER}",
+			BARCODE_SCANNER        : "com.google.mlkit:barcode-scanning:${versions.BARCODE_SCANNER}",
+			CAMERAX_CAMERA         : "androidx.camera:camera-camera2:${versions.CAMERAX_CAMERA}",
+			CAMERAX_LIFECYCLE      : "androidx.camera:camera-lifecycle:${versions.CAMERAX_LIFECYCLE}",
+			CAMERAX_VIEW           : "androidx.camera:camera-view:${versions.CAMERAX_VIEW}",
 
-		RV_PLAN           : 'com.azoft.expandlayoutmanager:expandlayoutmanager:1.0.0',
+			FIREBASE_BOM           : "com.google.firebase:firebase-bom:32.6.0",
+			FIREBASE_DATABASE      : "com.google.firebase:firebase-database",
+			FIREBASE_FIRESTORE     : "com.google.firebase:firebase-firestore",
+			FIREBASE_AUTH          : "com.google.firebase:firebase-auth",
 
-	]
+			RV_PLAN                : 'com.azoft.expandlayoutmanager:expandlayoutmanager:1.0.0',
+
+		]
+}

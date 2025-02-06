@@ -1,20 +1,22 @@
 apply from: ModuleType.Library
 apply plugin: Plugins.KOTLIN_KAPT
-
+android {
+	namespace = "com.chelz.shared.accounts.data"
+}
 dependencies {
 
-	implementation Dependencies.CORE
+	implementation libs.CORE
 
-	implementation Dependencies.COROUTINE_CORE
+	implementation libs.COROUTINE_CORE
 
-	implementation Dependencies.KOIN_ANDROID
+	implementation libs.KOIN_ANDROID
 
-	implementation Dependencies.RETROFIT
+	implementation libs.RETROFIT
 
-	implementation Dependencies.ROOM_RUNTIME
-	implementation Dependencies.ROOM_COMMON
-	kapt Dependencies.ROOM_COMPILER
-	implementation Dependencies.ROOM_KTX
+	implementation libs.ROOM_RUNTIME
+	implementation libs.ROOM_COMMON
+	kapt libs.ROOM_COMPILER
+	implementation libs.ROOM_KTX
 
 	implementation project(Modules.SHARED_MODULES.ACCOUNTS_DOMAIN)
 }

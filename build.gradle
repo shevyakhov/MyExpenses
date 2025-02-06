@@ -1,9 +1,9 @@
 buildscript {
 	apply from: 'build_system/initBuildSrc.gradle'
-	apply from: BuildSrc.dependencies
-	apply from: BuildSrc.modules
-	apply from: BuildSrc.plugins
-	apply from: BuildSrc.moduleType
+	apply from: "build_system/dependencies.gradle"
+	apply from: "build_system/modules.gradle"
+	apply from: "build_system/plugins.gradle"
+	apply from: "build_system/moduleType.gradle"
 
 
 
@@ -13,15 +13,15 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath Dependencies.GRADLE
-		classpath Dependencies.KOTLIN
+		classpath(libs.GRADLE)
+		classpath(libs.KOTLIN)
 	}
 }
 plugins {
-	id 'com.android.application' version '7.4.2' apply false
-	id 'com.android.library' version '7.4.2' apply false
-	id 'org.jetbrains.kotlin.android' version '1.7.0' apply false
-	id 'com.google.gms.google-services' version '4.4.0' apply false
+	id 'com.android.application' version '8.7.3' apply false
+	id 'com.android.library' version '8.7.3' apply false
+	id 'org.jetbrains.kotlin.android' version '2.0.0' apply false
+	id 'com.google.gms.google-services' version '4.4.2' apply false
 }
 
 task clean(type: Delete) {

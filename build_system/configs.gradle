@@ -4,11 +4,11 @@ ext.Configs =
 
 		BUILD_TOOL_VERSION	:	"30.0.3",
 
-		COMPILE_SDK			:	33,
+		COMPILE_SDK: 35,
 		MIN_SDK				:	26,
-		TARGET_SDK			:	33,
+		TARGET_SDK : 35,
 
-		JVM_TARGET			:	"1.8",
+		JVM_TARGET : JavaVersion.VERSION_11.toString(),
 
 		CODE				:	1,
 		NAME				:	"1.0"

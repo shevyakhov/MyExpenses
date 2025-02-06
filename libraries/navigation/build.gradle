@@ -1,7 +1,10 @@
 apply from: ModuleType.Library
 
+android {
+	namespace = "com.chelz.libraries.navigation"
+}
 dependencies {
 
-	implementation Dependencies.FRAGMENT
-	implementation Dependencies.CICERONE
+	implementation libs.FRAGMENT
+
 }

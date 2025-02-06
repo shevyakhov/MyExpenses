@@ -5,6 +5,7 @@ apply from: BuildSrc.configs
 apply from: BuildSrc.ext
 
 android {
+	namespace "com.chelz.myexpenses"
 	packagingOptions {
 		exclude("META-INF/*.kotlin_module")
 	}
@@ -35,8 +36,8 @@ android {
 		}
 	}
 	compileOptions {
-		sourceCompatibility JavaVersion.VERSION_1_8
-		targetCompatibility JavaVersion.VERSION_1_8
+		sourceCompatibility JavaVersion.VERSION_11
+		targetCompatibility JavaVersion.VERSION_11
 	}
 	kotlinOptions {
 		jvmTarget = Configs.JVM_TARGET
@@ -46,5 +47,5 @@ android {
 	}
 }
 dependencies {
-	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
+	implementation libs.KOTLIN_STANDARD_LIBRARY
 }

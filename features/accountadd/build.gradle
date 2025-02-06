@@ -1,21 +1,23 @@
 apply from: ModuleType.Library
 apply plugin: Plugins.GOOGLE_SERVICES
-
+android {
+	namespace = "com.chelz.features.accountadd"
+}
 dependencies {
-	implementation Dependencies.CORE
-	implementation Dependencies.APPCOMPAT
-	implementation Dependencies.MATERIAL
-	implementation Dependencies.FRAGMENT
-	implementation Dependencies.CONSTRAINT_LAYOUT
-	implementation Dependencies.KOIN_CORE
-	implementation Dependencies.KOIN_ANDROID
-	implementation Dependencies.RETROFIT
-	implementation Dependencies.CICERONE
-	implementation Dependencies.JODA_TIME
-	implementation Dependencies.COLOR_PICKER
-	implementation platform(Dependencies.FIREBASE_BOM)
-	implementation Dependencies.FIREBASE_FIRESTORE
-	implementation Dependencies.FIREBASE_AUTH
+	implementation libs.CORE
+	implementation libs.APPCOMPAT
+	implementation libs.MATERIAL
+	implementation libs.FRAGMENT
+	implementation libs.CONSTRAINT_LAYOUT
+	implementation libs.KOIN_CORE
+	implementation libs.KOIN_ANDROID
+	implementation libs.RETROFIT
+
+	implementation libs.JODA_TIME
+	implementation libs.COLOR_PICKER
+	implementation platform(libs.FIREBASE_BOM)
+	implementation libs.FIREBASE_FIRESTORE
+	implementation libs.FIREBASE_AUTH
 
 	implementation project(Modules.LIBRARIES.NAVIGATION)
 	implementation project(Modules.LIBRARIES.THEME)

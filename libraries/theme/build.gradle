@@ -1,7 +1,9 @@
 apply from: ModuleType.Library
 apply plugin: Plugins.KOTLIN_KAPT
-
+android {
+	namespace = "com.chelz.libraries.theme"
+}
 dependencies {
-	implementation Dependencies.FRAGMENT
-	implementation Dependencies.MATERIAL
+	implementation libs.FRAGMENT
+	implementation libs.MATERIAL
 }

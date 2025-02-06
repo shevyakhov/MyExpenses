@@ -2,22 +2,23 @@ apply from: ModuleType.Application
 apply plugin: Plugins.GOOGLE_SERVICES
 
 dependencies {
-	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
-	implementation Dependencies.CORE
-	implementation Dependencies.APPCOMPAT
-	implementation Dependencies.MATERIAL
-	implementation Dependencies.FRAGMENT
-	implementation Dependencies.CONSTRAINT_LAYOUT
-	implementation Dependencies.KOIN_CORE
-	implementation Dependencies.KOIN_ANDROID
-	implementation Dependencies.CICERONE
-	implementation Dependencies.RETROFIT
-	implementation Dependencies.OKHTTP_INTERCEPTOR
-	implementation Dependencies.GSON
-	implementation Dependencies.GSON_CONVERTER
-	implementation Dependencies.JODA_TIME
-	implementation Dependencies.FIREBASE_AUTH
-	implementation platform(Dependencies.FIREBASE_BOM)
+	implementation libs.KOTLIN_STANDARD_LIBRARY
+	implementation libs.CORE
+	implementation libs.APPCOMPAT
+	implementation libs.MATERIAL
+	implementation libs.FRAGMENT
+	implementation libs.CONSTRAINT_LAYOUT
+	implementation libs.KOIN_CORE
+	implementation libs.KOIN_ANDROID
+
+
+	implementation libs.RETROFIT
+	implementation libs.OKHTTP_INTERCEPTOR
+	implementation libs.GSON
+	implementation libs.GSON_CONVERTER
+	implementation libs.JODA_TIME
+	implementation libs.FIREBASE_AUTH
+	implementation platform(libs.FIREBASE_BOM)
 
 
 	unpackMapValues(Modules.FEATURES) { implementation project(it) }

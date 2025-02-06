@@ -1,12 +1,14 @@
 apply from: ModuleType.Library
 apply plugin: Plugins.KOTLIN_KAPT
-
+android {
+	namespace = "com.chelz.libraries.network"
+}
 dependencies {
-	implementation Dependencies.COROUTINE_CORE
-	implementation Dependencies.COROUTINE_ANDROID
-	implementation Dependencies.OKHTTP_INTERCEPTOR
-	implementation Dependencies.RETROFIT
-	implementation Dependencies.KOIN_ANDROID
-	implementation Dependencies.GSON
-	implementation Dependencies.GSON_CONVERTER
+	implementation libs.COROUTINE_CORE
+	implementation libs.COROUTINE_ANDROID
+	implementation libs.OKHTTP_INTERCEPTOR
+	implementation libs.RETROFIT
+	implementation libs.KOIN_ANDROID
+	implementation libs.GSON
+	implementation libs.GSON_CONVERTER
 }

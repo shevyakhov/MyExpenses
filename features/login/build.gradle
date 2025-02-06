@@ -1,24 +1,26 @@
 apply from: ModuleType.Library
 apply plugin: Plugins.GOOGLE_SERVICES
-
+android {
+	namespace = "com.chelz.features.login"
+}
 dependencies {
-	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
-	implementation Dependencies.CORE
-	implementation Dependencies.APPCOMPAT
-	implementation Dependencies.MATERIAL
-	implementation Dependencies.FRAGMENT
-	implementation Dependencies.CONSTRAINT_LAYOUT
-	implementation Dependencies.KOIN_CORE
-	implementation Dependencies.KOIN_ANDROID
-	implementation Dependencies.RETROFIT
-	implementation Dependencies.OKHTTP_INTERCEPTOR
-	implementation Dependencies.GSON
-	implementation Dependencies.GSON_CONVERTER
-	implementation Dependencies.GLIDE
-	implementation Dependencies.CICERONE
-	implementation Dependencies.JODA_TIME
-	implementation platform(Dependencies.FIREBASE_BOM)
-	implementation Dependencies.FIREBASE_AUTH
+	implementation libs.KOTLIN_STANDARD_LIBRARY
+	implementation libs.CORE
+	implementation libs.APPCOMPAT
+	implementation libs.MATERIAL
+	implementation libs.FRAGMENT
+	implementation libs.CONSTRAINT_LAYOUT
+	implementation libs.KOIN_CORE
+	implementation libs.KOIN_ANDROID
+	implementation libs.RETROFIT
+	implementation libs.OKHTTP_INTERCEPTOR
+	implementation libs.GSON
+	implementation libs.GSON_CONVERTER
+	implementation libs.GLIDE
+
+	implementation libs.JODA_TIME
+	implementation platform(libs.FIREBASE_BOM)
+	implementation libs.FIREBASE_AUTH
 
 	implementation project(Modules.LIBRARIES.NAVIGATION)
 	implementation project(Modules.LIBRARIES.THEME)
