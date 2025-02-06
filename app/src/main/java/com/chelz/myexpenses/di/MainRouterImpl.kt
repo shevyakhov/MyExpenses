@@ -5,8 +5,8 @@ import androidx.fragment.app.FragmentFactory
 import com.chelz.features.home.HomeDestination
 import com.chelz.libraries.navigation.FragmentDestination
 import com.chelz.libraries.navigation.MainRouter
-import com.github.terrakok.cicerone.Router
-import com.github.terrakok.cicerone.androidx.FragmentScreen
+import com.chelz.libraries.navigation.cicerone.Router
+import com.chelz.libraries.navigation.cicerone.androidx.FragmentScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class MainRouterImpl(
@@ -27,7 +27,7 @@ class MainRouterImpl(
 	}
 
 	override fun exit() {
-		backStack.removeLast()
+		backStack.removeAt(backStack.lastIndex)
 		if (backStack.isNotEmpty()) {
 			open(backStack.last())
 		} else {

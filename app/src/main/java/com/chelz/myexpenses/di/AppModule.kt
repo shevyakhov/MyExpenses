@@ -2,11 +2,11 @@ package com.chelz.myexpenses.di
 
 import com.chelz.libraries.navigation.GlobalRouter
 import com.chelz.libraries.navigation.MainRouter
+import com.chelz.libraries.navigation.cicerone.Cicerone
+import com.chelz.libraries.navigation.cicerone.Router
 import com.chelz.myexpenses.di.GlobalNavigatorName.GLOBAL
 import com.chelz.myexpenses.di.MainNavigatorName.MAIN
 import com.chelz.myexpenses.presentation.MainViewModel
-import com.github.terrakok.cicerone.Cicerone
-import com.github.terrakok.cicerone.Router
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module

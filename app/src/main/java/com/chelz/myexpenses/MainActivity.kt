@@ -2,10 +2,10 @@ package com.chelz.myexpenses
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.chelz.libraries.navigation.cicerone.NavigatorHolder
+import com.chelz.libraries.navigation.cicerone.androidx.AppNavigator
 import com.chelz.myexpenses.di.GlobalNavigatorName.GLOBAL
 import com.chelz.myexpenses.presentation.MainViewModel
-import com.github.terrakok.cicerone.NavigatorHolder
-import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import org.koin.android.ext.android.inject

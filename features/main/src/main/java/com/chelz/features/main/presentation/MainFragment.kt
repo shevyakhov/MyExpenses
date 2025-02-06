@@ -10,8 +10,8 @@ import com.chelz.features.main.MainScreenValue
 import com.chelz.features.main.R
 import com.chelz.features.main.databinding.FragmentMainBinding
 import com.chelz.features.main.presentation.navigation.MainRouterName
-import com.github.terrakok.cicerone.NavigatorHolder
-import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.chelz.libraries.navigation.cicerone.NavigatorHolder
+import com.chelz.libraries.navigation.cicerone.androidx.AppNavigator
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.android.ext.android.inject

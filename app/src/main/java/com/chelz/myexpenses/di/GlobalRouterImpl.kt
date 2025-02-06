@@ -5,9 +5,9 @@ import androidx.fragment.app.FragmentFactory
 import com.chelz.libraries.navigation.Destination
 import com.chelz.libraries.navigation.FragmentDestination
 import com.chelz.libraries.navigation.GlobalRouter
-import com.github.terrakok.cicerone.Router
-import com.github.terrakok.cicerone.Screen
-import com.github.terrakok.cicerone.androidx.FragmentScreen
+import com.chelz.libraries.navigation.cicerone.Router
+import com.chelz.libraries.navigation.cicerone.Screen
+import com.chelz.libraries.navigation.cicerone.androidx.FragmentScreen
 
 class GlobalRouterImpl(
 	private val router: Router,
