@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<string name="earning">Доходы</string>
+	<string name="account_dots">● ● ● ●</string>
+	<string name="balance">Баланс</string>
 	<string name="profile_fragment_name">Профиль</string>
 	<string name="exit">Выход</string>
 	<string name="email">Email</string>

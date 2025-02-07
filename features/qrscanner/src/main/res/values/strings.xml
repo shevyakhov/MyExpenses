@@ -3,5 +3,8 @@
 	<string name="qr_check">Сканирование чека</string>
 	<string name="save">Сохранить</string>
 	<string name="category">Категория</string>
+	<string name="earning">Доходы</string>
+	<string name="account_dots">● ● ● ●</string>
+	<string name="balance">Баланс</string>
 	<string name="empty" />
 </resources>
