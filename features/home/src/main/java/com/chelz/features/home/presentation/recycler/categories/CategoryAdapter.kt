@@ -4,9 +4,6 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.graphics.blue
-import androidx.core.graphics.green
-import androidx.core.graphics.red
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.chelz.features.home.databinding.CategoryItemBinding
@@ -28,12 +25,14 @@ class CategoryAdapter(private val onClickListener: CategoryClickListener) :
 				category.text = item.name
 				val color = Color.parseColor(item.color)
 				background.setCardBackgroundColor(color)
-				val r = 255 - color.red
-				val g = 255 - color.green
-				val b = 255 - color.blue
-				val new = Color.rgb(r, g, b)
 
-				categoryLetter.setTextColor(new)
+				// Calculate brightness of the color
+				val brightness = (Color.red(color) * 0.299 + Color.green(color) * 0.587 + Color.blue(color) * 0.114) / 255
+
+				// Decide text color based on brightness
+				val textColor = if (brightness > 0.5) root.context.getColor(com.chelz.libraries.theme.R.color.neutral_1) else Color.WHITE
+
+				categoryLetter.setTextColor(textColor)
 				onChosen.isVisible = item == selectedItem
 
 				root.setOnClickListener {
@@ -41,6 +40,7 @@ class CategoryAdapter(private val onClickListener: CategoryClickListener) :
 				}
 			}
 		}
+
 	}
 
 	@SuppressLint("NotifyDataSetChanged")

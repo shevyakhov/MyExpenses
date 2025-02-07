@@ -23,7 +23,7 @@
 
 				<TextView
 					android:id="@+id/screenName"
-					style="@style/TextAppearance.AppCompat.Display1"
+					style="@style/TextAppearance.Material3.HeadlineLarge"
 					android:layout_width="wrap_content"
 					android:layout_height="match_parent"
 					android:layout_marginStart="@dimen/spacing_15"
@@ -117,6 +117,7 @@
 
 		<TextView
 			android:id="@+id/colorTitle"
+			style="@style/TextAppearance.Material3.LabelLarge"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="@dimen/spacing_10"
@@ -127,6 +128,7 @@
 
 		<TextView
 			android:id="@+id/colorChosen"
+			style="@style/TextAppearance.Material3.BodyLarge"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			app:layout_constraintBottom_toBottomOf="@id/colorTitle"
@@ -134,7 +136,7 @@
 			app:layout_constraintStart_toEndOf="@id/colorTitle"
 			app:layout_constraintTop_toTopOf="@id/colorTitle" />
 
-		<Button
+		<com.google.android.material.button.MaterialButton
 			android:id="@+id/button_color"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -187,7 +189,7 @@
 				android:inputType="numberDecimal|number" />
 		</com.google.android.material.textfield.TextInputLayout>
 
-		<CheckBox
+		<com.google.android.material.checkbox.MaterialCheckBox
 			android:id="@+id/isSharedCheckBox"
 			style="@style/Widget.AppCompat.CompoundButton.CheckBox"
 			android:layout_width="match_parent"
@@ -243,12 +245,11 @@
 
 		</HorizontalScrollView>
 
-		<Button
+		<com.google.android.material.button.MaterialButton
 			android:id="@+id/button_save"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="@dimen/spacing_10"
-			android:backgroundTint="?attr/colorSecondary"
 			android:text="@string/save"
 			app:layout_constraintTop_toBottomOf="@id/usersScroll" />
 

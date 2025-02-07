@@ -7,9 +7,6 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import androidx.core.graphics.blue
-import androidx.core.graphics.green
-import androidx.core.graphics.red
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -30,8 +27,9 @@ class QrListAdapter(
 
 			with(binding) {
 				bindCategory(item)
+				val moneyFormatted = String.format("%.2f", (item.quantity!! * item.price!! / 100)).replace(',', '.')
 				money.text = buildString {
-					append((item.quantity!! * item.price!! / 100).toString())
+					append(moneyFormatted).toString()
 					append(END_SYMBOL)
 				}
 
@@ -63,21 +61,17 @@ class QrListAdapter(
 				val itemColor = Color.parseColor(item.category?.color ?: "#FFFCDE")
 				background.setCardBackgroundColor(itemColor)
 
-				val r = 255 - itemColor.red
-				val g = 255 - itemColor.green
-				val b = 255 - itemColor.blue
-				val new = Color.rgb(r, g, b)
-				categoryLetter.setTextColor(new)
+				val brightness = (Color.red(itemColor) * 0.299 + Color.green(itemColor) * 0.587 + Color.blue(itemColor) * 0.114) / 255
+				val textColor = if (brightness > 0.5) root.context.getColor(com.chelz.libraries.theme.R.color.neutral_1) else Color.WHITE
+				categoryLetter.setTextColor(textColor)
 			} else {
 				categoryLetter.text = "?"
 				category.text = item.name ?: "?"
 				val itemColor = Color.parseColor("#FFFCDE")
 				background.setCardBackgroundColor(itemColor)
-				val r = 255 - itemColor.red
-				val g = 255 - itemColor.green
-				val b = 255 - itemColor.blue
-				val new = Color.rgb(r, g, b)
-				categoryLetter.setTextColor(new)
+				val brightness = (Color.red(itemColor) * 0.299 + Color.green(itemColor) * 0.587 + Color.blue(itemColor) * 0.114) / 255
+				val textColor = if (brightness > 0.5) root.context.getColor(com.chelz.libraries.theme.R.color.neutral_1) else Color.WHITE
+				categoryLetter.setTextColor(textColor)
 			}
 			spinner.setBackgroundColor(Color.parseColor("#00000000"))
 			spinner.setBackgroundColor(Color.parseColor("#00000000"))

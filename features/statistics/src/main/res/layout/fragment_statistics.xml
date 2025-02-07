@@ -6,7 +6,8 @@
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
+		android:layout_height="wrap_content"
+		android:background="@color/neutral_6">
 
 		<com.google.android.material.appbar.AppBarLayout
 			android:id="@+id/topAppBarLayout"
@@ -16,26 +17,33 @@
 
 			<androidx.constraintlayout.widget.ConstraintLayout
 				android:layout_width="match_parent"
-				android:layout_height="match_parent">
+				android:layout_height="match_parent"
+				android:background="@color/primary">
 
-				<TextView
+				<com.google.android.material.textview.MaterialTextView
 					android:id="@+id/screenName"
+					style="@style/TitleLarge"
 					android:layout_width="wrap_content"
 					android:layout_height="match_parent"
 					android:layout_marginStart="@dimen/spacing_15"
+					android:fontFamily="@font/poppinsbold"
 					android:gravity="center"
 					android:text="@string/statistics_fragment_name"
-					android:textSize="30sp"
+					android:textColor="@color/neutral_6"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toTopOf="parent" />
 
 				<com.google.android.material.checkbox.MaterialCheckBox
 					android:id="@+id/earningCheckBox"
+					style="@style/Body2"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginEnd="@dimen/spacing_20"
+					android:checked="true"
+					android:textColor="@color/neutral_6"
 					android:text="@string/earnings"
+					app:buttonTint="@color/semantic_blue"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintTop_toTopOf="parent" />
@@ -47,7 +55,9 @@
 			android:id="@+id/tabLayoutFilters"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			app:layout_constraintTop_toBottomOf="@id/topAppBarLayout">
+			android:elevation="@dimen/spacing_5"
+			app:layout_constraintTop_toBottomOf="@id/topAppBarLayout"
+			app:tabIndicatorColor="@color/secondary">
 
 			<com.google.android.material.tabs.TabItem
 				android:layout_width="match_parent"
@@ -64,7 +74,7 @@
 			android:id="@+id/swipeViewPagerItems"
 			android:layout_width="match_parent"
 			android:layout_height="120dp"
-			android:layout_marginVertical="@dimen/spacing_20"
+			android:layout_marginTop="@dimen/spacing_20"
 			android:clipToPadding="false"
 			app:layout_constraintTop_toBottomOf="@id/tabLayoutFilters" />
 
@@ -72,8 +82,11 @@
 			android:id="@+id/tabLayoutGraphs"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_20"
 			android:contentDescription="@string/categories"
-			app:layout_constraintTop_toBottomOf="@id/swipeViewPagerItems">
+			android:elevation="@dimen/spacing_5"
+			app:layout_constraintTop_toBottomOf="@id/swipeViewPagerItems"
+			app:tabIndicatorColor="@color/secondary">
 
 			<com.google.android.material.tabs.TabItem
 				android:layout_width="match_parent"
@@ -130,28 +143,28 @@
 			app:layout_constraintTop_toBottomOf="@id/chart_line">
 
 
-			<RadioButton
+			<com.google.android.material.radiobutton.MaterialRadioButton
 				android:id="@+id/radioButtonWeek"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				android:text="@string/week" />
 
-			<RadioButton
+			<com.google.android.material.radiobutton.MaterialRadioButton
 				android:id="@+id/radioButtonFourteen"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				android:text="@string/fourteen" />
 
-			<RadioButton
+			<com.google.android.material.radiobutton.MaterialRadioButton
 				android:id="@+id/radioButtonMonth"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				android:text="@string/month" />
 
-			<RadioButton
+			<com.google.android.material.radiobutton.MaterialRadioButton
 				android:id="@+id/radioButtonOther"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
@@ -160,15 +173,13 @@
 
 		</RadioGroup>
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/reverse_text"
+			style="@style/TitleMedium"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:paddingHorizontal="@dimen/spacing_20"
 			android:text="@string/categories"
-			android:textColor="@color/md_theme_dark_onPrimary"
-			android:textSize="30sp"
-			android:textStyle="bold"
 			app:layout_constraintTop_toBottomOf="@id/radioGroupTimePeriod" />
 
 

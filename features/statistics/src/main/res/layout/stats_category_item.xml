@@ -3,51 +3,53 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
+	android:background="@color/neutral_6"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
 	android:padding="@dimen/spacing_5">
 
-	<androidx.cardview.widget.CardView
+	<com.google.android.material.card.MaterialCardView
 		android:id="@+id/background"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		app:cardCornerRadius="@dimen/spacing_10"
+		app:cardCornerRadius="@dimen/spacing_15"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent">
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/categoryLetter"
+			style="@style/Body2"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center|start"
 			android:gravity="center"
 			android:padding="@dimen/spacing_10"
-			android:textSize="20sp"
+			android:textStyle="bold"
 			tools:text="L" />
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/category"
-			style="@style/TextAppearance.Material3.LabelLarge"
+			style="@style/TitleMedium"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
 			android:layout_marginTop="3dp"
-			android:textColor="?attr/colorSurface"
-			android:textSize="12sp"
+			android:fontFamily="@font/poppinsbold"
 			tools:text="blablabla" />
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/isEarning"
-			style="@style/TextAppearance.Material3.LabelLarge"
+			style="@style/Caption1"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="top|end"
 			android:layout_marginTop="3dp"
+			android:fontFamily="@font/poppinsbold"
+			android:padding="@dimen/spacing_5"
 			android:textColor="?attr/colorSurface"
-			android:textSize="12sp"
 			tools:text="blablabla" />
 
-	</androidx.cardview.widget.CardView>
+	</com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

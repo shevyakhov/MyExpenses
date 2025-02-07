@@ -9,34 +9,37 @@
 	android:paddingHorizontal="@dimen/spacing_10"
 	android:paddingVertical="@dimen/spacing_5">
 
-	<androidx.cardview.widget.CardView
+	<com.google.android.material.card.MaterialCardView
 		android:id="@+id/background"
 		android:layout_width="@dimen/height_80"
 		android:layout_height="@dimen/height_80"
 		android:layout_gravity="center"
-		app:cardCornerRadius="@dimen/spacing_10">
+		android:elevation="1dp"
+		app:cardCornerRadius="@dimen/spacing_15">
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/categoryLetter"
+			style="@style/TitleLarge"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:gravity="center"
 			android:padding="@dimen/spacing_10"
 			android:textSize="20sp"
+			android:textStyle="bold"
 			tools:text="L" />
 
-	</androidx.cardview.widget.CardView>
+	</com.google.android.material.card.MaterialCardView>
 
-	<TextView
+	<com.google.android.material.textview.MaterialTextView
 		android:id="@+id/category"
-		style="@style/TextAppearance.AppCompat.Title"
+		style="@style/TitleMedium"
+		android:textStyle="bold"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_gravity="center"
 		android:layout_marginHorizontal="@dimen/spacing_16"
 		android:layout_marginTop="3dp"
 		android:gravity="center"
-		android:textSize="12sp"
 		tools:text="blablabla" />
 
 </LinearLayout>

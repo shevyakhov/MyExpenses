@@ -3,23 +3,27 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="wrap_content"
+	android:elevation="@dimen/spacing_5"
 	android:layout_height="wrap_content"
 	android:orientation="vertical"
 	android:padding="@dimen/spacing_5">
 
 	<androidx.cardview.widget.CardView
 		android:id="@+id/background"
-		android:layout_width="@dimen/height_50"
-		android:layout_height="@dimen/height_50"
-		app:cardCornerRadius="@dimen/spacing_10">
+		android:layout_width="@dimen/height_65"
+		android:layout_height="@dimen/height_65"
+		app:cardElevation="5dp"
+		app:cardCornerRadius="@dimen/spacing_20">
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/categoryLetter"
+			style="@style/TitleLarge"
 			android:layout_width="match_parent"
-			android:padding="@dimen/spacing_10"
 			android:layout_height="match_parent"
 			android:gravity="center"
+			android:padding="@dimen/spacing_10"
 			android:textSize="20sp"
+			android:textStyle="bold"
 			tools:text="L" />
 
 		<ImageView
@@ -28,20 +32,19 @@
 			android:layout_height="match_parent"
 			android:gravity="center"
 			android:src="@drawable/checked"
-			android:textSize="20sp"
 			android:visibility="invisible"
 			tools:text="L" />
 
 	</androidx.cardview.widget.CardView>
 
-	<TextView
+	<com.google.android.material.textview.MaterialTextView
 		android:id="@+id/category"
+		style="@style/Body1"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="3dp"
-		android:textColor="?attr/colorSurface"
 		android:gravity="center"
-		android:textSize="12sp"
+		android:textColor="@color/primary"
 		tools:text="blablabla" />
 
 </LinearLayout>

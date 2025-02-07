@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="wrap_content">
+	android:layout_height="match_parent"
+	android:background="@color/primary">
 
-	<androidx.constraintlayout.widget.ConstraintLayout
+	<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
 
@@ -13,42 +13,45 @@
 			android:id="@+id/topAppBarLayout"
 			android:layout_width="match_parent"
 			android:layout_height="@dimen/height_65"
+			android:background="@color/primary"
 			app:layout_constraintTop_toTopOf="parent">
 
 			<androidx.constraintlayout.widget.ConstraintLayout
 				android:layout_width="match_parent"
 				android:layout_height="match_parent">
 
-				<TextView
+				<com.google.android.material.textview.MaterialTextView
 					android:id="@+id/screenName"
+					style="@style/TitleLarge"
 					android:layout_width="wrap_content"
 					android:layout_height="match_parent"
 					android:layout_marginStart="@dimen/spacing_15"
+					android:fontFamily="@font/poppinsbold"
 					android:gravity="center"
 					android:text="@string/profile_fragment_name"
-					android:textSize="30sp"
+					android:textColor="@color/neutral_6"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toTopOf="parent" />
 
-				<androidx.appcompat.widget.AppCompatImageButton
+				<androidx.appcompat.widget.AppCompatImageView
 					android:id="@+id/settings_button"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginEnd="@dimen/spacing_20"
-					android:backgroundTint="?attr/colorSecondary"
 					android:src="@drawable/ic_settings"
+					android:tint="@color/neutral_6"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintEnd_toStartOf="@id/exitButton"
 					app:layout_constraintTop_toTopOf="parent" />
 
-				<androidx.appcompat.widget.AppCompatImageButton
+				<androidx.appcompat.widget.AppCompatImageView
 					android:id="@+id/exitButton"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginEnd="@dimen/spacing_20"
-					android:backgroundTint="?attr/colorError"
 					android:src="@drawable/ic_exit"
+					android:tint="@color/semantic_red"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintTop_toTopOf="parent" />
@@ -56,6 +59,7 @@
 
 			</androidx.constraintlayout.widget.ConstraintLayout>
 		</com.google.android.material.appbar.AppBarLayout>
+
 
 		<LinearLayout
 			android:id="@+id/layout_email"
@@ -68,18 +72,23 @@
 			app:layout_constraintTop_toBottomOf="@id/topAppBarLayout">
 
 
-			<TextView
+			<com.google.android.material.textview.MaterialTextView
+				style="@style/Caption1"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="top"
+
 				android:text="@string/email"
+				android:textColor="@color/neutral_6"
 				android:textStyle="bold" />
 
-			<TextView
+			<com.google.android.material.textview.MaterialTextView
 				android:id="@+id/textViewEmail"
+				style="@style/Caption2"
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
 				android:layout_weight="1"
+				android:textColor="@color/neutral_6"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toEndOf="@id/textViewEmail"
 				app:layout_constraintTop_toTopOf="@id/textViewEmail" />
@@ -95,89 +104,107 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/layout_email">
 
-			<TextView
+			<com.google.android.material.textview.MaterialTextView
+				style="@style/Caption1"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:text="@string/timeCreation"
+				android:textColor="@color/neutral_6"
 				android:textStyle="bold" />
 
-			<TextView
+			<com.google.android.material.textview.MaterialTextView
 				android:id="@+id/textViewCreationTime"
+				style="@style/Caption2"
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
 				android:layout_weight="1"
+				android:textColor="@color/neutral_6"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toEndOf="@id/textViewEmail"
 				app:layout_constraintTop_toTopOf="@id/textViewEmail" />
 		</LinearLayout>
 
-		<TextView
+		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/newsLabel"
+			style="@style/TitleLarge"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:fontFamily="@font/poppinsbold"
 			android:padding="@dimen/spacing_10"
 			android:text="@string/news"
+			android:textColor="@color/neutral_6"
 			app:layout_constraintTop_toBottomOf="@id/layout_time" />
 
 		<androidx.recyclerview.widget.RecyclerView
 			android:id="@+id/recycler_news"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:elevation="1dp"
 			app:layout_constraintTop_toBottomOf="@id/newsLabel"
 			tools:itemCount="1"
 			tools:listitem="@layout/news_item" />
 
-		<TextView
-			android:id="@+id/accountLabel"
+		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:padding="@dimen/spacing_10"
-			android:text="@string/accounts"
-			app:layout_constraintTop_toBottomOf="@id/recycler_news" />
+			android:layout_marginTop="70dp"
+			android:background="@drawable/calc"
+			android:orientation="vertical"
+			android:paddingTop="100dp"
+			app:layout_constraintTop_toTopOf="@id/recycler_news">
 
-		<androidx.viewpager2.widget.ViewPager2
-			android:id="@+id/accountViewPager"
-			android:layout_width="match_parent"
-			android:layout_height="120dp"
-			android:clipToPadding="false"
-			app:layout_constraintTop_toBottomOf="@id/accountLabel" />
+			<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/accountLabel"
+				style="@style/TitleLarge"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/poppinsbold"
+				android:padding="@dimen/spacing_10"
+				android:text="@string/accounts" />
 
-		<TextView
-			android:id="@+id/spendLabel"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:padding="@dimen/spacing_10"
-			android:text="@string/spendLabel"
-			app:layout_constraintTop_toBottomOf="@id/accountViewPager" />
+			<androidx.viewpager2.widget.ViewPager2
+				android:id="@+id/accountViewPager"
+				android:layout_width="match_parent"
+				android:layout_height="120dp"
+				android:clipToPadding="false" />
 
-		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/rv_categories_spend"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_weight="2"
-			android:background="?attr/colorTertiary"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/spendLabel" />
+			<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/spendLabel"
+				style="@style/TitleLarge"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/poppinsbold"
+				android:padding="@dimen/spacing_10"
+				android:text="@string/spendLabel" />
 
-		<TextView
-			android:id="@+id/earnLabel"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:padding="@dimen/spacing_10"
-			android:text="@string/earnLabel"
-			app:layout_constraintTop_toBottomOf="@id/rv_categories_spend" />
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/rv_categories_spend"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/spendLabel"
+				tools:itemCount="1" />
 
-		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/rv_categories_earning"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_margin="-20dp"
-			android:layout_weight="2"
-			android:background="?attr/colorTertiary"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/earnLabel" />
+			<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/earnLabel"
+				style="@style/TitleLarge"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/poppinsbold"
+				android:padding="@dimen/spacing_10"
+				android:text="@string/earnLabel" />
 
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/rv_categories_earning"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/earnLabel"
+				tools:itemCount="1" />
+		</LinearLayout>
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

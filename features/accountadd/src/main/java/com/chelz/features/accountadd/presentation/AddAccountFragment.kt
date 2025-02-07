@@ -11,9 +11,6 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.graphics.blue
-import androidx.core.graphics.green
-import androidx.core.graphics.red
 import androidx.core.view.children
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
@@ -68,10 +65,9 @@ class AddAccountFragment : Fragment() {
 			val color = Color.parseColor(it)
 			binding.accountLayout.setCardBackgroundColor(color)
 
-			val r = 255 - color.red
-			val g = 255 - color.green
-			val b = 255 - color.blue
-			val textColor = Color.rgb(r, g, b)
+			val brightness = (Color.red(color) * 0.299 + Color.green(color) * 0.587 + Color.blue(color) * 0.114) / 255
+
+			val textColor = if (brightness > 0.5) requireContext().getColor(com.chelz.libraries.theme.R.color.neutral_1) else Color.WHITE
 			binding.accountName.setTextColor(textColor)
 			binding.balance.setTextColor(textColor)
 			binding.balanceTitle.setTextColor(textColor)

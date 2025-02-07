@@ -2,18 +2,18 @@
 <resources>
 
 	<style name="MyMonthYearPickerDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
-		<item name="headerBackgroundColor">?colorPrimaryContainer</item>
-		<item name="headerTextColor">?colorPrimary</item>
-		<item name="headerTextColorSelected">?colorOnPrimaryContainer</item>
+		<item name="headerBackgroundColor">@color/surface</item>
+		<item name="headerTextColor">@color/primary</item>
+		<item name="headerTextColorSelected">@color/semantic_blue</item>
 
 		<!-- Month Style -->
-		<item name="monthBackgroundColorSelected">?colorSecondaryContainer</item>
-		<item name="monthTextColor">?colorSecondary</item>
-		<item name="monthTextColorDisabled">?colorTertiary</item>
-		<item name="monthTextColorSelected">?colorError</item>
+		<item name="monthBackgroundColorSelected">@color/surface</item>
+		<item name="monthTextColor">@color/primary</item>
+		<item name="monthTextColorDisabled">@color/neutral_3</item>
+		<item name="monthTextColorSelected">@color/semantic_blue</item>
 
 		<!-- Year Style -->
-		<item name="yearTextColor">?colorSecondary</item>
-		<item name="yearTextColorSelected">?colorPrimary</item>
+		<item name="yearTextColor">@color/primary</item>
+		<item name="yearTextColorSelected">@color/semantic_blue</item>
 	</style>
 </resources>

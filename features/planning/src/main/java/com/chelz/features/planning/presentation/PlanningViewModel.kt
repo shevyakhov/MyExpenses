@@ -63,6 +63,8 @@ class PlanningViewModel(
 	private val router: PlanningRouter,
 ) : ViewModel() {
 
+	val currentGoal = MutableStateFlow<MonthGoal?>(null)
+
 	val auth by lazy { Firebase.auth }
 	private val store by lazy { Firebase.firestore }
 
@@ -129,8 +131,8 @@ class PlanningViewModel(
 		}
 	}
 
-	fun searchMonthGoalsByDate(date: String) {
-		_allMonthGoals.value = _allMonthGoals.value.filter { it.yearMonth == date }
+	fun searchMonthGoalsByDate(date: String): List<MonthGoal> {
+		return _allMonthGoals.value.filter { it.yearMonth == date }
 	}
 
 	private suspend fun updateOperation() = viewModelScope.async {

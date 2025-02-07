@@ -1,37 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:padding="@dimen/spacing_15">
+	android:background="@color/primary">
 
 	<com.google.android.material.appbar.AppBarLayout
 		android:id="@+id/top_bar"
 		android:layout_width="match_parent"
 		android:layout_height="@dimen/height_65"
+		android:background="@color/primary"
+		android:padding="@dimen/spacing_15"
 		app:layout_constraintTop_toTopOf="parent">
 
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:layout_width="match_parent"
 			android:layout_height="match_parent">
 
-			<TextView
+			<com.google.android.material.textview.MaterialTextView
 				android:id="@+id/screenName"
-				style="?attr/textAppearanceTitleLarge"
+				style="@style/TitleMedium"
 				android:layout_width="wrap_content"
 				android:layout_height="match_parent"
 				android:gravity="center"
 				android:text="@string/registration"
+				android:textColor="@color/neutral_6"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent" />
 
-			<Button
+			<com.google.android.material.textview.MaterialTextView
 				android:id="@+id/buttonLogin"
-				style="?attr/buttonBarButtonStyle"
+				style="@style/Caption1"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/login"
+				android:textColor="@color/neutral_6"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintTop_toTopOf="parent" />
@@ -39,67 +44,94 @@
 
 	</com.google.android.material.appbar.AppBarLayout>
 
-	<com.google.android.material.textfield.TextInputLayout
-		android:id="@+id/textInputLayoutName"
-		style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+	<androidx.cardview.widget.CardView
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginBottom="100dp"
-		android:hint="@string/name"
+		android:layout_height="0dp"
+		android:layout_marginBottom="-10dp"
+		android:layout_marginTop="@dimen/spacing_20"
+		android:background="@color/neutral_6"
+		app:cardCornerRadius="@dimen/spacing_20"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/top_bar">
 
-		<com.google.android.material.textfield.TextInputEditText
-			android:id="@+id/editTextName"
+		<androidx.constraintlayout.widget.ConstraintLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content" />
-	</com.google.android.material.textfield.TextInputLayout>
+			android:layout_height="match_parent"
+			android:padding="@dimen/spacing_15">
 
-	<com.google.android.material.textfield.TextInputLayout
+			<ImageView
+				android:id="@+id/image"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="80dp"
+				android:src="@drawable/illustration"
+				app:layout_constraintTop_toTopOf="parent" />
 
-		android:id="@+id/textInputLayoutEmail"
-		style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_marginVertical="@dimen/spacing_10"
-		android:hint="@string/email"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/textInputLayoutName">
+			<com.google.android.material.textfield.TextInputLayout
+				android:id="@+id/textInputLayoutName"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/name"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/image"
+				app:layout_constraintTop_toTopOf="parent">
 
-		<com.google.android.material.textfield.TextInputEditText
-			android:id="@+id/editTextEmail"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:inputType="textEmailAddress" />
-	</com.google.android.material.textfield.TextInputLayout>
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/editTextName"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content" />
+			</com.google.android.material.textfield.TextInputLayout>
 
-	<com.google.android.material.textfield.TextInputLayout
-		android:id="@+id/textInputLayoutPassword"
-		style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_marginVertical="@dimen/spacing_10"
-		android:hint="@string/password"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmail">
+			<com.google.android.material.textfield.TextInputLayout
 
-		<com.google.android.material.textfield.TextInputEditText
-			android:id="@+id/editTextPassword"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:inputType="textPassword" />
-	</com.google.android.material.textfield.TextInputLayout>
+				android:id="@+id/textInputLayoutEmail"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginVertical="@dimen/spacing_10"
+				android:hint="@string/email"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/textInputLayoutName">
 
-	<Button
-		android:id="@+id/buttonRegister"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:text="@string/registration"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/textInputLayoutPassword" />
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/editTextEmail"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:inputType="textEmailAddress" />
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<com.google.android.material.textfield.TextInputLayout
+				android:id="@+id/textInputLayoutPassword"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginVertical="@dimen/spacing_10"
+				android:hint="@string/password"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmail">
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/editTextPassword"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:inputType="textPassword" />
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/buttonRegister"
+				style="@style/Body1"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:text="@string/registration"
+				android:textColor="@color/neutral_6"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/textInputLayoutPassword"
+				tools:text="@string/material_motion_easing_decelerated" />
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+	</androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
