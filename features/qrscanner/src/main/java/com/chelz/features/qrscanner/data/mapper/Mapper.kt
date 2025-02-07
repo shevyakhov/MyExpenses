@@ -19,7 +19,7 @@ internal fun ArrayList<Items>.toSingleItems() =
 		SingleItemEntity(
 			sum = it.sum,
 			name = it.name,
-			price = it.price,
+			price = it.price?.toDouble(),
 			quantity = it.quantity
 		)
 	}
